@@ -1,0 +1,718 @@
+2018/08/24 02:47:30 [error] [exception.CException] CException: Property "CWebApplication.bootstrap" is not defined. in E:\Programas\Xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\base\CModule.php(105): CComponent->__get('bootstrap')
+#1 E:\Programas\Xampp\htdocs\tcc\themes\bootstrap\views\layouts\main.php(12): CModule->__get('bootstrap')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(126): require('E:\\Programas\\Xa...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Programas\\Xa...', Array, true)
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\widgets\CContentDecorator.php(76): CBaseController->renderFile('E:\\Programas\\Xa...', Array, true)
+#5 E:\Programas\Xampp\htdocs\yii\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#6 E:\Programas\Xampp\htdocs\yii\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(215): COutputProcessor->run()
+#8 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(309): CBaseController->endWidget('CContentDecorat...')
+#9 E:\Programas\Xampp\htdocs\tcc\protected\views\layouts\column1.php(6): CBaseController->endContent()
+#10 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(126): require('E:\\Programas\\Xa...')
+#11 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Programas\\Xa...', Array, true)
+#12 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(787): CBaseController->renderFile('E:\\Programas\\Xa...', Array, true)
+#13 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(32): CController->render('index')
+#14 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#15 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#16 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#17 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#19 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#20 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#21 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/tcc/index.php/site/index
+HTTP_REFERER=http://localhost/tcc/index.php/site/page?view=about
+---
+2018/08/24 03:36:21 [error] [exception.CException] CException: SiteController cannot find the requested view "teste". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:881
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): CController->renderPartial('teste', Array, true)
+#1 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(114): CController->render('teste', Array)
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionMostrar()
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('mostrar')
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/mostrar')
+#8 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/tcc/site/mostrar
+---
+2018/08/24 03:36:32 [error] [exception.ParseError] ParseError: syntax error, unexpected '->' (T_OBJECT_OPERATOR) in E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php:2
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Programas\\Xa...', Array, true)
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(872): CBaseController->renderFile('E:\\Programas\\Xa...', Array, true)
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): CController->renderPartial('teste', Array, true)
+#3 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(114): CController->render('teste', Array)
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionMostrar()
+#5 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('mostrar')
+#9 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/mostrar')
+#10 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/tcc/site/mostrar
+---
+2018/08/24 03:39:40 [error] [php] Undefined variable: gridDataProvider (E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php:4)
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(872): SiteController->renderFile()
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): SiteController->renderPartial()
+#2 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(114): SiteController->render()
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionMostrar()
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 E:\Programas\Xampp\htdocs\tcc\index.php(13): CWebApplication->run()
+REQUEST_URI=/tcc/site/mostrar
+in E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php (4)
+in E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php (114)
+in E:\Programas\Xampp\htdocs\tcc\index.php (13)
+2018/08/24 03:41:24 [error] [php] Undefined variable: model (E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php:23)
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(872): SiteController->renderFile()
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): SiteController->renderPartial()
+#2 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(114): SiteController->render()
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionMostrar()
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 E:\Programas\Xampp\htdocs\tcc\index.php(13): CWebApplication->run()
+REQUEST_URI=/tcc/site/mostrar
+in E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php (23)
+in E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php (114)
+in E:\Programas\Xampp\htdocs\tcc\index.php (13)
+2018/08/24 03:41:41 [error] [exception.CException] CException: Property "Instituicao.textField" is not defined. in E:\Programas\Xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('textField')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\helpers\CHtml.php(2760): CActiveRecord->__get('textField')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\helpers\CHtml.php(2483): CHtml::resolveValue(Object(Instituicao), 'textField')
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\helpers\CHtml.php(1540): CHtml::activeInputField('text', Object(Instituicao), 'textField', Array)
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Instituicao), 'textField', Array)
+#5 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\input\TbInputVertical.php(142): CActiveForm->textField(Object(Instituicao), 'textField', Array)
+#6 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\input\TbInput.php(230): TbInputVertical->textField()
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(182): TbInput->run()
+#8 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\TbActiveForm.php(496): CBaseController->widget('bootstrap.widge...', Array)
+#9 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\TbActiveForm.php(186): TbActiveForm->inputRow('text', Object(Instituicao), 'textField', NULL, Array)
+#10 E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php(25): TbActiveForm->textFieldRow(Object(Instituicao), 'textField', Array)
+#11 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(126): require('E:\\Programas\\Xa...')
+#12 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Programas\\Xa...', Array, true)
+#13 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(872): CBaseController->renderFile('E:\\Programas\\Xa...', Array, true)
+#14 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): CController->renderPartial('teste', Array, true)
+#15 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(114): CController->render('teste', Array)
+#16 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionMostrar()
+#17 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('mostrar')
+#21 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/mostrar')
+#22 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/tcc/site/mostrar
+---
+2018/08/24 03:43:30 [error] [exception.CException] CException: Property "Instituicao.NomeInstituicaao" is not defined. in E:\Programas\Xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('NomeInstituicaa...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\helpers\CHtml.php(2760): CActiveRecord->__get('NomeInstituicaa...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\helpers\CHtml.php(2483): CHtml::resolveValue(Object(Instituicao), 'NomeInstituicaa...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\helpers\CHtml.php(1540): CHtml::activeInputField('text', Object(Instituicao), 'NomeInstituicaa...', Array)
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(792): CHtml::activeTextField(Object(Instituicao), 'NomeInstituicaa...', Array)
+#5 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\input\TbInputVertical.php(142): CActiveForm->textField(Object(Instituicao), 'NomeInstituicaa...', Array)
+#6 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\input\TbInput.php(230): TbInputVertical->textField()
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(182): TbInput->run()
+#8 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\TbActiveForm.php(496): CBaseController->widget('bootstrap.widge...', Array)
+#9 E:\Programas\Xampp\htdocs\tcc\protected\extensions\bootstrap\widgets\TbActiveForm.php(186): TbActiveForm->inputRow('text', Object(Instituicao), 'NomeInstituicaa...', NULL, Array)
+#10 E:\Programas\Xampp\htdocs\tcc\protected\views\site\teste.php(25): TbActiveForm->textFieldRow(Object(Instituicao), 'NomeInstituicaa...', Array)
+#11 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(126): require('E:\\Programas\\Xa...')
+#12 E:\Programas\Xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\\Programas\\Xa...', Array, true)
+#13 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(872): CBaseController->renderFile('E:\\Programas\\Xa...', Array, true)
+#14 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): CController->renderPartial('teste', Array, true)
+#15 E:\Programas\Xampp\htdocs\tcc\protected\controllers\SiteController.php(114): CController->render('teste', Array)
+#16 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionMostrar()
+#17 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('mostrar')
+#21 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/mostrar')
+#22 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/tcc/site/mostrar
+---
+2018/08/27 15:49:35 [error] [php] include(BaseController.php): failed to open stream: No such file or directory (C:\HomeSVN\matheus.michel\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\SiteController.php(4): spl_autoload_call()
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CWebApplication->run()
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\SiteController.php (4)
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php (13)
+2018/08/27 15:56:24 [error] [php] Declaration of BaseController::beforeAction() should be compatible with CController::beforeAction($action) (C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\BaseController.php:4)
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\SiteController.php(4): spl_autoload_call()
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CWebApplication->run()
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\BaseController.php (4)
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\SiteController.php (4)
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php (13)
+2018/08/27 16:52:21 [error] [php] include(BaseController.php): failed to open stream: No such file or directory (C:\HomeSVN\matheus.michel\yii\framework\YiiBase.php:463)
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\SiteController.php(4): spl_autoload_call()
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(354): require()
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CWebApplication->run()
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\SiteController.php (4)
+in C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php (13)
+2018/08/27 16:59:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/static/images/logo.png".' in C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/assets/static/images/logo.png
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site
+---
+2018/08/27 16:59:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff".' in C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fonts/a1ecc3b82...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site
+---
+2018/08/27 16:59:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "e23a7dcaefbde4e74e263247aa42ecd7.ttf".' in C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('e23a7dcaefbde4e...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site
+---
+2018/08/27 16:59:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/assets/static/images/logo.png
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 16:59:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "fonts".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 16:59:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 16:59:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/assets/static/images/logo.png
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 16:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "fonts".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 16:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 16:59:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in C:\HomeSVN\matheus.michel\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\HomeSVN\matheus.michel\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\HomeSVN\matheus.michel\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(639): CApplication->getDb()
+#5 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(2389): CActiveRecord->getDbConnection()
+#6 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(Instituicao))
+#7 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\InstituicaoController.php(34): CActiveRecord->__construct()
+#9 C:\HomeSVN\matheus.michel\yii\framework\web\actions\CInlineAction.php(49): InstituicaoController->actionFormulario()
+#10 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('formulario')
+#14 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/for...')
+#15 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/formulario
+---
+2018/08/27 17:00:18 [error] [exception.CDbException] exception 'CDbException' with message 'The table "instituicao" for active record class "Instituicao" cannot be found in the database.' in C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php:2390
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(Instituicao))
+#1 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#2 C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\InstituicaoController.php(34): CActiveRecord->__construct()
+#3 C:\HomeSVN\matheus.michel\yii\framework\web\actions\CInlineAction.php(49): InstituicaoController->actionFormulario()
+#4 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('formulario')
+#8 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/for...')
+#9 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/formulario
+---
+2018/08/27 17:03:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+' in C:\HomeSVN\matheus.michel\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\HomeSVN\matheus.michel\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\HomeSVN\matheus.michel\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(459): CModule->getComponent('db')
+#4 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(639): CApplication->getDb()
+#5 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(2389): CActiveRecord->getDbConnection()
+#6 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(Instituicao))
+#7 C:\HomeSVN\matheus.michel\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 C:\HomeSVN\matheus.michel\yii\demos\tcc\protected\controllers\InstituicaoController.php(34): CActiveRecord->__construct()
+#9 C:\HomeSVN\matheus.michel\yii\framework\web\actions\CInlineAction.php(49): InstituicaoController->actionFormulario()
+#10 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('formulario')
+#14 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/for...')
+#15 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/formulario
+---
+2018/08/27 17:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/assets/static/images/logo.png
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/formulario
+---
+2018/08/27 17:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "fonts".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/formulario
+---
+2018/08/27 17:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/instituicao/formulario
+---
+2018/08/27 17:04:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 17:04:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.html".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('index.html')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('index.html')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index.html')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/index.html
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/contact
+---
+2018/08/27 17:04:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "assets".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/assets/static/images/logo.png
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/
+---
+2018/08/27 17:04:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "fonts".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/
+---
+2018/08/27 17:04:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf".' in C:\HomeSVN\matheus.michel\yii\framework\web\CController.php:486
+Stack trace:
+#0 C:\HomeSVN\matheus.michel\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 C:\HomeSVN\matheus.michel\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 C:\HomeSVN\matheus.michel\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\HomeSVN\matheus.michel\yii\demos\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=https://desenvolvimento.dsi/HomeSVN/matheus.michel/yii/demos/tcc/index.php/site/
+---
+2018/08/27 23:09:51 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/27 23:09:56 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:09:56 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:09:56 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:10:37 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:10:37 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:10:37 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:10:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/27 23:11:42 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/27 23:12:00 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:12:01 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:12:01 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:13:46 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:13:46 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:13:47 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:13:50 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "index.html". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('index.html')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index.html')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ind...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/index.html
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:13:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/27 23:16:05 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:16:06 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:16:06 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:16:22 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "email.html". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('email.html')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('email.html')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ema...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/email.html
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:17:36 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:17:36 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:17:36 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:18:08 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:18:08 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/fon...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/27 23:18:08 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
