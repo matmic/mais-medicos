@@ -1,5 +1,7 @@
 <?php
 	echo 'Olá mundo!';
+	Yii::app()->user->setFlash('success', 'Ok');
+	Yii::app()->user->setFlash('danger', 'Ok');
 ?>
 <!-- <div class="masonry-item col-md-6" style="position: absolute; left: 0%; top: 799px;">
 	<div class="bgc-white p-20 bd">

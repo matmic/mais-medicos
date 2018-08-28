@@ -116,7 +116,21 @@
 				</div>
 				<main class="main-content bgc-grey-100">
 					<div id="mainContent">
-						<?php echo $content; ?>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="bgc-white bd bdrs-3 p-20 mB-20">
+									<?php
+										$flashMessages = Yii::app()->user->getFlashes();
+										if ($flashMessages) {
+											foreach($flashMessages as $key => $message) {
+												echo '<div class="alert alert-' . $key . '">' . $message . "</div>\n";
+											}
+										}
+										echo $content; 
+									?>
+								</div>
+							</div>
+						</div>
 					</div>
 				</main>
 				<!-- <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer> -->

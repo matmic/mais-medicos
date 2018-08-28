@@ -21,4 +21,17 @@ class InstituicaoController extends BaseController
 			}
 		}
 	}
+	
+	public function actionListar()
+	{
+		$instituicoes = Instituicao::model()->findAll();
+		$dataProvider = new CArrayDataProvider($instituicoes, array(
+			'keyField'=>'CodInstituicao',
+			'pagination'=>array(
+				'pageSize'=>10,
+			),
+		));
+		
+		$this->render('listar', array('dataProvider'=>$dataProvider));
+	}
 }
