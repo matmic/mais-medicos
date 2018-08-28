@@ -28,10 +28,10 @@
 					<div class="sidebar-logo">
 						<div class="peers ai-c fxw-nw">
 							<div class="peer peer-greed">
-								<a class="sidebar-link td-n" href="index.html">
+								<a class="sidebar-link td-n" href="<?php echo Yii::app()->baseUrl; ?>/site/index">
 									<div class="peers ai-c fxw-nw">
 										<div class="peer">
-											<div class="logo"><img src="assets/static/images/logo.png" alt=""></div>
+											<div class="logo"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo.png" alt=""></div>
 										</div>
 										<div class="peer peer-greed">
 											<h5 class="lh-1 mB-0 logo-text">Adminator</h5>

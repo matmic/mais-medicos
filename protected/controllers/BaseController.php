@@ -6,6 +6,9 @@ class BaseController extends Controller
 	
 	public function beforeAction($action)
 	{
+
+		
+		
 		$this->menu = array(
 			array(
 				'label'=>'Teste',

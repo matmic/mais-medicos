@@ -758,3 +758,812 @@ Stack trace:
 REQUEST_URI=/tcc/assets/static/images/logo.png
 HTTP_REFERER=http://localhost/tcc/
 ---
+2018/08/28 21:29:55 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/index.php/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/index.php/site/index
+---
+2018/08/28 21:29:55 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/index.php/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/index.php/site/index
+---
+2018/08/28 21:29:55 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/index.php/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/index.php/site/index
+---
+2018/08/28 21:30:01 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('/site/assets/st...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc//site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc//site/index
+---
+2018/08/28 21:30:01 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('/site/fonts/a1e...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc//site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc//site/index
+---
+2018/08/28 21:30:01 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('/site/e23a7dcae...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc//site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc//site/index
+---
+2018/08/28 21:30:05 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:30:05 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:30:05 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:31:36 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:31:36 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:31:36 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:32:03 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:32:03 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:32:03 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:40 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/style.js". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/style.js')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/css/style.js
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:40 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:40 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:40 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/style.js". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/style.js')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/css/style.js
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:58 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:58 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:35:58 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:45:23 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:45:24 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:45:24 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:45:30 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:45:31 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:45:31 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:46:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:46:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "fonts". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('fonts')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('fonts')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/fonts/a1ec...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/fonts/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:46:03 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:46:09 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/assets/sta...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:46:09 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "a1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('a1ecc3b826d0125...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('a1ecc3b826d0125...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/a1ecc3b826...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:46:10 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/e23a7dcaef...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/site/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/site/index
+---
+2018/08/28 21:47:07 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:47:08 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "a1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('a1ecc3b826d0125...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:47:09 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:50:40 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:50:40 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "a1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('a1ecc3b826d0125...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:50:41 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:50:46 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:50:46 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "a1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('a1ecc3b826d0125...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('a1ecc3b826d0125...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/a1e...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:50:46 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:50:51 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "news/view". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('news/view')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/news/1
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:50:52 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('e23a7dcaefbde4e...')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/e23...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:50:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:50:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "a1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('a1ecc3b826d0125...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:50:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:03 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:04 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "a1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('a1ecc3b826d0125...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/a1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:04 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "js/bundle.js". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/bundle.js')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/js/bundle.js
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "js/bundle.js". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/bundle.js')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/js/bundle.js
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:51:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:52:32 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:52:34 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:52:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:53:00 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:53:03 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:53:42 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 21:53:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:54:00 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:54:27 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:54:42 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:55:12 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:55:14 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:55:44 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:55:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:56:35 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:57:01 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:57:21 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:57:54 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:57:54 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "fontsa1ecc3b826d01251edddf29c3e4e1e97.woff". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('fontsa1ecc3b826...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/fontsa1ecc3b826d01251edddf29c3e4e1e97.woff
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:57:54 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "e23a7dcaefbde4e74e263247aa42ecd7.ttf". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('e23a7dcaefbde4e...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/e23a7dcaefbde4e74e263247aa42ecd7.ttf
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:58:05 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 21:58:08 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "assets". in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:486
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('assets')
+#1 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('assets')
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('instituicao/ass...')
+#3 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/tcc/instituicao/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 22:04:31 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "news/view". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('news/view')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/news/1
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
+2018/08/28 22:04:36 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "assets/static/images/logo.png". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/static/i...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/assets/static/images/logo.png
+HTTP_REFERER=http://localhost/tcc/
+---
+2018/08/28 22:09:19 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "news/view". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('news/view')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/news/1
+HTTP_REFERER=http://localhost/tcc/instituicao/formulario
+---
