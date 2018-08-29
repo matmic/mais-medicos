@@ -1850,3 +1850,7 @@ a.fc-more:hover {
 table {
 	width: 100%;
 }
+
+.esquerdaAlinhado {
+	margin-left: 150px;
+}

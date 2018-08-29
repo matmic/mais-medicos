@@ -31,7 +31,7 @@ class Instituicao extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodInstituicao, NomeInstituicao, SiglaInstituicao, CodUF', 'required'),
+			array('NomeInstituicao, SiglaInstituicao, CodUF', 'required'),
 			array('CodInstituicao, CodUF', 'numerical', 'integerOnly'=>true),
 			array('NomeInstituicao', 'length', 'max'=>200),
 			array('SiglaInstituicao', 'length', 'max'=>20),

@@ -31,7 +31,7 @@
 								<a class="sidebar-link td-n" href="<?php echo Yii::app()->baseUrl; ?>/site/index">
 									<div class="peers ai-c fxw-nw">
 										<div class="peer">
-											<div class="logo"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo.png" alt=""></div>
+											<div class="logo"><img src="<?php echo Yii::app()->baseUrl; ?>/images/mais-medicos-brasileiros.png" alt=""></div>
 										</div>
 										<div class="peer peer-greed">
 											<h5 class="lh-1 mB-0 logo-text">Adminator</h5>
@@ -46,9 +46,33 @@
 					</div>
 					<ul class="sidebar-menu scrollable pos-r">
 						<?php
-							foreach ($this->menu as $item)
-							{
-								echo '<li class="nav-item"><a class="sidebar-link" href="' . $item["url"] . '"><span class="icon-holder"><i class="' . $item["icone"] . '"></i> </span><span class="title">' . $item["label"] . '</span></a></li>';
+							foreach ($this->menu as $item) {
+								// Entrada normal no menu lateral
+								if ($item["tipo"] == 'entrada' && $item["pertenceDropdown"] == false)
+								{
+									echo '<li class="nav-item"><a class="sidebar-link" href="' . $item["url"] . '"><span class="icon-holder"><i class="' . $item["icone"] . '"></i> </span><span class="title">' . $item["label"] . '</span></a></li>';
+								}
+								
+								// Entrada de um submenu
+								if ($item["tipo"] == 'entrada' && $item["pertenceDropdown"] == true)
+								{
+									echo '<li><a href="' . $item["url"] . '">' . $item["label"] . '</a></li>';
+								}
+								
+								// Abertura do submenu
+								if ($item["tipo"] == 'dropdown' && $item["pertenceDropdown"] == true)
+								{
+									echo '<li class="nav-item dropdown">';
+									echo '<a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="' . $item["icone"] . '"></i> </span><span class="title">' . $item["label"] . '</span> <span class="arrow"><i class="ti-angle-right"></i></span></a>';
+									echo '<ul class="dropdown-menu">';
+								}
+								
+								// Fechamento do submenu
+								if ($item["tipo"] == 'dropdown' && $item["pertenceDropdown"] == false)
+								{
+									echo '</ul>';
+									echo '</li>';
+								}
 							}
 						?>
 						<li class="nav-item"><a class="sidebar-link" href="email.html"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Email</span></a></li>

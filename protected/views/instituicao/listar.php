@@ -1,12 +1,10 @@
-<fieldset>
-	<h4 class="c-grey-900 mB-20">Lista de Instituições</h4>
+<h4 class="c-grey-900 mB-20">Lista de Instituições</h4>
 <?php
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
 	'htmlOptions' => array(
 		'class'=>'table table-striped table-bordered dataTable',
 	),
-	'template'=>'{items}{summary}{pager}',
     'columns'=>array(
         array(
 			'header'=>'#',
@@ -28,21 +26,18 @@
 			'buttons'=>array(
 				'view'=>array
 				(
-					'label'=>'Send an e-mail to this user',
+					'label'=>'Visualizar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-					'url'=>'Yii::app()->createUrl("users/email", array())',
+					'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
 				),
 				'update' => array
 				(
-					'label'=>'Teste',
-					'url'=>'"#"',
-					//'visible'=>'$data->score > 0',
-					//'click'=>'function(){alert("Going down!");}',
+					'label'=>'Editar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
+					'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
 				),
 			)
         ),
     ),
 ));
 ?>
-</fieldset>

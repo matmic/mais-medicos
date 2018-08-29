@@ -100,4 +100,10 @@ class UnidadeFederacao extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public static function getEstados()
+	{
+		$estados = self::model()->findAll(array('order'=>'NomeUF ASC')); 
+		return CHtml::listData($estados, 'CodUF', 'NomeUF'); 
+	}
 }
