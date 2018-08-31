@@ -41,7 +41,7 @@ class BaseController extends Controller
 			// OBJETOS DE PESQUISA
 			array(
 				'label'=>'Ger. Objetos de Pesquisa',
-				'icone'=>'c-blue-500 ti-agenda',
+				'icone'=>'c-brown-500 ti-target',
 				'tipo'=>'dropdown',
 				'pertenceDropdown'=>true,
 			),
@@ -77,6 +77,29 @@ class BaseController extends Controller
 			array(
 				'label'=>'Listar Abrangências',
 				'url'=>Yii::app()->createUrl('abrangencia/listar', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>false,
+			),
+			// ABORDAGEM - TIPO ANÁLISE
+			array(
+				'label'=>'Ger. Abordagens',
+				'icone'=>'c-yellow-500 ti-search',
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Nova Abordagem',
+				'url'=>Yii::app()->createUrl('tipoAnalise/formulario', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Listar Abordagens',
+				'url'=>Yii::app()->createUrl('tipoAnalise/listar', array()),
 				'tipo'=>'entrada',
 				'pertenceDropdown'=>true,
 			),

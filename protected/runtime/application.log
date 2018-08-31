@@ -2093,3 +2093,46 @@ Stack trace:
 REQUEST_URI=/tcc/instituicao/listar
 HTTP_REFERER=http://localhost/tcc/instituicao/formulario
 ---
+2018/09/01 01:07:07 [error] [exception.CHttpException.404] CHttpException: Não foi possível resolver a requisição "tipoAnalise/formulario". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoAnalise/for...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/tipoAnalise/formulario
+HTTP_REFERER=http://localhost/tcc/abrangencia/formulario?CodAbrangencia=1
+---
+2018/09/01 01:07:35 [error] [exception.CHttpException.404] CHttpException: Não foi possível resolver a requisição "tipoAnalise/formulario". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoAnalise/for...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/tipoAnalise/formulario
+HTTP_REFERER=http://localhost/tcc/abrangencia/formulario?CodAbrangencia=1
+---
+2018/09/01 01:08:05 [error] [exception.CHttpException.404] CHttpException: Não foi possível resolver a requisição "tipoAnalise/formulario". in E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoAnalise/for...')
+#1 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tcc/tipoAnalise/formulario
+HTTP_REFERER=http://localhost/tcc/abrangencia/formulario?CodAbrangencia=1
+---
+2018/09/01 01:09:04 [error] [exception.CException] CException: TipoAnaliseController não pôde encontrar a visualização "listar" solicitada. in E:\Programas\Xampp\htdocs\yii\framework\web\CController.php:881
+Stack trace:
+#0 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(785): CController->renderPartial('listar', Array, true)
+#1 E:\Programas\Xampp\htdocs\tcc\protected\controllers\TipoAnaliseController.php(66): CController->render('listar', Array)
+#2 E:\Programas\Xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): TipoAnaliseController->actionListar()
+#3 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 E:\Programas\Xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('listar')
+#7 E:\Programas\Xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('tipoAnalise/lis...')
+#8 E:\Programas\Xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 E:\Programas\Xampp\htdocs\tcc\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/tcc/tipoAnalise/listar
+HTTP_REFERER=http://localhost/tcc/tipoAnalise/formulario
+---

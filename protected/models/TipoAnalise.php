@@ -28,7 +28,7 @@ class TipoAnalise extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodTipoAnalise, NomeTipoAnalise', 'required'),
+			array('NomeTipoAnalise', 'required'),
 			array('CodTipoAnalise', 'numerical', 'integerOnly'=>true),
 			array('NomeTipoAnalise', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -95,5 +95,20 @@ class TipoAnalise extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodTipoAnalise();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodTipoAnalise()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodTipoAnalise), 0)+1 AS CodTipoAnalise FROM tipoanalise');
+		$result = $command->queryRow();
+		$this->CodTipoAnalise = $result['CodTipoAnalise'];
 	}
 }
