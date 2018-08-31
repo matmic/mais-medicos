@@ -105,4 +105,19 @@ class Instituicao extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodInstituicao();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodInstituicao()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodInstituicao), 0)+1 AS CodInstituicao FROM instituicao');
+		$result = $command->queryRow();
+		$this->CodInstituicao = $result['CodInstituicao'];
+	}
 }

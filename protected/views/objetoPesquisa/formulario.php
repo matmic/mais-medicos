@@ -1,28 +1,20 @@
-<h4 class="c-grey-900 mB-20">Formulário Instituição</h4>
+<h4 class="c-grey-900 mB-20">Formulário Objeto de Pesquisa</h4>
 <div class="mT-30">
 <?php
-	echo CHtml::beginForm(Yii::app()->createUrl('instituicao/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
+	echo CHtml::beginForm(Yii::app()->createUrl('objetoPesquisa/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Nome da Instituição*: ', 'label_nome', array('class'=>'col-sm-2 col-form-label'));
-		echo '<div class="col-sm-10">';
-			echo CHtml::activeTextField($instituicao, 'NomeInstituicao', array('required'=>true, 'class'=>'form-control'));
-			echo '<div class="invalid-feedback">Por favor, insira o nome da Instituição.</div>';
+		echo CHtml::label('Objeto de Pesquisa (Eixo do Programa Mais Médicos)*: ', 'lblObjetoPesquisa', array('class'=>'col-sm-4 col-form-label'));
+		echo '<div class="col-sm-8">';
+			echo CHtml::activeTextField($objetoPesquisa, 'NomeObjetoPesquisa', array('required'=>true, 'class'=>'form-control'));
+			echo '<div class="invalid-feedback">Por favor, insira o objeto de pesquisa.</div>';
 		echo '</div>';
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Sigla da Instituição*: ', 'label_sigla', array('class'=>'col-sm-2 col-form-label'));
-		echo '<div class="col-sm-10">';
-			echo CHtml::activeTextField($instituicao, 'SiglaInstituicao', array('required'=>true, 'class'=>'form-control'));
-			echo '<div class="invalid-feedback">Por favor, insira a sigla da Instituição.</div>';
-		echo '</div>';
-	echo '</div>';
-	
-	echo '<div class="form-group row">';
-		echo CHtml::label('Unidade da Federação*: ', 'label_uf', array('class'=>'col-sm-2 col-form-label'));
-		echo '<div class="col-sm-10">';
-			echo CHtml::activeDropDownList($instituicao, 'CodUF', UnidadeFederacao::getEstados(), array('required'=>true, 'class'=>'form-control'));
+		echo CHtml::label('Subcategoria do Objeto de Pesquisa: ', 'lblCategoria', array('class'=>'col-sm-4 col-form-label'));
+		echo '<div class="col-sm-8">';
+			echo CHtml::activeDropDownList($objetoPesquisa, 'CodObjetoPesquisaPai', ObjetoPesquisa::getObjetosPesquisa(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 
 		echo '</div>';
 	echo '</div>';
@@ -33,7 +25,7 @@
 		echo '</div>';
 	echo '</div>';
 	
-	echo CHtml::activeHiddenField($instituicao, 'CodInstituicao', array());
+	echo CHtml::activeHiddenField($objetoPesquisa, 'CodObjetoPesquisa', array());
 	echo CHtml::endForm();
 	
 ?>

@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Lista de Instituições</h4>
+<h4 class="c-grey-900 mB-20">Lista de Abrangências</h4>
 <?php
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
@@ -8,15 +8,11 @@
     'columns'=>array(
         array(
 			'header'=>'#',
-			'value'=>'$data->CodInstituicao',
+			'value'=>'$data->CodAbrangencia',
 		),
 		array(
 			'header'=>'Nome',
-			'value'=>'$data->NomeInstituicao',
-		),
-		array(
-			'header'=>'Sigla',
-			'value'=>'$data->SiglaInstituicao',
+			'value'=>'$data->NomeAbrangencia',
 		),
 		array(
 			'htmlOptions'=>array('style'=>"width: 30px;"),
@@ -28,13 +24,13 @@
 				(
 					'label'=>'Visualizar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-					'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
+					'url'=>'Yii::app()->createUrl("abrangencia/formulario", array("CodAbrangencia"=>"$data->CodAbrangencia"))',
 				),
 				'update' => array
 				(
 					'label'=>'Editar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
-					'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
+					'url'=>'Yii::app()->createUrl("abrangencia/formulario", array("CodAbrangencia"=>"$data->CodAbrangencia"))',
 				),
 			)
         ),

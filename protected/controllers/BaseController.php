@@ -9,7 +9,7 @@ class BaseController extends Controller
 		$this->menu = array(
 			// INSTITUIÇÕES
 			array(
-				'label'=>'Gerenciar Instituições',
+				'label'=>'Ger. Instituições',
 				'icone'=>'c-blue-500 ti-agenda',
 				'tipo'=>'dropdown',
 				'pertenceDropdown'=>true,
@@ -40,7 +40,7 @@ class BaseController extends Controller
 			),
 			// OBJETOS DE PESQUISA
 			array(
-				'label'=>'Gerenciar Objetos da Pesquisa',
+				'label'=>'Ger. Objetos de Pesquisa',
 				'icone'=>'c-blue-500 ti-agenda',
 				'tipo'=>'dropdown',
 				'pertenceDropdown'=>true,
@@ -54,6 +54,29 @@ class BaseController extends Controller
 			array(
 				'label'=>'Listar Objetos de Pesquisa',
 				'url'=>Yii::app()->createUrl('objetoPesquisa/listar', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>false,
+			),
+			// ABRANGÊNCIA
+			array(
+				'label'=>'Ger. Abrangências',
+				'icone'=>'c-red-500 ti-fullscreen',
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Nova Abrangência',
+				'url'=>Yii::app()->createUrl('abrangencia/formulario', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Listar Abrangências',
+				'url'=>Yii::app()->createUrl('abrangencia/listar', array()),
 				'tipo'=>'entrada',
 				'pertenceDropdown'=>true,
 			),

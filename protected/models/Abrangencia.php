@@ -28,7 +28,7 @@ class Abrangencia extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodAbrangencia, NomeAbrangencia', 'required'),
+			array('NomeAbrangencia', 'required'),
 			array('CodAbrangencia', 'numerical', 'integerOnly'=>true),
 			array('NomeAbrangencia', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -95,5 +95,20 @@ class Abrangencia extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodAbrangencia();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodAbrangencia()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodAbrangencia), 0)+1 AS CodAbrangencia FROM abrangencia');
+		$result = $command->queryRow();
+		$this->CodAbrangencia = $result['CodAbrangencia'];
 	}
 }

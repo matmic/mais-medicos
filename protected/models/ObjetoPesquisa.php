@@ -31,8 +31,8 @@ class ObjetoPesquisa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodObjetoPesquisa, NomeObjetoPesquisa', 'required'),
-			array('CodObjetoPesquisa, CodObjetoPesquisaPai', 'numerical', 'integerOnly'=>true),
+			array('NomeObjetoPesquisa', 'required'),
+			array('CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('NomeObjetoPesquisa', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -102,5 +102,29 @@ class ObjetoPesquisa extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodObjetoPesquisa();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodObjetoPesquisa()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodObjetoPesquisa), 0)+1 AS CodObjetoPesquisa FROM objetopesquisa');
+		$result = $command->queryRow();
+		$this->CodObjetoPesquisa = $result['CodObjetoPesquisa'];
+	}
+	
+	public static function getObjetosPesquisa()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = "CodObjetoPesquisaPai IS NULL";
+		$objetoPesquisas = self::model()->findAll($criteria);
+		
+		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
 	}
 }

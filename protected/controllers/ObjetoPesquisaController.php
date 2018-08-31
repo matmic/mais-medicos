@@ -5,55 +5,66 @@ class ObjetoPesquisaController extends BaseController
 	public function actionFormulario()
 	{
 		// Carrega formulário com os dados
-		if (isset($_GET['CodInstituicao']) && !empty($_GET['CodInstituicao']))
+		if (isset($_GET['CodObjetoPesquisa']) && !empty($_GET['CodObjetoPesquisa']))
 		{
-			$instituicao = $instituicao = Instituicao::model()->findByPk($_GET['CodInstituicao']);
+			$objetoPesquisa = $objetoPesquisa = ObjetoPesquisa::model()->findByPk($_GET['CodObjetoPesquisa']);
 			
-			if (empty($instituicao))
+			if (empty($objetoPesquisa))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrada uma instituição válida!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Objeto de Pesquisa válido!');
 			}
 			else
-				$this->render('formulario', array('instituicao'=>$instituicao));
+				$this->render('formulario', array('objetoPesquisa'=>$objetoPesquisa));
 		}
 		else
 		{
 			// Atualização ou Novo
-			if (isset($_POST['Instituicao']))
+			if (isset($_POST['ObjetoPesquisa']))
 			{
-				if (!empty($_POST['Instituicao']['CodInstituicao']))
-					$instituicao = Instituicao::model()->findByPk($_POST['Instituicao']['CodInstituicao']);
+				if (!empty($_POST['ObjetoPesquisa']['CodObjetoPesquisa']))
+				{
+					$objetoPesquisa = ObjetoPesquisa::model()->findByPk($_POST['ObjetoPesquisa']['CodObjetoPesquisa']);
+					if (empty($objetoPesquisa))
+					{
+						Yii::app()->user->setFlash('danger', 'Não foi encontrada uma Abrangência válida!');
+						$this->redirect(array('objetoPesquisa/listar'));
+					}
+				}
 				else
-					$instituicao = new Instituicao();
+					$objetoPesquisa = new ObjetoPesquisa();
 				
-				$instituicao->attributes = $_POST['Instituicao'];
+				$objetoPesquisa->attributes = $_POST['ObjetoPesquisa'];
 				
-				//CVarDumper::dump($instituicao->getErrors(), 10, true);die;
-				
-				if (!$instituicao->save())
-					Yii::app()->user->setFlash('danger', 'Não foi possível salvar a Instituição');
+				if (isset($_POST['ObjetoPesquisa']['CodObjetoPesquisaPai']) && !empty($_POST['ObjetoPesquisa']['CodObjetoPesquisaPai']))
+					$objetoPesquisa->CodObjetoPesquisaPai = $_POST['ObjetoPesquisa']['CodObjetoPesquisaPai'];
 				else
-					
-					Yii::app()->user->setFlash('success', 'Instituição salva com sucesso!');
+					$objetoPesquisa->CodObjetoPesquisaPai = NULL;
+				
+				if (!$objetoPesquisa->save())
+					Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Objeto de Pesquisa');
+				else
+					Yii::app()->user->setFlash('success', 'Objeto de Pesquisa salvo com sucesso!');
 
-				
-				$this->redirect(array('instituicao/listar'));
-				
+				$this->redirect(array('objetoPesquisa/listar'));
 			}
 			// Carrega formulário em branco
 			else
 			{
-				$instituicao = new Instituicao();
-				$this->render('formulario', array('instituicao'=>$instituicao));
+				$objetoPesquisa = new ObjetoPesquisa();
+				$this->render('formulario', array('objetoPesquisa'=>$objetoPesquisa));
 			}
 		}
 	}
 	
 	public function actionListar()
 	{
-		$instituicoes = Instituicao::model()->findAll(array('order'=>'NomeInstituicao ASC'));
-		$dataProvider = new CArrayDataProvider($instituicoes, array(
-			'keyField'=>'CodInstituicao',
+		$criteria = new CDbCriteria();
+		$criteria->with = 'codObjetoPesquisaPai';
+		$criteria->order = 't.NomeObjetoPesquisa ASC';
+		$criteria->alias = 't';
+		$objetoPesquisa = ObjetoPesquisa::model()->findAll($criteria);
+		$dataProvider = new CArrayDataProvider($objetoPesquisa, array(
+			'keyField'=>'CodObjetoPesquisa',
 			'pagination'=>array(
 				'pageSize'=>100,
 			),
