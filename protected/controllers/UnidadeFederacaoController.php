@@ -8,7 +8,7 @@ class UnidadeFederacaoController extends BaseController
 		$dataProvider = new CArrayDataProvider($estados, array(
 			'keyField'=>'CodUF',
 			'pagination'=>array(
-				'pageSize'=>100,
+				'pageSize'=>10,
 			),
 		));
 		

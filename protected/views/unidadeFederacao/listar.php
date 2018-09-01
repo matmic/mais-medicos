@@ -2,9 +2,7 @@
 <?php
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
-	'htmlOptions' => array(
-		'class'=>'table table-striped table-bordered dataTable',
-	),
+	'itemsCssClass'=>'table table-striped table-bordered table-condensed',
     'columns'=>array(
         array(
 			'header'=>'Código IBGE',

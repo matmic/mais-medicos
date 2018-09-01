@@ -28,7 +28,7 @@ class TipoProcedimento extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodTipoProcedimento, NomeTipoProcedimento', 'required'),
+			array('NomeTipoProcedimento', 'required'),
 			array('CodTipoProcedimento', 'numerical', 'integerOnly'=>true),
 			array('NomeTipoProcedimento', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -95,5 +95,20 @@ class TipoProcedimento extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodTipoProcedimento();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodTipoProcedimento()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodTipoProcedimento), 0)+1 AS CodTipoProcedimento FROM tipoprocedimento');
+		$result = $command->queryRow();
+		$this->CodTipoProcedimento = $result['CodTipoProcedimento'];
 	}
 }

@@ -107,6 +107,52 @@ class BaseController extends Controller
 				'tipo'=>'dropdown',
 				'pertenceDropdown'=>false,
 			),
+			// TIPO OBJETIVO
+			array(
+				'label'=>'Ger. Objetivos',
+				'icone'=>'c-orange-500 ti-direction-alt',
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Novo Objetivo',
+				'url'=>Yii::app()->createUrl('tipoObjetivo/formulario', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Listar Objetivos',
+				'url'=>Yii::app()->createUrl('tipoObjetivo/listar', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>false,
+			),
+			// TIPO PROCEDIMENTO
+			array(
+				'label'=>'Ger. Procedimentos',
+				'icone'=>'c-blue-500 ti-stats-up',
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Novo Procedimento',
+				'url'=>Yii::app()->createUrl('tipoProcedimento/formulario', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'label'=>'Listar Procedimentos',
+				'url'=>Yii::app()->createUrl('tipoProcedimento/listar', array()),
+				'tipo'=>'entrada',
+				'pertenceDropdown'=>true,
+			),
+			array(
+				'tipo'=>'dropdown',
+				'pertenceDropdown'=>false,
+			),
 		);
 	
 		return parent::beforeAction($action);

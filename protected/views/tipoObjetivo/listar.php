@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Lista de Abrangências</h4>
+<h4 class="c-grey-900 mB-20">Lista de Objetivos</h4>
 <?php
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
@@ -6,11 +6,11 @@
     'columns'=>array(
         array(
 			'header'=>'#',
-			'value'=>'$data->CodAbrangencia',
+			'value'=>'$data->CodTipoObjetivo',
 		),
 		array(
 			'header'=>'Nome',
-			'value'=>'$data->NomeAbrangencia',
+			'value'=>'$data->NomeTipoObjetivo',
 		),
 		array(
 			'htmlOptions'=>array('style'=>"width: 30px;"),
@@ -22,13 +22,13 @@
 				(
 					'label'=>'Visualizar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-					'url'=>'Yii::app()->createUrl("abrangencia/formulario", array("CodAbrangencia"=>"$data->CodAbrangencia"))',
+					'url'=>'Yii::app()->createUrl("tipoObjetivo/formulario", array("CodTipoObjetivo"=>"$data->CodTipoObjetivo"))',
 				),
 				'update' => array
 				(
 					'label'=>'Editar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
-					'url'=>'Yii::app()->createUrl("abrangencia/formulario", array("CodAbrangencia"=>"$data->CodAbrangencia"))',
+					'url'=>'Yii::app()->createUrl("tipoObjetivo/formulario", array("CodTipoObjetivo"=>"$data->CodTipoObjetivo"))',
 				),
 			)
         ),
