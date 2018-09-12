@@ -114,4 +114,9 @@ class SiteController extends BaseController
 		$this->render('teste', array('dataProvider'=>$dataProvider));
 
 	}
+	
+	public function actionArtigo()
+	{
+		$this->render('formulario', array());
+	}
 }
