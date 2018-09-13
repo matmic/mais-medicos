@@ -31,6 +31,7 @@ class TipoObjetivo extends CActiveRecord
 			array('NomeTipoObjetivo', 'required'),
 			array('CodTipoObjetivo', 'numerical', 'integerOnly'=>true),
 			array('NomeTipoObjetivo', 'length', 'max'=>100),
+			array('IndicadorExclusao', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodTipoObjetivo, NomeTipoObjetivo', 'safe', 'on'=>'search'),
@@ -114,7 +115,7 @@ class TipoObjetivo extends CActiveRecord
 	
 	public static function getTiposObjetivos()
 	{
-		$tiposObjetivos = self::model()->findAll(array('order'=>'NomeTipoObjetivo ASC'));
+		$tiposObjetivos = self::model()->findAll(array('order'=>'NomeTipoObjetivo ASC', 'condition'=>'IndicadorExclusao IS NULL'));
 		return CHtml::listData($tiposObjetivos, 'CodTipoObjetivo', 'NomeTipoObjetivo');
 	}
 }

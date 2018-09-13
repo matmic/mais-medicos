@@ -31,6 +31,7 @@ class TipoAnalise extends CActiveRecord
 			array('NomeTipoAnalise', 'required'),
 			array('CodTipoAnalise', 'numerical', 'integerOnly'=>true),
 			array('NomeTipoAnalise', 'length', 'max'=>100),
+			array('IndicadorExclusao', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodTipoAnalise, NomeTipoAnalise', 'safe', 'on'=>'search'),
@@ -114,7 +115,7 @@ class TipoAnalise extends CActiveRecord
 	
 	public static function getTiposAnalises()
 	{
-		$tiposAnalises = self::model()->findAll(array('order'=>'NomeTipoAnalise ASC'));
+		$tiposAnalises = self::model()->findAll(array('order'=>'NomeTipoAnalise ASC', 'condition'=>'IndicadorExclusao IS NULL'));
 		return CHtml::listData($tiposAnalises, 'CodTipoAnalise', 'NomeTipoAnalise');
 	}
 }

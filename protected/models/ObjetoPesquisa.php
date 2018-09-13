@@ -34,6 +34,7 @@ class ObjetoPesquisa extends CActiveRecord
 			array('NomeObjetoPesquisa', 'required'),
 			array('CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('NomeObjetoPesquisa', 'length', 'max'=>100),
+			array('IndicadorExclusao', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai', 'safe', 'on'=>'search'),
@@ -123,6 +124,8 @@ class ObjetoPesquisa extends CActiveRecord
 	{
 		$criteria = new CDbCriteria();
 		$criteria->condition = "CodObjetoPesquisaPai IS NULL";
+		$criteria->addCondition("IndicadorExclusao IS NULL");
+		$criteria->order = 'NomeObjetoPesquisa ASC';
 		$objetoPesquisas = self::model()->findAll($criteria);
 		
 		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
@@ -130,7 +133,7 @@ class ObjetoPesquisa extends CActiveRecord
 	
 	public static function getObjetosPesquisas()
 	{
-		$objetoPesquisas = self::model()->findAll();
+		$objetoPesquisas = self::model()->findAll(array('order'=>'NomeObjetoPesquisa ASC', 'condition'=>'IndicadorExclusao IS NULL'));
 		
 		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
 	}

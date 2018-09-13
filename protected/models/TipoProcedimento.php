@@ -31,6 +31,7 @@ class TipoProcedimento extends CActiveRecord
 			array('NomeTipoProcedimento', 'required'),
 			array('CodTipoProcedimento', 'numerical', 'integerOnly'=>true),
 			array('NomeTipoProcedimento', 'length', 'max'=>100),
+			array('IndicadorExclusao', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('CodTipoProcedimento, NomeTipoProcedimento', 'safe', 'on'=>'search'),
@@ -114,7 +115,7 @@ class TipoProcedimento extends CActiveRecord
 	
 	public static function getTiposProcedimentos()
 	{
-		$tiposProcedimentos = self::model()->findAll(array('order'=>'NomeTipoProcedimento ASC'));
+		$tiposProcedimentos = self::model()->findAll(array('order'=>'NomeTipoProcedimento ASC', 'condition'=>'IndicadorExclusao IS NULL'));
 		return CHtml::listData($tiposProcedimentos, 'CodTipoProcedimento', 'NomeTipoProcedimento');
 	}
 }

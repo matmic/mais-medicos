@@ -49,7 +49,7 @@ class Artigo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodArtigo, Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodPessoaInsercao, DataInsercao, CodPessoaUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, Ano', 'required'),
+			array('Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodPessoaInsercao, DataInsercao, CodPessoaUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, Ano', 'required'),
 			array('CodArtigo, CodPessoaInsercao, CodPessoaUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>2000),
 			array('Multicentrico', 'length', 'max'=>1),
@@ -154,5 +154,27 @@ class Artigo extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+		{
+			$this->setCodArtigo();
+			$this->CodUsuarioInsercao = Yii::app()->user->CodUsuario;
+			$this->DataInsercao = new CDbExpression('GETDATE()');
+		}
+		
+		$this->CodUsuarioUltimaAtu =  Yii::app()->user->CodUsuario;
+		$this->DataUltimaAtu = new CDbExpression('GETDATE()');
+	
+		return parent::beforeSave();
+	}
+	
+	private function setCodArtigo()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodArtigo), 0)+1 AS CodArtigo FROM artigo');
+		$result = $command->queryRow();
+		$this->CodArtigo = $result['CodArtigo'];
 	}
 }

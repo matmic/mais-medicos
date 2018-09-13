@@ -13,7 +13,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Objeto da Pesquisa*: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropDownList('Artigo[ObjetoPesquisa]', '', ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'encode'=>false, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropDownList('Artigo[CodObjetoPesquisa]', '', ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'encode'=>false, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -29,7 +29,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Conferência / Revista*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::textField('Artigo[ConferenciaRevista]', '', array('required'=>true, 'class'=>'form-control'));
+			echo CHtml::textField('Artigo[RevistaConferencia]', '', array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome da conferência ou revista em que o artigo foi publicado.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -118,7 +118,7 @@
 		
 		echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::dropdownList('Artigo[Abrangencia]', '', Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[CodAbrangencia]', '', Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, escolha uma abrangência.</div>';
 		echo '</div>';
 	echo '</div>';
