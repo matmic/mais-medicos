@@ -29,7 +29,8 @@ class SiteController extends BaseController
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->redirect(Yii::app()->createAbsoluteUrl("site/login"));
+		$this->render('index');
+		//$this->redirect(Yii::app()->createAbsoluteUrl("site/login"));
 	}
 
 	/**
@@ -64,7 +65,7 @@ class SiteController extends BaseController
 				{
 					Yii::app()->user->login($identity);
 					Yii::app()->user->setFlash('success', "Você está logado!");
-					$this->render('bemVindo');
+					$this->render('index');
 				}
 				else
 				{
@@ -79,7 +80,7 @@ class SiteController extends BaseController
 			}
 		}
 		else
-			$this->render('bemVindo');
+			$this->render('index');
 		
 	}
 

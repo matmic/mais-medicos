@@ -20,20 +20,20 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		$usuario = Usuario::model()->findByAttributes(array('EmailUsuario'=>$this->username));
-		// CVarDumper::dump($usuario, 10, true);
-		// CVarDumper::dump($this->password, 10, true);
-		// die;
-		if($usuario === null)
+		
+		if ($usuario === null)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		else 
-			if($usuario->SenhaUsuario !== password_verify($this->password, $usuario->SenhaUsuario))
+			if (!password_verify($this->password, $usuario->SenhaUsuario))
 				$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 		{
 			$this->_id = $usuario->CodUsuario;
 			$this->_nome = $usuario->NomeUsuario;
+			$this->setState('NomeUsuario', $usuario->NomeUsuario);
 			$this->errorCode=self::ERROR_NONE;
 		}
+		
 		return !$this->errorCode;
 	}
 	
