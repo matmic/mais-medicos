@@ -124,7 +124,6 @@ class Instituicao extends CActiveRecord
 	public static function getInstituicoes()
 	{
 		$instituicoes = self::model()->findAll(array('order'=>'NomeInstituicao ASC'));
-		//return CHtml::listData($instituicoes, 'CodInstituicao', 'NomeInstituicao');
 		
 		return CHtml::listData($instituicoes, 'CodInstituicao', function($instituicao) {
 			return $instituicao->SiglaInstituicao . ' - ' . $instituicao->NomeInstituicao;

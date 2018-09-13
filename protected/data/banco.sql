@@ -7,7 +7,24 @@ CREATE DATABASE tcc;
 
 USE tcc;
 
--- ************************************** `Autor`
+-- ************************************** `Usuario`
+
+CREATE TABLE `Usuario`
+(
+ `CodUsuario`   INT NOT NULL ,
+ `NomeUsuario`  VARCHAR(100) NOT NULL ,
+ `EmailUsuario` VARCHAR(45) NOT NULL ,
+ `SenhaUsuario` VARCHAR(255) NOT NULL ,
+
+PRIMARY KEY (`CodUsuario`)
+);
+
+
+
+
+
+
+-- ************************************** `UnidadeFederacao`
 
 CREATE TABLE `UnidadeFederacao`
 (
@@ -17,6 +34,7 @@ CREATE TABLE `UnidadeFederacao`
 
 PRIMARY KEY (`CodUF`)
 );
+
 
 
 
@@ -36,6 +54,22 @@ PRIMARY KEY (`CodAutor`)
 
 
 
+
+-- ************************************** `Palavra`
+
+CREATE TABLE `Palavra`
+(
+ `CodPalavra`  INT NOT NULL ,
+ `NomePalavra` VARCHAR(100) NOT NULL ,
+
+PRIMARY KEY (`CodPalavra`)
+);
+
+
+
+
+
+
 -- ************************************** `Abrangencia`
 
 CREATE TABLE `Abrangencia`
@@ -45,6 +79,7 @@ CREATE TABLE `Abrangencia`
 
 PRIMARY KEY (`CodAbrangencia`)
 );
+
 
 
 
@@ -64,6 +99,7 @@ PRIMARY KEY (`CodTipoProcedimento`)
 
 
 
+
 -- ************************************** `TipoObjetivo`
 
 CREATE TABLE `TipoObjetivo`
@@ -78,6 +114,7 @@ PRIMARY KEY (`CodTipoObjetivo`)
 
 
 
+
 -- ************************************** `TipoAnalise`
 
 CREATE TABLE `TipoAnalise`
@@ -87,6 +124,7 @@ CREATE TABLE `TipoAnalise`
 
 PRIMARY KEY (`CodTipoAnalise`)
 );
+
 
 
 
@@ -109,32 +147,38 @@ CONSTRAINT `FK_164` FOREIGN KEY `fkIdx_164` (`CodObjetoPesquisaPai`) REFERENCES 
 
 
 
+
 -- ************************************** `Artigo`
 
 CREATE TABLE `Artigo`
 (
- `CodArtigo`          INT NOT NULL ,
- `Resumo`             VARCHAR(2000) NOT NULL ,
- `Multicentrico`      VARCHAR(1) NOT NULL ,
- `DataInicioEstudo`   DATE NOT NULL ,
- `DataFimEstudo`      DATE NOT NULL ,
- `CodPessoaInsercao`  INT NOT NULL ,
- `DataInsercao`       DATETIME NOT NULL ,
- `CodPessoaUltimaAtu` INT NOT NULL ,
- `DataUltimaAtu`      DATETIME NOT NULL ,
- `CodAbrangencia`     INT NOT NULL ,
- `CodObjetoPesquisa`  INT NOT NULL ,
- `NomeArtigo`         VARCHAR(300) NOT NULL ,
- `RevistaConferencia` VARCHAR(300) NOT NULL ,
- `Volume`             VARCHAR(45) ,
- `Ano`                YEAR NOT NULL ,
+ `CodArtigo`           INT NOT NULL ,
+ `Resumo`              VARCHAR(2000) NOT NULL ,
+ `Multicentrico`       VARCHAR(1) NOT NULL ,
+ `DataInicioEstudo`    DATE NOT NULL ,
+ `DataFimEstudo`       DATE NOT NULL ,
+ `DataInsercao`        DATETIME NOT NULL ,
+ `DataUltimaAtu`       DATETIME NOT NULL ,
+ `CodAbrangencia`      INT NOT NULL ,
+ `CodObjetoPesquisa`   INT NOT NULL ,
+ `NomeArtigo`          VARCHAR(300) NOT NULL ,
+ `RevistaConferencia`  VARCHAR(300) NOT NULL ,
+ `Volume`              VARCHAR(45) ,
+ `Ano`                 YEAR NOT NULL ,
+ `CodUsuario`          INT NOT NULL ,
+ `CodUsuarioUltimaAtu` INT NOT NULL ,
 
 PRIMARY KEY (`CodArtigo`),
 KEY `fkIdx_99` (`CodAbrangencia`),
 CONSTRAINT `FK_99` FOREIGN KEY `fkIdx_99` (`CodAbrangencia`) REFERENCES `Abrangencia` (`CodAbrangencia`),
 KEY `fkIdx_103` (`CodObjetoPesquisa`),
-CONSTRAINT `FK_103` FOREIGN KEY `fkIdx_103` (`CodObjetoPesquisa`) REFERENCES `ObjetoPesquisa` (`CodObjetoPesquisa`)
+CONSTRAINT `FK_103` FOREIGN KEY `fkIdx_103` (`CodObjetoPesquisa`) REFERENCES `ObjetoPesquisa` (`CodObjetoPesquisa`),
+KEY `fkIdx_215` (`CodUsuario`),
+CONSTRAINT `FK_215` FOREIGN KEY `fkIdx_215` (`CodUsuario`) REFERENCES `Usuario` (`CodUsuario`),
+KEY `fkIdx_218` (`CodUsuarioUltimaAtu`),
+CONSTRAINT `FK_218` FOREIGN KEY `fkIdx_218` (`CodUsuarioUltimaAtu`) REFERENCES `Usuario` (`CodUsuario`)
 );
+
 
 
 
@@ -158,6 +202,26 @@ CONSTRAINT `FK_195` FOREIGN KEY `fkIdx_195` (`CodUF`) REFERENCES `UnidadeFederac
 
 
 
+
+-- ************************************** `ArtigoPalavra`
+
+CREATE TABLE `ArtigoPalavra`
+(
+ `CodArtigo`  INT NOT NULL ,
+ `CodPalavra` INT NOT NULL ,
+
+PRIMARY KEY (`CodArtigo`, `CodPalavra`),
+KEY `fkIdx_222` (`CodArtigo`),
+CONSTRAINT `FK_222` FOREIGN KEY `fkIdx_222` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`),
+KEY `fkIdx_226` (`CodPalavra`),
+CONSTRAINT `FK_226` FOREIGN KEY `fkIdx_226` (`CodPalavra`) REFERENCES `Palavra` (`CodPalavra`)
+);
+
+
+
+
+
+
 -- ************************************** `ArtigoAutor`
 
 CREATE TABLE `ArtigoAutor`
@@ -176,22 +240,6 @@ CONSTRAINT `FK_184` FOREIGN KEY `fkIdx_184` (`CodAutor`) REFERENCES `Autor` (`Co
 
 
 
--- ************************************** `Palavra`
-
-CREATE TABLE `Palavra`
-(
- `CodPalavra`  INT NOT NULL ,
- `NomePalavra` VARCHAR(100) NOT NULL ,
- `CodArtigo`   INT NOT NULL ,
-
-PRIMARY KEY (`CodPalavra`),
-KEY `fkIdx_168` (`CodArtigo`),
-CONSTRAINT `FK_168` FOREIGN KEY `fkIdx_168` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`)
-);
-
-
-
-
 
 -- ************************************** `Coordenador`
 
@@ -205,6 +253,7 @@ PRIMARY KEY (`CodCoordenador`),
 KEY `fkIdx_160` (`CodArtigo`),
 CONSTRAINT `FK_160` FOREIGN KEY `fkIdx_160` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`)
 );
+
 
 
 
@@ -228,6 +277,7 @@ CONSTRAINT `FK_125` FOREIGN KEY `fkIdx_125` (`CodInstituicao`) REFERENCES `Insti
 
 
 
+
 -- ************************************** `ArtigoTipoObjetivo`
 
 CREATE TABLE `ArtigoTipoObjetivo`
@@ -241,6 +291,7 @@ CONSTRAINT `FK_109` FOREIGN KEY `fkIdx_109` (`CodArtigo`) REFERENCES `Artigo` (`
 KEY `fkIdx_114` (`CodTipoObjetivo`),
 CONSTRAINT `FK_114` FOREIGN KEY `fkIdx_114` (`CodTipoObjetivo`) REFERENCES `TipoObjetivo` (`CodTipoObjetivo`)
 );
+
 
 
 
@@ -264,6 +315,7 @@ CONSTRAINT `FK_80` FOREIGN KEY `fkIdx_80` (`CodTipoProcedimento`) REFERENCES `Ti
 
 
 
+
 -- ************************************** `ArtigoTipoAnalise`
 
 CREATE TABLE `ArtigoTipoAnalise`
@@ -277,3 +329,8 @@ CONSTRAINT `FK_47` FOREIGN KEY `fkIdx_47` (`CodTipoAnalise`) REFERENCES `TipoAna
 KEY `fkIdx_66` (`CodArtigo`),
 CONSTRAINT `FK_66` FOREIGN KEY `fkIdx_66` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`)
 );
+
+
+
+
+

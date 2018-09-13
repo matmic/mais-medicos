@@ -58,6 +58,11 @@ class ArtigoController extends BaseController
 		$this->render('formulario');
 	}
 	
+	public function actionFormulario2()
+	{
+		$this->render('formulario2');
+	}
+	
 	public function actionListar()
 	{
 		$abrangencia = Abrangencia::model()->findAll(array('order'=>'NomeAbrangencia ASC'));

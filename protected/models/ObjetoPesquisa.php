@@ -119,11 +119,18 @@ class ObjetoPesquisa extends CActiveRecord
 		$this->CodObjetoPesquisa = $result['CodObjetoPesquisa'];
 	}
 	
-	public static function getObjetosPesquisa()
+	public static function getObjetosPesquisasPais()
 	{
 		$criteria = new CDbCriteria();
 		$criteria->condition = "CodObjetoPesquisaPai IS NULL";
 		$objetoPesquisas = self::model()->findAll($criteria);
+		
+		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
+	}
+	
+	public static function getObjetosPesquisas()
+	{
+		$objetoPesquisas = self::model()->findAll();
 		
 		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
 	}

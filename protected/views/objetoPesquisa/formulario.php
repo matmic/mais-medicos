@@ -14,7 +14,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Subcategoria do Objeto de Pesquisa: ', 'lblCategoria', array('class'=>'col-sm-4 col-form-label'));
 		echo '<div class="col-sm-8">';
-			echo CHtml::activeDropDownList($objetoPesquisa, 'CodObjetoPesquisaPai', ObjetoPesquisa::getObjetosPesquisa(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+			echo CHtml::activeDropDownList($objetoPesquisa, 'CodObjetoPesquisaPai', ObjetoPesquisa::getObjetosPesquisasPais(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 
 		echo '</div>';
 	echo '</div>';

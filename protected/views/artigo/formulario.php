@@ -13,7 +13,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Objeto da Pesquisa*: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropDownList('Artigo[ObjetoPesquisa]', '', TipoObjetivo::getTiposObjetivos(), array('empty'=>'Selecione...', 'encode'=>false, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropDownList('Artigo[ObjetoPesquisa]', '', ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'encode'=>false, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -41,7 +41,7 @@
 			echo '<div class="invalid-feedback">Por favor, insira o volume da revista em que o artigo foi publicado.</div>';
 		echo '</div>';
 		
-		echo CHtml::label('Ano da Publicação: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Ano da Publicação*: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
 			echo CHtml::numberField('Artigo[AnoPublicacao]', 2000, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
 			echo '<div class="invalid-feedback">Por favor, insira ano da publicação.</div>';
