@@ -1,5 +1,7 @@
 <h4 class="c-grey-900 mB-20">Lista de Abordagens</h4>
 <?php
+	echo CHtml::button('Nova Abordagem', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("tipoAnalise/formulario") . '"'));
+
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
 	'itemsCssClass'=>'table table-striped table-bordered table-condensed',

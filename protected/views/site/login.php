@@ -1,53 +1,55 @@
-<?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
-
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
-?>
-
-<h1>Login</h1>
-
-<p>Please fill out the following form with your login credentials:</p>
-
-<div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'login-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
+<div class="peers ai-s fxw-nw h-100vh">
+	<div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(<?php echo Yii::app()->baseUrl; ?>/images/bg.jpg)">
+		<div class="pos-a centerXY">
+			<div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px"><img class="pos-a centerXY" src="<?php echo Yii::app()->baseUrl; ?>/images/logo.png" alt=""></div>
+		</div>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
+	<div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r ps" style="min-width:320px">
+		<h4 class="fw-300 c-grey-900 mB-40">Login</h4>
+		<?php
+			echo CHtml::beginForm(Yii::app()->createUrl('site/login'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
+			echo '<div class="form-group row">';
+				echo CHtml::label('E-mail: ', 'lblEmail', array('class'=>'text-normal text-dark'));
+				echo '<div class="col-sm-10">';
+					echo CHtml::activeTextField($usuario, 'EmailUsuario', array('required'=>true, 'class'=>'form-control'));
+					echo '<div class="invalid-feedback">Por favor, insira o email.</div>';
+				echo '</div>';
+			echo '</div>';
+			
+			echo '<div class="form-group row">';
+				echo CHtml::label('Senha: ', 'lblEmail', array('class'=>'text-normal text-dark'));
+				echo '<div class="col-sm-10">';
+					echo CHtml::activeTextField($usuario, 'SenhaUsuario', array('required'=>true, 'class'=>'form-control'));
+					echo '<div class="invalid-feedback">Por favor, insira a senha.</div>';
+				echo '</div>';
+			echo '</div>';
+			
+			echo '<div class="form-group row">';
+				echo '<div class="col-sm-12">';
+					echo CHtml::submitButton('Login', array('class'=>"btn btn-primary"));
+				echo '</div>';
+			echo '</div>';
+	
+			echo CHtml::endForm();
+		?>
+		<div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+			<div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+		</div>
+		<div class="ps__rail-y" style="top: 0px; right: 0px;">
+			<div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+		</div>
 	</div>
+</div>
 
-	<div class="row rememberMe">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
-	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-</div><!-- form -->
+<script>
+    !function() {
+        "use strict";
+        window.addEventListener("load", function() {
+            var e = document.getElementById("needs-validation");
+            e.addEventListener("submit", function(t) {
+                !1 === e.checkValidity() && (t.preventDefault(), t.stopPropagation()), e.classList.add("was-validated")
+            }, !1)
+        }, !1)
+    }()
+</script>

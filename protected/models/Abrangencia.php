@@ -111,4 +111,10 @@ class Abrangencia extends CActiveRecord
 		$result = $command->queryRow();
 		$this->CodAbrangencia = $result['CodAbrangencia'];
 	}
+	
+	public static function getAbrangencias()
+	{
+		$abrangencias = self::model()->findAll(array('order'=>'NomeAbrangencia ASC'));
+		return CHtml::listData($abrangencias, 'CodAbrangencia', 'NomeAbrangencia');
+	}
 }

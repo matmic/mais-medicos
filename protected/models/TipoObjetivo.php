@@ -111,4 +111,10 @@ class TipoObjetivo extends CActiveRecord
 		$result = $command->queryRow();
 		$this->CodTipoObjetivo = $result['CodTipoObjetivo'];
 	}
+	
+	public static function getTiposObjetivos()
+	{
+		$tiposObjetivos = self::model()->findAll(array('order'=>'NomeTipoObjetivo ASC'));
+		return CHtml::listData($tiposObjetivos, 'CodTipoObjetivo', 'NomeTipoObjetivo');
+	}
 }

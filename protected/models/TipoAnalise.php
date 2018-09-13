@@ -111,4 +111,10 @@ class TipoAnalise extends CActiveRecord
 		$result = $command->queryRow();
 		$this->CodTipoAnalise = $result['CodTipoAnalise'];
 	}
+	
+	public static function getTiposAnalises()
+	{
+		$tiposAnalises = self::model()->findAll(array('order'=>'NomeTipoAnalise ASC'));
+		return CHtml::listData($tiposAnalises, 'CodTipoAnalise', 'NomeTipoAnalise');
+	}
 }

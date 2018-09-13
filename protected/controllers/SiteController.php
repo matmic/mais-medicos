@@ -29,7 +29,7 @@ class SiteController extends BaseController
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$this->redirect(Yii::app()->createAbsoluteUrl("site/login"));
 	}
 
 	/**
@@ -47,55 +47,40 @@ class SiteController extends BaseController
 	}
 
 	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-Type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
-
-	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
-
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		if (Yii::app()->user->isGuest)
 		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
+			if (isset($_POST['Usuario']))
+			{
+				$email = $_POST['Usuario']['EmailUsuario'];
+				$password = $_POST['Usuario']['SenhaUsuario'];
+					
+				$identity = new UserIdentity($email, $password);
 
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+				if ($identity->authenticate())
+				{
+					Yii::app()->user->login($identity);
+					Yii::app()->user->setFlash('success', "Você está logado!");
+					$this->render('bemVindo');
+				}
+				else
+				{
+					Yii::app()->user->setFlash('danger', "Não foi possível logar-se! Verifique as informações preenchidas!");
+					$this->redirect('login');
+				}
+			}
+			else
+			{
+				$usuario = new Usuario;
+				$this->render('login', array('usuario'=>$usuario));
+			}
 		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+		else
+			$this->render('bemVindo');
+		
 	}
 
 	/**
@@ -107,16 +92,30 @@ class SiteController extends BaseController
 		$this->redirect(Yii::app()->homeUrl);
 	}
 
-	public function actionMostrar()
+	public function actionFormulario()
 	{
-		$dataProvider = new CActiveDataProvider('Instituicao');
-		
-		$this->render('teste', array('dataProvider'=>$dataProvider));
-
-	}
-	
-	public function actionArtigo()
-	{
-		$this->render('formulario', array());
+		if (isset($_POST['Usuario']))
+		{
+			$usuario = new Usuario();
+			$usuario->EmailUsuario = $_POST['Usuario']['EmailUsuario'];
+			$usuario->SenhaUsuario = password_hash($_POST['Usuario']['SenhaUsuario'], PASSWORD_DEFAULT);
+			$usuario->NomeUsuario = $_POST['Usuario']['NomeUsuario'];
+			
+			if ($usuario->save())
+			{
+				Yii::app()->user->setFlash('success', 'Usuário criado com sucesso!');
+				$this->redirect(array('site/login'));
+			}
+			else
+			{
+				Yii::app()->user->setFlash('danger', 'Erro ao criar usuário!');
+				$this->redirect(array('site/formulario'));
+			}
+		}
+		else
+		{
+			$usuario = new Usuario();
+			$this->render('formulario', array('usuario'=>$usuario));
+		}
 	}
 }

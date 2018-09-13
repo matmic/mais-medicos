@@ -111,4 +111,10 @@ class TipoProcedimento extends CActiveRecord
 		$result = $command->queryRow();
 		$this->CodTipoProcedimento = $result['CodTipoProcedimento'];
 	}
+	
+	public static function getTiposProcedimentos()
+	{
+		$tiposProcedimentos = self::model()->findAll(array('order'=>'NomeTipoProcedimento ASC'));
+		return CHtml::listData($tiposProcedimentos, 'CodTipoProcedimento', 'NomeTipoProcedimento');
+	}
 }

@@ -1,5 +1,7 @@
 <h4 class="c-grey-900 mB-20">Lista de Objetos de Pesquisa</h4>
-<?php
+<?php	
+	echo CHtml::button('Novo Objeto de Pesquisa', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("objetoPesquisa/formulario") . '"'));
+
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
 	'itemsCssClass'=>'table table-striped table-bordered table-condensed',
