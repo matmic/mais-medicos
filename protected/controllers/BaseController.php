@@ -157,5 +157,47 @@ class BaseController extends Controller
 	
 		return parent::beforeAction($action);
 	}
+	
+	public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+	
+	public function accessRules()
+    {		
+		return array(
+			array(
+				'allow',
+				'users' => array('@'),
+				'controllers' => array('abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
+			),
+			array(
+				'allow',
+				'users' => array('*'),
+				'controllers' => array('site'),
+			),
+			array(
+				'deny',
+                'users' => array('*'),
+            ),
+			// array(
+				// 'allow',
+				// 'controllers' => array('documentacao'),
+				// 'users' => array('@'),
+			// ),
+			// array(
+				// 'allow',
+				// 'controllers' => array('membroFamilia'),
+				// 'users' => array('@'),
+			// ),
+			// array(
+				// 'allow',
+				// 'controllers' => array('declaracoes'),
+				// 'users' => array('@'),
+			// ),
+		);
+	}
 }
 

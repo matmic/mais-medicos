@@ -34,6 +34,9 @@ class InstituicaoController extends BaseController
 					$instituicao = new Instituicao();
 				
 				$instituicao->attributes = $_POST['Instituicao'];
+				
+				if (empty($_POST['Instituicao']['SiglaInstituicao']))
+					$instituicao->SiglaInstituicao = NULL;
 
 				if (!$instituicao->save())
 					Yii::app()->user->setFlash('danger', 'Não foi possível salvar a Instituição!');

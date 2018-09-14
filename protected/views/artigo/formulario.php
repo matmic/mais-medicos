@@ -195,6 +195,8 @@
 			dataSource: 'select',
 			tokensAllowCustom: false,
 			searchFromStart: false,
+			searchMinLength: 3,
+			dropdownMaxItems: 4,
 		});
 		
 		$('#Artigo_Coordenador').tokenize2({

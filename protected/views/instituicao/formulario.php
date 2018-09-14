@@ -14,8 +14,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Sigla da Instituição*: ', 'label_sigla', array('class'=>'col-sm-2 col-form-label'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::activeTextField($instituicao, 'SiglaInstituicao', array('required'=>true, 'class'=>'form-control'));
-			echo '<div class="invalid-feedback">Por favor, insira a sigla da Instituição.</div>';
+			echo CHtml::activeTextField($instituicao, 'SiglaInstituicao', array('class'=>'form-control'));
 		echo '</div>';
 	echo '</div>';
 	

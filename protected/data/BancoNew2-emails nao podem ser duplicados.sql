@@ -7,6 +7,8 @@ CREATE DATABASE tcc;
 
 USE tcc;
 
+
+
 -- ************************************** `Usuario`
 
 CREATE TABLE `Usuario`
@@ -16,7 +18,8 @@ CREATE TABLE `Usuario`
  `EmailUsuario` VARCHAR(45) NOT NULL ,
  `SenhaUsuario` VARCHAR(255) NOT NULL ,
 
-PRIMARY KEY (`CodUsuario`)
+PRIMARY KEY (`CodUsuario`),
+UNIQUE KEY `Ind_233` (`EmailUsuario`)
 );
 
 
@@ -91,6 +94,7 @@ CREATE TABLE `TipoProcedimento`
 (
  `CodTipoProcedimento`  INT NOT NULL ,
  `NomeTipoProcedimento` VARCHAR(100) NOT NULL ,
+ `IndicadorExclusao`    VARCHAR(1) ,
 
 PRIMARY KEY (`CodTipoProcedimento`)
 );
@@ -104,8 +108,9 @@ PRIMARY KEY (`CodTipoProcedimento`)
 
 CREATE TABLE `TipoObjetivo`
 (
- `CodTipoObjetivo`  INT NOT NULL ,
- `NomeTipoObjetivo` VARCHAR(100) NOT NULL ,
+ `CodTipoObjetivo`   INT NOT NULL ,
+ `NomeTipoObjetivo`  VARCHAR(100) NOT NULL ,
+ `IndicadorExclusao` VARCHAR(1) ,
 
 PRIMARY KEY (`CodTipoObjetivo`)
 );
@@ -119,8 +124,9 @@ PRIMARY KEY (`CodTipoObjetivo`)
 
 CREATE TABLE `TipoAnalise`
 (
- `CodTipoAnalise`  INT NOT NULL ,
- `NomeTipoAnalise` VARCHAR(100) NOT NULL ,
+ `CodTipoAnalise`    INT NOT NULL ,
+ `NomeTipoAnalise`   VARCHAR(100) NOT NULL ,
+ `IndicadorExclusao` VARCHAR(1) ,
 
 PRIMARY KEY (`CodTipoAnalise`)
 );
@@ -137,6 +143,7 @@ CREATE TABLE `ObjetoPesquisa`
  `CodObjetoPesquisa`    INT NOT NULL ,
  `NomeObjetoPesquisa`   VARCHAR(100) NOT NULL ,
  `CodObjetoPesquisaPai` INT ,
+ `IndicadorExclusao`    VARCHAR(1) ,
 
 PRIMARY KEY (`CodObjetoPesquisa`),
 KEY `fkIdx_164` (`CodObjetoPesquisaPai`),
@@ -165,7 +172,7 @@ CREATE TABLE `Artigo`
  `RevistaConferencia`  VARCHAR(300) NOT NULL ,
  `Volume`              VARCHAR(45) ,
  `Ano`                 YEAR NOT NULL ,
- `CodUsuario`          INT NOT NULL ,
+ `CodUsuarioInsercao`  INT NOT NULL ,
  `CodUsuarioUltimaAtu` INT NOT NULL ,
 
 PRIMARY KEY (`CodArtigo`),
@@ -173,8 +180,8 @@ KEY `fkIdx_99` (`CodAbrangencia`),
 CONSTRAINT `FK_99` FOREIGN KEY `fkIdx_99` (`CodAbrangencia`) REFERENCES `Abrangencia` (`CodAbrangencia`),
 KEY `fkIdx_103` (`CodObjetoPesquisa`),
 CONSTRAINT `FK_103` FOREIGN KEY `fkIdx_103` (`CodObjetoPesquisa`) REFERENCES `ObjetoPesquisa` (`CodObjetoPesquisa`),
-KEY `fkIdx_215` (`CodUsuario`),
-CONSTRAINT `FK_215` FOREIGN KEY `fkIdx_215` (`CodUsuario`) REFERENCES `Usuario` (`CodUsuario`),
+KEY `fkIdx_215` (`CodUsuarioInsercao`),
+CONSTRAINT `FK_215` FOREIGN KEY `fkIdx_215` (`CodUsuarioInsercao`) REFERENCES `Usuario` (`CodUsuario`),
 KEY `fkIdx_218` (`CodUsuarioUltimaAtu`),
 CONSTRAINT `FK_218` FOREIGN KEY `fkIdx_218` (`CodUsuarioUltimaAtu`) REFERENCES `Usuario` (`CodUsuario`)
 );
