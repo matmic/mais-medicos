@@ -7,8 +7,6 @@ CREATE DATABASE tcc;
 
 USE tcc;
 
-
-
 -- ************************************** `Usuario`
 
 CREATE TABLE `Usuario`
@@ -18,7 +16,8 @@ CREATE TABLE `Usuario`
  `EmailUsuario` VARCHAR(45) NOT NULL ,
  `SenhaUsuario` VARCHAR(255) NOT NULL ,
 
-PRIMARY KEY (`CodUsuario`)
+PRIMARY KEY (`CodUsuario`),
+UNIQUE KEY `Ind_233` (`EmailUsuario`)
 );
 
 
@@ -65,6 +64,21 @@ CREATE TABLE `Palavra`
  `NomePalavra` VARCHAR(100) NOT NULL ,
 
 PRIMARY KEY (`CodPalavra`)
+);
+
+
+
+
+
+
+-- ************************************** `Coordenador`
+
+CREATE TABLE `Coordenador`
+(
+ `CodCoordenador`  INT NOT NULL ,
+ `NomeCoordenador` VARCHAR(200) NOT NULL ,
+
+PRIMARY KEY (`CodCoordenador`)
 );
 
 
@@ -170,7 +184,7 @@ CREATE TABLE `Artigo`
  `NomeArtigo`          VARCHAR(300) NOT NULL ,
  `RevistaConferencia`  VARCHAR(300) NOT NULL ,
  `Volume`              VARCHAR(45) ,
- `Ano`                 YEAR NOT NULL ,
+ `AnoPublicacao`       YEAR NOT NULL ,
  `CodUsuarioInsercao`  INT NOT NULL ,
  `CodUsuarioUltimaAtu` INT NOT NULL ,
 
@@ -196,12 +210,31 @@ CREATE TABLE `Instituicao`
 (
  `CodInstituicao`   INT NOT NULL ,
  `NomeInstituicao`  VARCHAR(200) NOT NULL ,
- `SiglaInstituicao` VARCHAR(20) NOT NULL ,
+ `SiglaInstituicao` VARCHAR(20) ,
  `CodUF`            INT NOT NULL ,
 
 PRIMARY KEY (`CodInstituicao`),
 KEY `fkIdx_195` (`CodUF`),
 CONSTRAINT `FK_195` FOREIGN KEY `fkIdx_195` (`CodUF`) REFERENCES `UnidadeFederacao` (`CodUF`)
+);
+
+
+
+
+
+
+-- ************************************** `ArtigoCoordenador`
+
+CREATE TABLE `ArtigoCoordenador`
+(
+ `CodArtigo`      INT NOT NULL ,
+ `CodCoordenador` INT NOT NULL ,
+
+PRIMARY KEY (`CodArtigo`, `CodCoordenador`),
+KEY `fkIdx_235` (`CodArtigo`),
+CONSTRAINT `FK_235` FOREIGN KEY `fkIdx_235` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`),
+KEY `fkIdx_239` (`CodCoordenador`),
+CONSTRAINT `FK_239` FOREIGN KEY `fkIdx_239` (`CodCoordenador`) REFERENCES `Coordenador` (`CodCoordenador`)
 );
 
 
@@ -240,24 +273,6 @@ KEY `fkIdx_179` (`CodArtigo`),
 CONSTRAINT `FK_179` FOREIGN KEY `fkIdx_179` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`),
 KEY `fkIdx_184` (`CodAutor`),
 CONSTRAINT `FK_184` FOREIGN KEY `fkIdx_184` (`CodAutor`) REFERENCES `Autor` (`CodAutor`)
-);
-
-
-
-
-
-
--- ************************************** `Coordenador`
-
-CREATE TABLE `Coordenador`
-(
- `CodCoordenador`  INT NOT NULL ,
- `NomeCoordenador` VARCHAR(200) NOT NULL ,
- `CodArtigo`       INT NOT NULL ,
-
-PRIMARY KEY (`CodCoordenador`),
-KEY `fkIdx_160` (`CodArtigo`),
-CONSTRAINT `FK_160` FOREIGN KEY `fkIdx_160` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`)
 );
 
 

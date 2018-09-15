@@ -9,9 +9,9 @@
  * @property string $Multicentrico
  * @property string $DataInicioEstudo
  * @property string $DataFimEstudo
- * @property integer $CodPessoaInsercao
+ * @property integer $CodUsuarioInsercao
  * @property string $DataInsercao
- * @property integer $CodPessoaUltimaAtu
+ * @property integer $CodUsuarioUltimaAtu
  * @property string $DataUltimaAtu
  * @property integer $CodAbrangencia
  * @property integer $CodObjetoPesquisa
@@ -49,16 +49,16 @@ class Artigo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodPessoaInsercao, DataInsercao, CodPessoaUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, Ano', 'required'),
-			array('CodArtigo, CodPessoaInsercao, CodPessoaUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
+			array('Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, AnoPublicacao', 'required'),
+			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>2000),
 			array('Multicentrico', 'length', 'max'=>1),
 			array('NomeArtigo, RevistaConferencia', 'length', 'max'=>300),
 			array('Volume', 'length', 'max'=>45),
-			array('Ano', 'length', 'max'=>4),
+			array('AnoPublicacao', 'length', 'max'=>4),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodArtigo, Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodPessoaInsercao, DataInsercao, CodPessoaUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, Volume, Ano', 'safe', 'on'=>'search'),
+			array('CodArtigo, Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodUsuarioInsercao, DataInsercao, CodUsuarioUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, Volume, AnoPublicacao', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,8 +70,8 @@ class Artigo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'codObjetoPesquisa' => array(self::BELONGS_TO, 'Objetopesquisa', 'CodObjetoPesquisa'),
-			'codAbrangencia' => array(self::BELONGS_TO, 'Abrangencia', 'CodAbrangencia'),
+			'ObjetoPesquisa' => array(self::BELONGS_TO, 'Objetopesquisa', 'CodObjetoPesquisa'),
+			'Abrangencia' => array(self::BELONGS_TO, 'Abrangencia', 'CodAbrangencia'),
 			'autors' => array(self::MANY_MANY, 'Autor', 'artigoautor(CodArtigo, CodAutor)'),
 			'instituicaos' => array(self::MANY_MANY, 'Instituicao', 'artigoinstituicao(CodArtigo, CodInstituicao)'),
 			'tipoanalises' => array(self::MANY_MANY, 'Tipoanalise', 'artigotipoanalise(CodArtigo, CodTipoAnalise)'),
@@ -93,16 +93,16 @@ class Artigo extends CActiveRecord
 			'Multicentrico' => 'Multicentrico',
 			'DataInicioEstudo' => 'Data Inicio Estudo',
 			'DataFimEstudo' => 'Data Fim Estudo',
-			'CodPessoaInsercao' => 'Cod Pessoa Insercao',
+			'CodUsuarioInsercao' => 'Cod Pessoa Insercao',
 			'DataInsercao' => 'Data Insercao',
-			'CodPessoaUltimaAtu' => 'Cod Pessoa Ultima Atu',
+			'CodUsuarioUltimaAtu' => 'Cod Pessoa Ultima Atu',
 			'DataUltimaAtu' => 'Data Ultima Atu',
 			'CodAbrangencia' => 'Cod Abrangencia',
 			'CodObjetoPesquisa' => 'Cod Objeto Pesquisa',
 			'NomeArtigo' => 'Nome Artigo',
 			'RevistaConferencia' => 'Revista Conferencia',
 			'Volume' => 'Volume',
-			'Ano' => 'Ano',
+			'AnoPublicacao' => 'Ano',
 		);
 	}
 
@@ -129,16 +129,16 @@ class Artigo extends CActiveRecord
 		$criteria->compare('Multicentrico',$this->Multicentrico,true);
 		$criteria->compare('DataInicioEstudo',$this->DataInicioEstudo,true);
 		$criteria->compare('DataFimEstudo',$this->DataFimEstudo,true);
-		$criteria->compare('CodPessoaInsercao',$this->CodPessoaInsercao);
+		$criteria->compare('CodUsuarioInsercao',$this->CodUsuarioInsercao);
 		$criteria->compare('DataInsercao',$this->DataInsercao,true);
-		$criteria->compare('CodPessoaUltimaAtu',$this->CodPessoaUltimaAtu);
+		$criteria->compare('CodUsuarioUltimaAtu',$this->CodUsuarioUltimaAtu);
 		$criteria->compare('DataUltimaAtu',$this->DataUltimaAtu,true);
 		$criteria->compare('CodAbrangencia',$this->CodAbrangencia);
 		$criteria->compare('CodObjetoPesquisa',$this->CodObjetoPesquisa);
 		$criteria->compare('NomeArtigo',$this->NomeArtigo,true);
 		$criteria->compare('RevistaConferencia',$this->RevistaConferencia,true);
 		$criteria->compare('Volume',$this->Volume,true);
-		$criteria->compare('Ano',$this->Ano,true);
+		$criteria->compare('AnoPublicacao',$this->AnoPublicacao,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -162,11 +162,11 @@ class Artigo extends CActiveRecord
 		{
 			$this->setCodArtigo();
 			$this->CodUsuarioInsercao = Yii::app()->user->CodUsuario;
-			$this->DataInsercao = new CDbExpression('GETDATE()');
+			$this->DataInsercao = new CDbExpression('NOW()');
 		}
 		
 		$this->CodUsuarioUltimaAtu =  Yii::app()->user->CodUsuario;
-		$this->DataUltimaAtu = new CDbExpression('GETDATE()');
+		$this->DataUltimaAtu = new CDbExpression('NOW()');
 	
 		return parent::beforeSave();
 	}

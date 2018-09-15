@@ -51,7 +51,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Autores*: ', 'lblAutores', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Autor]', '', TipoObjetivo::getTiposObjetivos(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Autor]', '', Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos um autor.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -67,7 +67,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Palavras-chave*: ', 'lblPalavrasChaves', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Palavras]', '', array(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Palavra]', '', Palavra::getPalavras(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos uma palavra-chave.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -104,7 +104,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Coordenador(es)*: ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Coordenador]', '', array(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Coordenador]', '', Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos um coordenador.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -186,7 +186,7 @@
 			tokensAllowCustom: true,
 		});
 	
-		$('#Artigo_Palavras').tokenize2({
+		$('#Artigo_Palavra').tokenize2({
 			dataSource: 'select',
 			tokensAllowCustom: true,
 		});

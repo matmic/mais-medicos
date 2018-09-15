@@ -28,7 +28,7 @@ class Autor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodAutor, NomeAutor', 'required'),
+			array('NomeAutor', 'required'),
 			array('CodAutor', 'numerical', 'integerOnly'=>true),
 			array('NomeAutor', 'length', 'max'=>200),
 			// The following rule is used by search().
@@ -95,5 +95,26 @@ class Autor extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodAutor();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodAutor()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodAutor), 0)+1 AS CodAutor FROM Autor');
+		$result = $command->queryRow();
+		$this->CodAutor = $result['CodAutor'];
+	}
+	
+	public static function getAutores()
+	{
+		$autores = Autor::model()->findAll(array('order'=>'NomeAutor ASC'));
+		return CHTml::listData($autores, 'CodAutor', 'NomeAutor');
 	}
 }

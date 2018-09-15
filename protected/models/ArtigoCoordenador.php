@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "artigotipoobjetivo".
+ * This is the model class for table "artigocoordenador".
  *
- * The followings are the available columns in table 'artigotipoobjetivo':
+ * The followings are the available columns in table 'artigocoordenador':
  * @property integer $CodArtigo
- * @property integer $CodTipoObjetivo
+ * @property integer $CodCoordenador
  */
-class ArtigoTipoObjetivo extends CActiveRecord
+class ArtigoCoordenador extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'artigotipoobjetivo';
+		return 'artigocoordenador';
 	}
 
 	/**
@@ -25,11 +25,11 @@ class ArtigoTipoObjetivo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodArtigo, CodTipoObjetivo', 'required'),
-			array('CodArtigo, CodTipoObjetivo', 'numerical', 'integerOnly'=>true),
+			array('CodArtigo, CodCoordenador', 'required'),
+			array('CodArtigo, CodCoordenador', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodArtigo, CodTipoObjetivo', 'safe', 'on'=>'search'),
+			array('CodArtigo, CodCoordenador', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,7 +51,7 @@ class ArtigoTipoObjetivo extends CActiveRecord
 	{
 		return array(
 			'CodArtigo' => 'Cod Artigo',
-			'CodTipoObjetivo' => 'Cod Tipo Objetivo',
+			'CodCoordenador' => 'Cod Coordenador',
 		);
 	}
 
@@ -74,7 +74,7 @@ class ArtigoTipoObjetivo extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('CodArtigo',$this->CodArtigo);
-		$criteria->compare('CodTipoObjetivo',$this->CodTipoObjetivo);
+		$criteria->compare('CodCoordenador',$this->CodCoordenador);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -85,7 +85,7 @@ class ArtigoTipoObjetivo extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ArtigoTipoObjetivo the static model class
+	 * @return ArtigoCoordenador the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -94,7 +94,7 @@ class ArtigoTipoObjetivo extends CActiveRecord
 	
 	public static function deletarRelacoes($CodArtigo) 
 	{
-		$command = Yii::app()->db->createCommand('DELETE FROM artigotipoobjetivo WHERE CodArtigo = :CodArtigo');
+		$command = Yii::app()->db->createCommand('DELETE FROM artigocoordenador WHERE CodArtigo = :CodArtigo');
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}

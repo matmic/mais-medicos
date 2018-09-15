@@ -6,10 +6,9 @@
  * The followings are the available columns in table 'coordenador':
  * @property integer $CodCoordenador
  * @property string $NomeCoordenador
- * @property integer $CodArtigo
  *
  * The followings are the available model relations:
- * @property Artigo $codArtigo
+ * @property Artigo[] $artigos
  */
 class Coordenador extends CActiveRecord
 {
@@ -29,12 +28,12 @@ class Coordenador extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodCoordenador, NomeCoordenador, CodArtigo', 'required'),
-			array('CodCoordenador, CodArtigo', 'numerical', 'integerOnly'=>true),
+			array('NomeCoordenador', 'required'),
+			array('CodCoordenador', 'numerical', 'integerOnly'=>true),
 			array('NomeCoordenador', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodCoordenador, NomeCoordenador, CodArtigo', 'safe', 'on'=>'search'),
+			array('CodCoordenador, NomeCoordenador', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,7 +45,7 @@ class Coordenador extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'codArtigo' => array(self::BELONGS_TO, 'Artigo', 'CodArtigo'),
+			'artigos' => array(self::MANY_MANY, 'Artigo', 'artigocoordenador(CodCoordenador, CodArtigo)'),
 		);
 	}
 
@@ -58,7 +57,6 @@ class Coordenador extends CActiveRecord
 		return array(
 			'CodCoordenador' => 'Cod Coordenador',
 			'NomeCoordenador' => 'Nome Coordenador',
-			'CodArtigo' => 'Cod Artigo',
 		);
 	}
 
@@ -82,7 +80,6 @@ class Coordenador extends CActiveRecord
 
 		$criteria->compare('CodCoordenador',$this->CodCoordenador);
 		$criteria->compare('NomeCoordenador',$this->NomeCoordenador,true);
-		$criteria->compare('CodArtigo',$this->CodArtigo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -98,5 +95,26 @@ class Coordenador extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodCoordenador();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodCoordenador()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodCoordenador), 0)+1 AS CodCoordenador FROM coordenador');
+		$result = $command->queryRow();
+		$this->CodCoordenador = $result['CodCoordenador'];
+	}
+	
+	public static function getCoordenadores()
+	{
+		$coordenadores = Coordenador::model()->findAll(array('order'=>'NomeCoordenador ASC'));
+		return CHTml::listData($coordenadores, 'CodCoordenador', 'NomeCoordenador');
 	}
 }

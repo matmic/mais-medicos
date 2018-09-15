@@ -29,24 +29,12 @@ class Palavra extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('CodPalavra, NomePalavra, CodArtigo', 'required'),
-			array('CodPalavra, CodArtigo', 'numerical', 'integerOnly'=>true),
+			array('NomePalavra', 'required'),
+			array('CodPalavra', 'numerical', 'integerOnly'=>true),
 			array('NomePalavra', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodPalavra, NomePalavra, CodArtigo', 'safe', 'on'=>'search'),
-		);
-	}
-
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'codArtigo' => array(self::BELONGS_TO, 'Artigo', 'CodArtigo'),
+			array('CodPalavra, NomePalavra', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +46,6 @@ class Palavra extends CActiveRecord
 		return array(
 			'CodPalavra' => 'Cod Palavra',
 			'NomePalavra' => 'Nome Palavra',
-			'CodArtigo' => 'Cod Artigo',
 		);
 	}
 
@@ -82,7 +69,6 @@ class Palavra extends CActiveRecord
 
 		$criteria->compare('CodPalavra',$this->CodPalavra);
 		$criteria->compare('NomePalavra',$this->NomePalavra,true);
-		$criteria->compare('CodArtigo',$this->CodArtigo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -98,5 +84,26 @@ class Palavra extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function beforeSave()
+	{
+		if ($this->isNewRecord)
+			$this->setCodPalavra();
+				
+		return parent::beforeSave();
+	}
+	
+	private function setCodPalavra()
+	{
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodPalavra), 0)+1 AS CodPalavra FROM palavra');
+		$result = $command->queryRow();
+		$this->CodPalavra = $result['CodPalavra'];
+	}
+	
+	public static function getPalavras()
+	{
+		$palavras = Palavra::model()->findAll(array('order'=>'NomePalavra ASC'));
+		return CHTml::listData($palavras, 'CodPalavra', 'NomePalavra');
 	}
 }

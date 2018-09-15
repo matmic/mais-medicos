@@ -91,4 +91,11 @@ class ArtigoTipoAnalise extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public static function deletarRelacoes($CodArtigo) 
+	{
+		$command = Yii::app()->db->createCommand('DELETE FROM artigotipoanalise WHERE CodArtigo = :CodArtigo');
+		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
+		$result = $command->query();
+	}
 }
