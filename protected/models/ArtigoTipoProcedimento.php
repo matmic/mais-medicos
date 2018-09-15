@@ -98,4 +98,17 @@ class ArtigoTipoProcedimento extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoProcedimentos($CodArtigo)
+	{
+		$artigoProcedimentos = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoProcedimentos as $artigoProcedimento)
+		{
+			$array[] = $artigoProcedimento->CodTipoProcedimento;
+		}
+		
+		return $array;
+	}
 }

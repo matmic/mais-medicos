@@ -98,4 +98,17 @@ class ArtigoInstituicao extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoInstituicoes($CodArtigo)
+	{
+		$artigoInstituicoes = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoInstituicoes as $artigoInstituicao)
+		{
+			$array[] = $artigoInstituicao->CodInstituicao;
+		}
+		
+		return $array;
+	}
 }

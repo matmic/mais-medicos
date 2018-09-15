@@ -98,4 +98,17 @@ class ArtigoAutor extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoAutores($CodArtigo)
+	{
+		$artigoAutores = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoAutores as $artigoAutor)
+		{
+			$array[] = $artigoAutor->CodAutor;
+		}
+		
+		return $array;
+	}
 }

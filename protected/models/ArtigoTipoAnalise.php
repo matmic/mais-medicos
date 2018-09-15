@@ -98,4 +98,17 @@ class ArtigoTipoAnalise extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoAnalises($CodArtigo)
+	{
+		$artigoAnalises = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoAnalises as $artigoAnalise)
+		{
+			$array[] = $artigoAnalise->CodTipoAnalise;
+		}
+		
+		return $array;
+	}
 }

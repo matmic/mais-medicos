@@ -98,4 +98,17 @@ class ArtigoPalavra extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoPalavras($CodArtigo)
+	{
+		$artigoPalavras = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoPalavras as $artigoPalavra)
+		{
+			$array[] = $artigoPalavra->CodPalavra;
+		}
+		
+		return $array;
+	}
 }

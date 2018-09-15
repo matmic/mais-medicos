@@ -7,6 +7,8 @@
 <h4 class="c-grey-900 mB-20">Formulário Artigo</h4>
 <div class="mT-30">
 <?php
+	//CVarDumper::dump($autores, 10, true);
+
 	echo CHtml::beginForm(Yii::app()->createUrl('artigo/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
 	
 	// DADOS DO ARTIGO
@@ -51,7 +53,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Autores*: ', 'lblAutores', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Autor]', '', Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Autor]', isset($autores) ? $autores : '', Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos um autor.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -67,7 +69,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Palavras-chave*: ', 'lblPalavrasChaves', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Palavra]', '', Palavra::getPalavras(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Palavra]', isset($palavras) ? $palavras : '', Palavra::getPalavras(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos uma palavra-chave.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -77,17 +79,17 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Análise: ', 'lblAnalise', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Analise]', '', TipoAnalise::getTiposAnalises(), array('class'=>'form-check-input'));
+			echo CHtml::checkBoxList('Artigo[Analise]', isset($analises) ? $analises : '', TipoAnalise::getTiposAnalises(), array('class'=>'form-check-input'));
 		echo '</div>';
 		
 		echo CHtml::label('Objetivo: ', 'lblObjetivo', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Objetivo]', '', TipoObjetivo::getTiposObjetivos(), array());
+			echo CHtml::checkBoxList('Artigo[Objetivo]', isset($objetivos) ? $objetivos : '', TipoObjetivo::getTiposObjetivos(), array());
 		echo '</div>';
 		
 		echo CHtml::label('Procedimento: ', 'lblProcedimento', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Procedimento]', '', TipoProcedimento::getTiposProcedimentos(), array());
+			echo CHtml::checkBoxList('Artigo[Procedimento]', isset($procedimentos) ? $procedimentos : '', TipoProcedimento::getTiposProcedimentos(), array());
 		echo '</div>';
 	echo '</div>';
 	// FIM TIPOS DE PESQUISA
@@ -96,7 +98,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Instituições*: ', 'lblInstituicao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Instituicao]', '', Instituicao::getInstituicoes(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Instituicao]', isset($instituicoes) ? $instituicoes : '', Instituicao::getInstituicoes(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos uma instituição.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -104,7 +106,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Coordenador(es)*: ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Coordenador]', '', Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Coordenador]', isset($coordenadores) ? $coordenadores : '', Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos um coordenador.</div>';
 		echo '</div>';
 	echo '</div>';

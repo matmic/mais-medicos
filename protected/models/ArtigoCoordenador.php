@@ -98,4 +98,17 @@ class ArtigoCoordenador extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoCoordenadores($CodArtigo)
+	{
+		$artigoCoordenadores = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoCoordenadores as $artigoCoordenador)
+		{
+			$array[] = $artigoCoordenador->CodCoordenador;
+		}
+		
+		return $array;
+	}
 }

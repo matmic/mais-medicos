@@ -98,4 +98,17 @@ class ArtigoTipoObjetivo extends CActiveRecord
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}
+	
+	public static function getArtigoObjetivos($CodArtigo)
+	{
+		$artigoObjetivos = self::model()->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo));
+		$array = array();
+		
+		foreach ($artigoObjetivos as $artigoObjetivo)
+		{
+			$array[] = $artigoObjetivo->CodTipoObjetivo;
+		}
+		
+		return $array;
+	}
 }
