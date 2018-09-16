@@ -1,0 +1,11 @@
+DELETE FROM artigoautor;
+DELETE FROM artigocoordenador;
+DELETE FROM artigoinstituicao;
+DELETE FROM artigopalavra;
+DELETE FROM artigotipoanalise;
+DELETE FROM artigotipoobjetivo;
+DELETE FROM artigotipoprocedimento;
+DELETE FROM artigo;
+DELETE FROM coordenador;
+DELETE FROM palavra;
+DELETE FROM autor;

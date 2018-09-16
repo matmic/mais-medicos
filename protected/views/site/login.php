@@ -19,7 +19,7 @@
 			echo '<div class="form-group row">';
 				echo CHtml::label('Senha: ', 'lblEmail', array('class'=>'text-normal text-dark'));
 				echo '<div class="col-sm-10">';
-					echo CHtml::activeTextField($usuario, 'SenhaUsuario', array('required'=>true, 'class'=>'form-control'));
+					echo CHtml::activePasswordField($usuario, 'SenhaUsuario', array('required'=>true, 'class'=>'form-control'));
 					echo '<div class="invalid-feedback">Por favor, insira a senha.</div>';
 				echo '</div>';
 			echo '</div>';

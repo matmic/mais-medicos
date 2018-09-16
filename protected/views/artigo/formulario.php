@@ -15,7 +15,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Objeto da Pesquisa*: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropDownList('Artigo[CodObjetoPesquisa]', '', ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'encode'=>false, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropDownList('Artigo[CodObjetoPesquisa]', $artigo->CodObjetoPesquisa, ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'encode'=>false, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -23,15 +23,15 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Nome do Artigo*: ', 'lblNomeArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::textField('Artigo[Nome]', '', array('required'=>true, 'class'=>'form-control'));
+			echo CHtml::textField('Artigo[Nome]', $artigo->NomeArtigo, array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Conferência / Revista*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Revista / Conferência*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::textField('Artigo[RevistaConferencia]', '', array('required'=>true, 'class'=>'form-control'));
+			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->RevistaConferencia, array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome da conferência ou revista em que o artigo foi publicado.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -39,13 +39,13 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Volume: ', 'lblVolume', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::textField('Artigo[Volume]', '', array('class'=>'form-control'));
+			echo CHtml::textField('Artigo[Volume]', $artigo->Volume, array('class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o volume da revista em que o artigo foi publicado.</div>';
 		echo '</div>';
 		
 		echo CHtml::label('Ano da Publicação*: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::numberField('Artigo[AnoPublicacao]', 2000, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
+			echo CHtml::numberField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
 			echo '<div class="invalid-feedback">Por favor, insira ano da publicação.</div>';
 		echo '</div>';		
 	echo '</div>';
@@ -53,7 +53,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Autores*: ', 'lblAutores', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Autor]', isset($autores) ? $autores : '', Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Autor]', $autores, Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos um autor.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -61,7 +61,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Resumo*: ', 'lblResumoArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::textArea('Artigo[Resumo]', '', array('required'=>true, 'class'=>'form-control', 'rows'=>6));
+			echo CHtml::textArea('Artigo[Resumo]', $artigo->Resumo, array('required'=>true, 'class'=>'form-control', 'rows'=>6));
 			echo '<div class="invalid-feedback">Por favor, insira o resumo do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -69,7 +69,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Palavras-chave*: ', 'lblPalavrasChaves', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Palavra]', isset($palavras) ? $palavras : '', Palavra::getPalavras(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Palavra]', $palavras, Palavra::getPalavras(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos uma palavra-chave.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -79,17 +79,17 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Análise: ', 'lblAnalise', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Analise]', isset($analises) ? $analises : '', TipoAnalise::getTiposAnalises(), array('class'=>'form-check-input'));
+			echo CHtml::checkBoxList('Artigo[Analise]', $analises, TipoAnalise::getTiposAnalises(), array('class'=>'form-check-input'));
 		echo '</div>';
 		
 		echo CHtml::label('Objetivo: ', 'lblObjetivo', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Objetivo]', isset($objetivos) ? $objetivos : '', TipoObjetivo::getTiposObjetivos(), array());
+			echo CHtml::checkBoxList('Artigo[Objetivo]', $objetivos, TipoObjetivo::getTiposObjetivos(), array());
 		echo '</div>';
 		
 		echo CHtml::label('Procedimento: ', 'lblProcedimento', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Procedimento]', isset($procedimentos) ? $procedimentos : '', TipoProcedimento::getTiposProcedimentos(), array());
+			echo CHtml::checkBoxList('Artigo[Procedimento]', $procedimentos, TipoProcedimento::getTiposProcedimentos(), array());
 		echo '</div>';
 	echo '</div>';
 	// FIM TIPOS DE PESQUISA
@@ -98,7 +98,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Instituições*: ', 'lblInstituicao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Instituicao]', isset($instituicoes) ? $instituicoes : '', Instituicao::getInstituicoes(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Instituicao]', $instituicoes, Instituicao::getInstituicoes(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos uma instituição.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -106,7 +106,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Coordenador(es)*: ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Coordenador]', isset($coordenadores) ? $coordenadores : '', Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[Coordenador]', $coordenadores, Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira pelo menos um coordenador.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -114,13 +114,13 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Multicêntrico: ', 'lblMulticentrico', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-				echo CHtml::checkBox('Artigo[Multicentrico]', '', array('style'=>'margin-top: 13px;'));
+				echo CHtml::checkBox('Artigo[Multicentrico]', $artigo->Multicentrico == 'S' ? true : false, array('style'=>'margin-top: 13px;'));
 				echo '<div class="invalid-feedback">Por favor, insira a data de início do estudo.</div>';
 		echo '</div>';
 		
 		echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::dropdownList('Artigo[CodAbrangencia]', '', Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'required'=>true, 'class'=>'form-control'));
+			echo CHtml::dropdownList('Artigo[CodAbrangencia]', $artigo->CodAbrangencia, Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, escolha uma abrangência.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -130,7 +130,7 @@
 		echo '<div class="col-sm-4">';
 				$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 					'name' =>'Artigo[DataInicioEstudo]',
-					'value'=>'',
+					'value'=>$artigo->DataInicioEstudo,
 					'options' => array(
 						'showAnim' => 'slideDown',
 						'dateFormat'=>'dd/mm/yy',
@@ -146,7 +146,7 @@
 		echo '<div class="col-sm-4">';
 				$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 					'name' =>'Artigo[DataFimEstudo]',
-					'value'=>'',
+					'value'=>$artigo->DataFimEstudo,
 					'options' => array(
 						'showAnim' => 'slideDown',
 						'dateFormat'=>'dd/mm/yy',
@@ -166,7 +166,7 @@
 		echo '</div>';
 	echo '</div>';
 	
-	echo CHtml::hiddenField('Artigo[CodArtigo]', '', array());
+	echo CHtml::hiddenField('Artigo[CodArtigo]', $artigo->CodArtigo, array());
 	echo CHtml::endForm();
 ?>
 </div>

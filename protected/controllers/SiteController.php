@@ -65,7 +65,7 @@ class SiteController extends BaseController
 				{
 					Yii::app()->user->login($identity);
 					Yii::app()->user->setFlash('success', "Você está logado!");
-					$this->render('index');
+					$this->redirect(array('site/index'));
 				}
 				else
 				{

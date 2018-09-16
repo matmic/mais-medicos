@@ -2,57 +2,6 @@
 
 class ArtigoController extends BaseController 
 {
-	// public function actionFormulario()
-	// {
-		//Carrega formulário com os dados
-		// if (isset($_GET['CodArtigo']) && !empty($_GET['CodArtigo']))
-		// {
-			// $abrangencia = Abrangencia::model()->findByPk($_GET['CodAbrangencia']);
-			
-			// if (empty($abrangencia))
-			// {
-				// Yii::app()->user->setFlash('danger', 'Não foi encontrada uma Abrangência válida!');
-				// $this->redirect(array('abrangencia/listar'));
-			// }
-			// else
-				// $this->render('formulario', array('abrangencia'=>$abrangencia));
-		// }
-		// else
-		// {
-			//Atualização ou Novo
-			// if (isset($_POST['Artigo']))
-			// {
-				// if (!empty($_POST['Abrangencia']['CodAbrangencia']))
-				// {
-					// $abrangencia = Abrangencia::model()->findByPk($_POST['Abrangencia']['CodAbrangencia']);
-					// if (empty($abrangencia))
-					// {
-						// Yii::app()->user->setFlash('danger', 'Não foi encontrada uma Abrangência válida!');
-						// $this->redirect(array('abrangencia/listar'));
-					// }
-				// }
-				// else
-					// $abrangencia = new Abrangencia();
-				
-				// $abrangencia->attributes = $_POST['Abrangencia'];
-
-				// if (!$abrangencia->save())
-					// Yii::app()->user->setFlash('danger', 'Não foi possível salvar a Abrangência!');
-				// else
-					
-					// Yii::app()->user->setFlash('success', 'Abrangência salva com sucesso!');
-
-				// $this->redirect(array('abrangencia/listar'));
-			// }
-			//Carrega formulário em branco
-			// else
-			// {
-				// $abrangencia = new Abrangencia();
-				// $this->render('formulario', array('abrangencia'=>$abrangencia));
-			// }
-		// }
-	// }
-	
 	public function actionFormulario()
 	{
 		if (isset($_GET['CodArtigo']))
@@ -65,13 +14,10 @@ class ArtigoController extends BaseController
 			}
 			else
 			{
-				$autores = ArtigoAutor::getArtigoAutores($artigo->CodArtigo);
-				$coordenadores = ArtigoCoordenador::getArtigoCoordenadores($artigo->CodArtigo);
-				
 				$this->render('formulario', array(
 					'artigo'=>$artigo, 
-					'autores'=>$autores,
-					'coordenadores'=>$coordenadores,
+					'autores'=>ArtigoAutor::getArtigoAutores($artigo->CodArtigo),
+					'coordenadores'=>ArtigoCoordenador::getArtigoCoordenadores($artigo->CodArtigo),
 					'palavras'=>ArtigoPalavra::getArtigoPalavras($artigo->CodArtigo),
 					'analises'=>ArtigoTipoAnalise::getArtigoAnalises($artigo->CodArtigo),
 					'objetivos'=>ArtigoTipoObjetivo::getArtigoObjetivos($artigo->CodArtigo),
@@ -232,7 +178,7 @@ class ArtigoController extends BaseController
 
 					
 					Yii::app()->user->setFlash('success', 'Artigo salvo com sucesso!');
-					$this->render('formulario');
+					$this->redirect(array('artigo/listar'));
 				}
 				catch (CException $e)
 				{
@@ -241,7 +187,16 @@ class ArtigoController extends BaseController
 				}
 			}
 			else
-			$this->render('formulario');
+				$this->render('formulario', array(
+					'artigo'=>new Artigo(), 
+					'autores'=>array(),
+					'coordenadores'=>array(),
+					'palavras'=>array(),
+					'analises'=>array(),
+					'objetivos'=>array(),
+					'procedimentos'=>array(),
+					'instituicoes'=>array(),
+				));
 		}
 	}
 	

@@ -156,6 +156,12 @@ class Artigo extends CActiveRecord
 		return parent::model($className);
 	}
 	
+	public function afterFind()
+	{
+		$this->DataInicioEstudo = (DateTime::createFromFormat('Y-m-d', $this->DataInicioEstudo))->format('d/m/Y');
+		$this->DataFimEstudo = (DateTime::createFromFormat('Y-m-d', $this->DataFimEstudo))->format('d/m/Y');
+	}
+	
 	public function beforeSave()
 	{
 		if ($this->isNewRecord)
