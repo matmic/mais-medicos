@@ -35,6 +35,11 @@ class TipoAnaliseController extends BaseController
 					$tipoAnalise = new TipoAnalise();
 				
 				$tipoAnalise->attributes = $_POST['TipoAnalise'];
+				
+				if (isset($_POST['TipoAnalise']['IndicadorExclusao']))
+					$tipoAnalise->IndicadorExclusao = NULL;
+				else
+					$tipoAnalise->IndicadorExclusao = 'S';
 
 				if (!$tipoAnalise->save())
 					Yii::app()->user->setFlash('danger', 'Não foi possível salvar a Abordagem!');

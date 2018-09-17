@@ -11,7 +11,7 @@ class TipoObjetivoController extends BaseController
 			
 			if (empty($tipoObjetivo))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Objetivo válido!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrado um Objetivo válido!');
 				$this->redirect(array('tipoObjetivo/listar'));
 			}
 			else
@@ -27,7 +27,7 @@ class TipoObjetivoController extends BaseController
 					$tipoObjetivo = TipoObjetivo::model()->findByPk($_POST['TipoObjetivo']['CodTipoObjetivo']);
 					if (empty($tipoObjetivo))
 					{
-						Yii::app()->user->setFlash('danger', 'Não foi encontrada um Objetivo válido!');
+						Yii::app()->user->setFlash('danger', 'Não foi encontrado um Objetivo válido!');
 						$this->redirect(array('tipoObjetivo/listar'));
 					}
 				}
@@ -35,6 +35,11 @@ class TipoObjetivoController extends BaseController
 					$tipoObjetivo = new TipoObjetivo();
 				
 				$tipoObjetivo->attributes = $_POST['TipoObjetivo'];
+				
+				if (isset($_POST['TipoObjetivo']['IndicadorExclusao']))
+					$tipoObjetivo->IndicadorExclusao = NULL;
+				else
+					$tipoObjetivo->IndicadorExclusao = 'S';
 
 				if (!$tipoObjetivo->save())
 					Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Objetivo!');

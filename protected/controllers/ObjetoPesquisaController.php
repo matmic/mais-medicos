@@ -11,7 +11,8 @@ class ObjetoPesquisaController extends BaseController
 			
 			if (empty($objetoPesquisa))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Objeto de Pesquisa válido!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrado um Objeto de Pesquisa válido!');
+				$this->redirect(array('objetoPesquisa/listar'));
 			}
 			else
 				$this->render('formulario', array('objetoPesquisa'=>$objetoPesquisa));
@@ -26,7 +27,7 @@ class ObjetoPesquisaController extends BaseController
 					$objetoPesquisa = ObjetoPesquisa::model()->findByPk($_POST['ObjetoPesquisa']['CodObjetoPesquisa']);
 					if (empty($objetoPesquisa))
 					{
-						Yii::app()->user->setFlash('danger', 'Não foi encontrada uma Abrangência válida!');
+						Yii::app()->user->setFlash('danger', 'Não foi encontrado um Objeto de Pesquisa válido!');
 						$this->redirect(array('objetoPesquisa/listar'));
 					}
 				}
@@ -39,6 +40,11 @@ class ObjetoPesquisaController extends BaseController
 					$objetoPesquisa->CodObjetoPesquisaPai = $_POST['ObjetoPesquisa']['CodObjetoPesquisaPai'];
 				else
 					$objetoPesquisa->CodObjetoPesquisaPai = NULL;
+				
+				if (isset($_POST['ObjetoPesquisa']['IndicadorExclusao']))
+					$objetoPesquisa->IndicadorExclusao = NULL;
+				else
+					$objetoPesquisa->IndicadorExclusao = 'S';
 				
 				if (!$objetoPesquisa->save())
 					Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Objeto de Pesquisa');

@@ -11,7 +11,7 @@ class TipoProcedimentoController extends BaseController
 			
 			if (empty($tipoProcedimento))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Procedimento válido!!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrado um Procedimento válido!!');
 				$this->redirect(array('tipoProcedimento/listar'));
 			}
 			else
@@ -27,7 +27,7 @@ class TipoProcedimentoController extends BaseController
 					$tipoProcedimento = TipoProcedimento::model()->findByPk($_POST['TipoProcedimento']['CodTipoProcedimento']);
 					if (empty($tipoProcedimento))
 					{
-						Yii::app()->user->setFlash('danger', 'Não foi encontrada um Procedimento válido!');
+						Yii::app()->user->setFlash('danger', 'Não foi encontrado um Procedimento válido!');
 						$this->redirect(array('tipoProcedimento/listar'));
 					}
 				}
@@ -35,6 +35,11 @@ class TipoProcedimentoController extends BaseController
 					$tipoProcedimento = new TipoProcedimento();
 				
 				$tipoProcedimento->attributes = $_POST['TipoProcedimento'];
+	
+				if (isset($_POST['TipoProcedimento']['IndicadorExclusao']))
+					$tipoProcedimento->IndicadorExclusao = NULL;
+				else
+					$tipoProcedimento->IndicadorExclusao = 'S';
 
 				if (!$tipoProcedimento->save())
 					Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Procedimento!');

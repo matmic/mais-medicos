@@ -1854,3 +1854,7 @@ table {
 .esquerdaAlinhado {
 	margin-left: 150px;
 }
+
+.alinharDireita {
+		text-align: right;
+	}

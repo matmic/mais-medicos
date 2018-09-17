@@ -69,7 +69,7 @@ class SiteController extends BaseController
 				}
 				else
 				{
-					Yii::app()->user->setFlash('danger', "Não foi possível logar-se! Verifique as informações preenchidas!");
+					Yii::app()->user->setFlash('danger', "Não foi possível logar! Verifique as informações preenchidas!");
 					$this->redirect('login');
 				}
 			}
@@ -95,28 +95,73 @@ class SiteController extends BaseController
 
 	public function actionFormulario()
 	{
-		if (isset($_POST['Usuario']))
+		if (isset($_GET['CodUsuario']))
 		{
-			$usuario = new Usuario();
-			$usuario->EmailUsuario = $_POST['Usuario']['EmailUsuario'];
-			$usuario->SenhaUsuario = password_hash($_POST['Usuario']['SenhaUsuario'], PASSWORD_DEFAULT);
-			$usuario->NomeUsuario = $_POST['Usuario']['NomeUsuario'];
-			
-			if ($usuario->save())
+			$usuario = Usuario::model()->findByPk($_GET['CodUsuario']);
+			if (empty($usuario))
 			{
-				Yii::app()->user->setFlash('success', 'Usuário criado com sucesso!');
-				$this->redirect(array('site/login'));
+				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Usuário válido!');
+				$this->redirect(array('site/listar'));
 			}
 			else
 			{
-				Yii::app()->user->setFlash('danger', 'Erro ao criar usuário!');
-				$this->redirect(array('site/formulario'));
+				$this->render('formulario', array('usuario'=>$usuario));
 			}
 		}
 		else
 		{
-			$usuario = new Usuario();
-			$this->render('formulario', array('usuario'=>$usuario));
+			if (isset($_POST['Usuario']))
+			{
+				if (!empty($_POST['Usuario']['CodUsuario']))
+				{
+					$usuario = Usuario::model()->findByPk($_POST['Usuario']['CodUsuario']);
+					if (empty($usuario))
+					{
+						Yii::app()->user->setFlash('danger', 'Não foi encontrada um Usuário válido!');
+						$this->redirect(array('site/listar'));
+					}
+				}
+				else
+					$usuario = new Usuario();
+				
+				$usuario->EmailUsuario = $_POST['Usuario']['EmailUsuario'];
+				
+				if (!empty($_POST['Usuario']['SenhaUsuario']))
+					$usuario->SenhaUsuario = password_hash($_POST['Usuario']['SenhaUsuario'], PASSWORD_DEFAULT);
+				
+				$usuario->NomeUsuario = $_POST['Usuario']['NomeUsuario'];
+				$usuario->IndicadorExclusao = isset($_POST['Usuario']['IndicadorExclusao']) ? NULL : 'S';
+				
+				if ($usuario->save())
+				{
+					Yii::app()->user->setFlash('success', 'Usuário salvo com sucesso!');
+					$this->redirect(array('site/listar'));
+				}
+				else
+				{
+					Yii::app()->user->setFlash('danger', 'Erro ao salvar Usuário!');
+					$this->redirect(array('site/formulario'));
+				}
+			}
+			else
+			{
+				$usuario = new Usuario();
+				$this->render('formulario', array('usuario'=>$usuario));
+			}
 		}
+	}
+	
+	public function actionListar()
+	{
+		$usuarios = Usuario::model()->findAll();
+		
+		$dataProvider = new CArrayDataProvider($usuarios, array(
+			'keyField'=>'CodUsuario',
+			'pagination'=>array(
+				'pageSize'=>100,
+			),
+		));
+		
+		$this->render('listar', array('dataProvider'=>$dataProvider));
 	}
 }

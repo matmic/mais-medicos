@@ -4,7 +4,7 @@
 	echo CHtml::beginForm(Yii::app()->createUrl('tipoAnalise/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Abordagem*: ', 'lblAbordagem', array('class'=>'col-sm-2 col-form-label'));
+		echo CHtml::label('Abordagem*: ', 'lblAbordagem', array('class'=>'alinharDireita col-sm-2 col-form-label'));
 		echo '<div class="col-sm-10">';
 			echo CHtml::activeTextField($tipoAnalise, 'NomeTipoAnalise', array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o tipo de abordagem.</div>';
@@ -12,6 +12,13 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
+		echo CHtml::label('Ativo? ', 'lblAtivo', array('class'=>'alinharDireita col-sm-2 col-form-label'));
+		echo '<div class="col-sm-8">';
+			echo CHtml::checkBox('TipoAnalise[IndicadorExclusao]', $tipoAnalise->IndicadorExclusao == NULL ? true : false, array('style'=>'margin-top: 13px;'));
+		echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="text-center form-group row">';
 		echo '<div class="col-sm-12">';
 			echo CHtml::submitButton('Salvar', array('class'=>"btn btn-primary"));
 		echo '</div>';

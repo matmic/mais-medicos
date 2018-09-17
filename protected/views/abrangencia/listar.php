@@ -18,14 +18,8 @@
 			'htmlOptions'=>array('style'=>"width: 30px;"),
 			'header'=>'Operações',
             'class'=>'CButtonColumn',
-			'template'=>'{view}{update}',
+			'template'=>'{update}',
 			'buttons'=>array(
-				'view'=>array
-				(
-					'label'=>'Visualizar',
-					'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-					'url'=>'Yii::app()->createUrl("abrangencia/formulario", array("CodAbrangencia"=>"$data->CodAbrangencia"))',
-				),
 				'update' => array
 				(
 					'label'=>'Editar',

@@ -1,22 +1,22 @@
-<h4 class="c-grey-900 mB-20">Lista de Objetos de Pesquisa</h4>
-<?php	
-	echo CHtml::button('Novo Objeto de Pesquisa', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("objetoPesquisa/formulario") . '"'));
-
+﻿<h4 class="c-grey-900 mB-20">Lista de Usuários</h4>
+<?php
+	echo CHtml::button('Novo Usuário', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("site/formulario") . '"'));
+	
 	$this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
 	'itemsCssClass'=>'table table-striped table-bordered table-condensed',
     'columns'=>array(
         array(
 			'header'=>'#',
-			'value'=>'$data->CodObjetoPesquisa',
+			'value'=>'$data->CodUsuario',
 		),
 		array(
 			'header'=>'Nome',
-			'value'=>'$data->NomeObjetoPesquisa',
+			'value'=>'$data->NomeUsuario',
 		),
 		array(
-			'header'=>'Objeto de Pesquisa Pai',
-			'value'=>'isset($data->codObjetoPesquisaPai->NomeObjetoPesquisa) ? $data->codObjetoPesquisaPai->NomeObjetoPesquisa : "-"',
+			'header'=>'Email',
+			'value'=>'$data->EmailUsuario',
 		),
 		array(
 			'header'=>'Ativo?',
@@ -32,7 +32,7 @@
 				(
 					'label'=>'Editar',
 					'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
-					'url'=>'Yii::app()->createUrl("objetoPesquisa/formulario", array("CodObjetoPesquisa"=>"$data->CodObjetoPesquisa"))',
+					'url'=>'Yii::app()->createUrl("site/formulario", array("CodUsuario"=>"$data->CodUsuario"))',
 				),
 			)
         ),

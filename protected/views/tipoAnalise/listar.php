@@ -15,17 +15,15 @@
 			'value'=>'$data->NomeTipoAnalise',
 		),
 		array(
+			'header'=>'Ativo?',
+			'value'=>'($data->IndicadorExclusao == "S") ? "Não" : "Sim"',
+		),
+		array(
 			'htmlOptions'=>array('style'=>"width: 30px;"),
 			'header'=>'Operações',
             'class'=>'CButtonColumn',
-			'template'=>'{view}{update}',
+			'template'=>'{update}',
 			'buttons'=>array(
-				'view'=>array
-				(
-					'label'=>'Visualizar',
-					'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-					'url'=>'Yii::app()->createUrl("tipoAnalise/formulario", array("CodTipoAnalise"=>"$data->CodTipoAnalise"))',
-				),
 				'update' => array
 				(
 					'label'=>'Editar',

@@ -6,7 +6,6 @@ class BaseController extends Controller
 	
 	public function beforeAction($action)
 	{
-		//var_dump(Yii::app()->user->isGuest);
 		if (!Yii::app()->user->isGuest)
 		{
 			$this->menu = array(
@@ -164,6 +163,14 @@ class BaseController extends Controller
 					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
 				),
+				// ARTIGO
+				array(
+					'label'=>'Usuários',
+					'icone'=>'c-black-500 ti-user',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('site/listar', array()),
+				),
 			);
 		}
 		else
@@ -200,6 +207,7 @@ class BaseController extends Controller
 				'allow',
 				'users' => array('*'),
 				'controllers' => array('site'),
+				'actions'=>array('login', 'index'),
 			),
 			array(
 				'deny',

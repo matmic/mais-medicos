@@ -127,7 +127,6 @@ class Instituicao extends CActiveRecord
 		
 		return CHtml::listData($instituicoes, 'CodInstituicao', function($instituicao) {
 			return (!empty($instituicao->SiglaInstituicao) ? $instituicao->SiglaInstituicao . ' - ' . $instituicao->NomeInstituicao : $instituicao->NomeInstituicao);
-			//return $instituicao->SiglaInstituicao . ' - ' . $instituicao->NomeInstituicao;
 		});
 	}
 }
