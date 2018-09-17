@@ -1,14 +1,6 @@
-﻿<style>
-	.alinharDireita {
-		text-align: right;
-	}
-</style>
-
-<h4 class="c-grey-900 mB-20">Formulário Artigo</h4>
+﻿<h4 class="c-grey-900 mB-20">Formulário Artigo</h4>
 <div class="mT-30">
 <?php
-	//CVarDumper::dump($autores, 10, true);
-
 	echo CHtml::beginForm(Yii::app()->createUrl('artigo/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
 	
 	// DADOS DO ARTIGO

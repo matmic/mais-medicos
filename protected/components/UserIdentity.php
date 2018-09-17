@@ -31,8 +31,8 @@ class UserIdentity extends CUserIdentity
 			$this->_id = $usuario->CodUsuario;
 			$this->_nome = $usuario->NomeUsuario;
 			
-			// $this->setState('CodUsuario', $usuario->CodUsuario);
-			// $this->setState('NomeUsuario', $usuario->NomeUsuario);
+			$this->setState('CodUsuario', $usuario->CodUsuario);
+			$this->setState('NomeUsuario', $usuario->NomeUsuario);
 
 			$this->errorCode=self::ERROR_NONE;
 		}
