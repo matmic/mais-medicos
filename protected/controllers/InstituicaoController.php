@@ -57,14 +57,33 @@ class InstituicaoController extends BaseController
 	
 	public function actionListar()
 	{
-		$instituicoes = Instituicao::model()->findAll(array('order'=>'NomeInstituicao ASC'));
+		$CodInstituicao = '';
+		$NomeInstituicao = '';
+		$criteria = new CDbCriteria();
+		$criteria->order = 'NomeInstituicao ASC';
+		
+		if (isset($_POST['Instituicao']['NomeInstituicao']) && !empty($_POST['Instituicao']['NomeInstituicao']))
+		{
+			if (isset($_POST['Instituicao']['CodInstituicao']) && !empty($_POST['Instituicao']['CodInstituicao']))
+			{
+				$criteria->condition = 'CodInstituicao = ' . $_POST['Instituicao']['CodInstituicao'];
+				$CodInstituicao = $_POST['Instituicao']['CodInstituicao'];
+				$NomeInstituicao = $_POST['Instituicao']['NomeInstituicao'];
+			}
+		}
+
+		$instituicoes = Instituicao::model()->findAll($criteria);
 		$dataProvider = new CArrayDataProvider($instituicoes, array(
 			'keyField'=>'CodInstituicao',
 			'pagination'=>array(
 				'pageSize'=>100,
 			),
 		));
-		
-		$this->render('listar', array('dataProvider'=>$dataProvider));
+
+		$this->render('listar', array(
+			'dataProvider'=>$dataProvider,
+			'CodInstituicao'=>$CodInstituicao,
+			'NomeInstituicao'=>$NomeInstituicao,
+		));
 	}
 }

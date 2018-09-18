@@ -201,7 +201,7 @@ class BaseController extends Controller
 			array(
 				'allow',
 				'users' => array('@'),
-				'controllers' => array('abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
+				'controllers' => array('auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
 			),
 			array(
 				'allow',
