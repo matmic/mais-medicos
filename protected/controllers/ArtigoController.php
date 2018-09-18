@@ -174,7 +174,7 @@ class ArtigoController extends BaseController
 						$transaction->commit();
 					}
 					else
-						throw new CException('Não foi possível salvar o Artigo');//Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Artigo!');
+						throw new CException('Não foi possível salvar o Artigo');
 
 					
 					Yii::app()->user->setFlash('success', 'Artigo salvo com sucesso!');
@@ -183,7 +183,16 @@ class ArtigoController extends BaseController
 				catch (CException $e)
 				{
 					Yii::app()->user->setFlash('danger', $e->getMessage());
-					$this->render('formulario');
+					$this->render('formulario', array(
+						'artigo'=>new Artigo(), 
+						'autores'=>array(),
+						'coordenadores'=>array(),
+						'palavras'=>array(),
+						'analises'=>array(),
+						'objetivos'=>array(),
+						'procedimentos'=>array(),
+						'instituicoes'=>array(),
+					));
 				}
 			}
 			else

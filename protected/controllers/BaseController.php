@@ -183,6 +183,14 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('site/login', array()),
 				),
+				// ARTIGO
+				array(
+					'label'=>'Artigos',
+					'icone'=>'c-blue-500 ti-agenda',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('artigo/listar', array()),
+				),
 			);
 	
 		return parent::beforeAction($action);
@@ -208,6 +216,12 @@ class BaseController extends Controller
 				'users' => array('*'),
 				'controllers' => array('site'),
 				'actions'=>array('login', 'index'),
+			),
+			array(
+				'allow',
+				'users' => array('*'),
+				'controllers' => array('artigo'),
+				'actions'=>array('listar'),
 			),
 			array(
 				'deny',

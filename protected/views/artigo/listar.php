@@ -1,6 +1,7 @@
 <h4 class="c-grey-900 mB-20">Lista de Artigos</h4>
 <?php
-	echo CHtml::button('Novo Artigo', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("artigo/formulario") . '"'));
+	if (!Yii::app()->user->isGuest)
+		echo CHtml::button('Novo Artigo', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("artigo/formulario") . '"'));
 
 	$this->widget('zii.widgets.grid.CGridView', array(
 		'dataProvider'=>$dataProvider,
@@ -51,6 +52,7 @@
 						'label'=>'Editar',
 						'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
 						'url'=>'Yii::app()->createUrl("artigo/formulario", array("CodArtigo"=>"$data->CodArtigo"))',
+						'visible'=>'Yii::app()->user->isGuest ? false : true',
 					),
 				)
 			),
