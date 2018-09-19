@@ -221,7 +221,7 @@ class BaseController extends Controller
 				'allow',
 				'users' => array('*'),
 				'controllers' => array('artigo'),
-				'actions'=>array('listar'),
+				'actions'=>array('listar', 'visualizar'),
 			),
 			array(
 				'deny',

@@ -41,6 +41,7 @@ class ArtigoInstituicao extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Instituicao' => array(self::BELONGS_TO, 'Instituicao', 'CodInstituicao'),
 		);
 	}
 
@@ -110,5 +111,21 @@ class ArtigoInstituicao extends CActiveRecord
 		}
 		
 		return $array;
+	}
+	
+	public static function getNomeInstituicoes($CodArtigo)
+	{
+		$instituicoes = self::model()->with('Instituicao')->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo, 'order'=>'NomeInstituicao'));
+		
+		$stringInstituicoes = '';
+		
+		foreach ($instituicoes as $instituicao)
+		{
+			$stringInstituicoes .= $instituicao->Instituicao->NomeInstituicao . ', ';
+		}
+		
+		$stringInstituicoes = rtrim($stringInstituicoes, ', ');
+		
+		return $stringInstituicoes;
 	}
 }

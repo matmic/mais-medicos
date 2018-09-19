@@ -21,15 +21,15 @@ return array(
 		'application.controllers.*',
 	),
 
-	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'123',
-			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-		),
-	),
+	// 'modules'=>array(
+		//uncomment the following to enable the Gii tool
+		// 'gii'=>array(
+			// 'class'=>'system.gii.GiiModule',
+			// 'password'=>'123',
+			//If removed, Gii defaults to localhost only. Edit carefully to taste.
+			// 'ipFilters'=>array('127.0.0.1','::1'),
+		// ),
+	// ),
 
 	// application components
 	'components'=>array(
@@ -59,6 +59,7 @@ return array(
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>YII_DEBUG ? null : 'site/error',
+			//'errorAction'=>YII_DEBUG ? null : 'site/error',
 		),
 
 		'log'=>array(

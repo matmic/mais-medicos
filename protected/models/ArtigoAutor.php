@@ -41,6 +41,7 @@ class ArtigoAutor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Autor' => array(self::BELONGS_TO, 'Autor', 'CodAutor'),
 		);
 	}
 
@@ -110,5 +111,21 @@ class ArtigoAutor extends CActiveRecord
 		}
 		
 		return $array;
+	}
+	
+	public static function getNomeAutores($CodArtigo)
+	{
+		$autores = self::model()->with('Autor')->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo, 'order'=>'NomeAutor'));
+		
+		$stringAutores = '';
+		
+		foreach ($autores as $autor)
+		{
+			$stringAutores .= $autor->Autor->NomeAutor . ', ';
+		}
+		
+		$stringAutores = rtrim($stringAutores, ', ');
+		
+		return $stringAutores;
 	}
 }

@@ -175,7 +175,7 @@ CONSTRAINT `FK_164` FOREIGN KEY `fkIdx_164` (`CodObjetoPesquisaPai`) REFERENCES 
 CREATE TABLE `Artigo`
 (
  `CodArtigo`           INT NOT NULL ,
- `Resumo`              VARCHAR(2000) NOT NULL ,
+ `Resumo`              VARCHAR(3000) NOT NULL ,
  `Multicentrico`       VARCHAR(1) NOT NULL ,
  `DataInicioEstudo`    DATE NOT NULL ,
  `DataFimEstudo`       DATE NOT NULL ,

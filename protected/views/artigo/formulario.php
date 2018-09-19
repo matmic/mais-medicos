@@ -71,7 +71,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Análise: ', 'lblAnalise', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
-			echo CHtml::checkBoxList('Artigo[Analise]', $analises, TipoAnalise::getTiposAnalises(), array('class'=>'form-check-input'));
+			echo CHtml::checkBoxList('Artigo[Analise]', $analises, TipoAnalise::getTiposAnalises(), array());
 		echo '</div>';
 		
 		echo CHtml::label('Objetivo: ', 'lblObjetivo', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
@@ -107,7 +107,6 @@
 		echo CHtml::label('Multicêntrico: ', 'lblMulticentrico', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
 				echo CHtml::checkBox('Artigo[Multicentrico]', $artigo->Multicentrico == 'S' ? true : false, array('style'=>'margin-top: 13px;'));
-				echo '<div class="invalid-feedback">Por favor, insira a data de início do estudo.</div>';
 		echo '</div>';
 		
 		echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-2 col-form-label alinharDireita'));

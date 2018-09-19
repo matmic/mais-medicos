@@ -41,6 +41,7 @@ class ArtigoCoordenador extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Coordenador' => array(self::BELONGS_TO, 'Coordenador', 'CodCoordenador'),
 		);
 	}
 
@@ -110,5 +111,21 @@ class ArtigoCoordenador extends CActiveRecord
 		}
 		
 		return $array;
+	}
+	
+	public static function getNomeCoordenadores($CodArtigo)
+	{
+		$coordenadores = self::model()->with('Coordenador')->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo, 'order'=>'NomeCoordenador'));
+		
+		$stringCoordenadores = '';
+		
+		foreach ($coordenadores as $coordenador)
+		{
+			$stringCoordenadores .= $coordenador->Coordenador->NomeCoordenador . ', ';
+		}
+		
+		$stringCoordenadores = rtrim($stringCoordenadores, ', ');
+		
+		return $stringCoordenadores;
 	}
 }

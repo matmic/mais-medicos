@@ -41,6 +41,7 @@ class ArtigoPalavra extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'Palavra' => array(self::BELONGS_TO, 'Palavra', 'CodPalavra'),
 		);
 	}
 
@@ -110,5 +111,21 @@ class ArtigoPalavra extends CActiveRecord
 		}
 		
 		return $array;
+	}
+	
+	public static function getNomePalavras($CodArtigo)
+	{
+		$palavras = self::model()->with('Palavra')->findAll(array('condition'=>'CodArtigo = ' . $CodArtigo, 'order'=>'NomePalavra'));
+		
+		$stringPalavras = '';
+		
+		foreach ($palavras as $palavra)
+		{
+			$stringPalavras .= $palavra->Palavra->NomePalavra . ', ';
+		}
+		
+		$stringPalavras = rtrim($stringPalavras, ', ');
+		
+		return $stringPalavras;
 	}
 }

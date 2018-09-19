@@ -2,6 +2,32 @@
 
 class ArtigoController extends BaseController 
 {
+	public function actionVisualizar()
+	{
+		if (isset($_GET['CodArtigo']))
+		{
+			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findByPk($_GET['CodArtigo']);
+			if (empty($artigo))
+			{
+				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
+				$this->redirect(array('artigo/listar'));
+			}
+			else
+			{
+				$this->render('visualizar', array(
+					'artigo'=>$artigo, 
+					'autores'=>ArtigoAutor::getNomeAutores($artigo->CodArtigo),
+					'coordenadores'=>ArtigoCoordenador::getNomeCoordenadores($artigo->CodArtigo),
+					'palavras'=>ArtigoPalavra::getNomePalavras($artigo->CodArtigo),
+					'analises'=>ArtigoTipoAnalise::getArtigoAnalises($artigo->CodArtigo),
+					'objetivos'=>ArtigoTipoObjetivo::getArtigoObjetivos($artigo->CodArtigo),
+					'procedimentos'=>ArtigoTipoProcedimento::getArtigoProcedimentos($artigo->CodArtigo),
+					'instituicoes'=>ArtigoInstituicao::getNomeInstituicoes($artigo->CodArtigo),
+				));
+			}
+		}
+	}
+	
 	public function actionFormulario()
 	{
 		if (isset($_GET['CodArtigo']))

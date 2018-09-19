@@ -45,7 +45,7 @@
 					(
 						'label'=>'Visualizar',
 						'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-						'url'=>'Yii::app()->createUrl("artigo/formulario", array("CodArtigo"=>"$data->CodArtigo"))',
+						'url'=>'Yii::app()->createUrl("artigo/visualizar", array("CodArtigo"=>"$data->CodArtigo"))',
 					),
 					'update' => array
 					(
