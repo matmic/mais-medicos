@@ -242,6 +242,25 @@ class ArtigoController extends BaseController
 	
 	public function actionListar()
 	{
+		$NomeArtigo = '';
+		$CodObjetoPesquisa = '';
+		$AnoPublicacao = '';
+		$CodObjetoPesquisa = '';
+		$CodAbrangencia = '';
+		
+		$criteria = new CDbCriteria();
+		$criteria->order = 'NomeInstituicao ASC';
+		
+		if (isset($_GET['Instituicao']['NomeInstituicao']) && !empty($_GET['Instituicao']['NomeInstituicao']))
+		{
+			if (isset($_GET['Instituicao']['CodInstituicao']) && !empty($_GET['Instituicao']['CodInstituicao']))
+			{
+				$criteria->condition = 'CodInstituicao = ' . $_GET['Instituicao']['CodInstituicao'];
+				$CodInstituicao = $_GET['Instituicao']['CodInstituicao'];
+				$NomeInstituicao = $_GET['Instituicao']['NomeInstituicao'];
+			}
+		}
+		
 		$artigos = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findAll(array('order'=>'CodArtigo ASC'));
 		$dataProvider = new CArrayDataProvider($artigos, array(
 			'keyField'=>'CodArtigo',
@@ -250,6 +269,13 @@ class ArtigoController extends BaseController
 			),
 		));
 		
-		$this->render('listar', array('dataProvider'=>$dataProvider));
+		$this->render('listar', array(
+			'dataProvider'=>$dataProvider,
+			'NomeArtigo'=>$NomeArtigo,
+			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
+			'AnoPublicacao'=>$AnoPublicacao,
+			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
+			'CodAbrangencia'=>$CodAbrangencia,
+		));
 	}
 }

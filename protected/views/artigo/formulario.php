@@ -151,7 +151,7 @@
 	echo '</div>';
 	// FIM MAPEAMENTO PESQUISAS
 	
-	echo '<div class="form-group row">';
+	echo '<div class="text-center form-group row">';
 		echo '<div class="col-sm-12">';
 			echo CHtml::submitButton('Salvar', array('class'=>"btn btn-primary"));
 		echo '</div>';

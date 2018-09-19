@@ -62,13 +62,13 @@ class InstituicaoController extends BaseController
 		$criteria = new CDbCriteria();
 		$criteria->order = 'NomeInstituicao ASC';
 		
-		if (isset($_POST['Instituicao']['NomeInstituicao']) && !empty($_POST['Instituicao']['NomeInstituicao']))
+		if (isset($_GET['Instituicao']['NomeInstituicao']) && !empty($_GET['Instituicao']['NomeInstituicao']))
 		{
-			if (isset($_POST['Instituicao']['CodInstituicao']) && !empty($_POST['Instituicao']['CodInstituicao']))
+			if (isset($_GET['Instituicao']['CodInstituicao']) && !empty($_GET['Instituicao']['CodInstituicao']))
 			{
-				$criteria->condition = 'CodInstituicao = ' . $_POST['Instituicao']['CodInstituicao'];
-				$CodInstituicao = $_POST['Instituicao']['CodInstituicao'];
-				$NomeInstituicao = $_POST['Instituicao']['NomeInstituicao'];
+				$criteria->condition = 'CodInstituicao = ' . $_GET['Instituicao']['CodInstituicao'];
+				$CodInstituicao = $_GET['Instituicao']['CodInstituicao'];
+				$NomeInstituicao = $_GET['Instituicao']['NomeInstituicao'];
 			}
 		}
 
