@@ -196,6 +196,10 @@
 			dataSource: 'select',
 			tokensAllowCustom: true,
 		});
+		
+		$('#Artigo_AnoPublicacao').mask('0000');
+		$('#Artigo_DataInicioEstudo').mask('00/00/0000');
+		$('#Artigo_DataFimEstudo').mask('00/00/0000');
 	});
 	
 	function salvarArtigo()
@@ -217,10 +221,6 @@
 				}
 				else
 					alert('Por favor, corrija o(s) seguinte(s) erro(s):\n' + obj.msg);
-				
-				// if (obj.erro == 0) {
-					// alert('ok');
-				// }
 			},
 			dataType:'html',
 		});
