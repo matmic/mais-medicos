@@ -15,7 +15,7 @@
 			'value'=>'$data->NomeAbrangencia',
 		),
 		array(
-			'htmlOptions'=>array('style'=>"width: 30px;"),
+			'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
 			'header'=>'Operações',
             'class'=>'CButtonColumn',
 			'template'=>'{update}',

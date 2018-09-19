@@ -1875,3 +1875,7 @@ fieldset legend
 .alinharDireita {
 	text-align: right;
 }
+
+.clicavel {
+    cursor: pointer;
+}

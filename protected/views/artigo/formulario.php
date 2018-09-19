@@ -153,7 +153,7 @@
 	
 	echo '<div class="text-center form-group row">';
 		echo '<div class="col-sm-12">';
-			echo CHtml::submitButton('Salvar', array('class'=>"btn btn-primary"));
+			echo CHtml::button('Salvar', array('onClick'=>'salvarArtigo()', 'class'=>"btn btn-primary"));
 		echo '</div>';
 	echo '</div>';
 	
@@ -197,4 +197,32 @@
 			tokensAllowCustom: true,
 		});
 	});
+	
+	function salvarArtigo()
+	{
+		var data = $("#needs-validation").serialize();
+		
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo Yii::app()->createAbsoluteUrl("artigo/formulario"); ?>',
+			data:data,
+			success:function(retorno)
+			{
+				var obj = JSON.parse(retorno);
+
+				if (obj.erro == 0)
+				{
+					alert(obj.msg);
+					window.location.href = "<?php echo Yii::app()->createUrl('artigo/listar'); ?>";
+				}
+				else
+					alert('Por favor, corrija o(s) seguinte(s) erro(s):\n' + obj.msg);
+				
+				// if (obj.erro == 0) {
+					// alert('ok');
+				// }
+			},
+			dataType:'html',
+		});
+	}
 </script>

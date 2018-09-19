@@ -6,7 +6,7 @@
 		echo '<br /><br />';
 	}
 	
-	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="toggleField" src="'. Yii::app()->baseUrl . '/images/contrair.gif">Filtro</legend>';
+	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="clicavel toggleField" src="'. Yii::app()->baseUrl . '/images/expandir.gif">Filtro</legend>';
 		echo '<div id="divFieldset" class="collapse">';
 			echo CHtml::beginForm(Yii::app()->createUrl('artigo/listar'), 'GET', array('class'=>'container'));
 			echo '<div class="form-group row">';
@@ -94,7 +94,7 @@
 				'value'=>'$data->Abrangencia->NomeAbrangencia',
 			),
 			array(
-				'htmlOptions'=>array('style'=>"width: 30px;"),
+				'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
 				'header'=>'Operações',
 				'class'=>'CButtonColumn',
 				'template'=>'{view}{update}',

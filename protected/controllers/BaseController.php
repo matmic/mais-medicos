@@ -25,6 +25,29 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('artigo/listar', array()),
 				),
+				// GRÁFICOS
+				array(
+					'label'=>'Gráficos',
+					'icone'=>'c-brown-500 ti-pie-chart',
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Objeto de Pesquisa',
+					'url'=>Yii::app()->createUrl('grafico/objetoPesquisa', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Ano de Publicação',
+					'url'=>Yii::app()->createUrl('grafico/anoPublicacao', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>false,
+				),
 				// INSTITUIÇÕES
 				array(
 					'label'=>'Ger. Instituições',
@@ -209,7 +232,7 @@ class BaseController extends Controller
 			array(
 				'allow',
 				'users' => array('@'),
-				'controllers' => array('auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
+				'controllers' => array('grafico', 'auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
 			),
 			array(
 				'allow',

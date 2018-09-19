@@ -9,7 +9,7 @@ class ArtigoController extends BaseController
 			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findByPk($_GET['CodArtigo']);
 			if (empty($artigo))
 			{
-				Yii::app()->user->setFlash('danger', 'NÃ£o foi encontrada um Artigo vÃ¡lido!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
 				$this->redirect(array('artigo/listar'));
 			}
 			else
@@ -35,7 +35,7 @@ class ArtigoController extends BaseController
 			$artigo = Artigo::model()->findByPk($_GET['CodArtigo']);
 			if (empty($artigo))
 			{
-				Yii::app()->user->setFlash('danger', 'NÃ£o foi encontrada um Artigo vÃ¡lido!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
 				$this->redirect(array('artigo/listar'));
 			}
 			else
@@ -59,17 +59,67 @@ class ArtigoController extends BaseController
 				$transaction = Yii::app()->db->beginTransaction();
 				try
 				{
+					$msg = '';
+					
 					if (!empty($_POST['Artigo']['CodArtigo']))
 					{
 						$artigo = Artigo::model()->findByPk($_POST['Artigo']['CodArtigo']);
 						if (empty($artigo))
 						{
-							Yii::app()->user->setFlash('danger', 'NÃ£o foi encontrada um Artigo vÃ¡lido!');
+							Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
 							$this->redirect(array('artigo/listar'));
 						}
 					}
 					else
 						$artigo = new Artigo();
+					
+					if (empty($_POST['Artigo']['CodObjetoPesquisa']))
+						$msg .= " - Escolha um Objeto de Pesquisa;\n";
+					
+					if (empty($_POST['Artigo']['Nome']))
+						$msg .= " - Preencha o nome do artigo;\n";
+					
+					if (empty($_POST['Artigo']['RevistaConferencia']))
+						$msg .= " - Preencha a revista/conferência onde o artigo foi publicado;\n";
+					
+					if (empty($_POST['Artigo']['AnoPublicacao']))
+						$msg .= " - Preencha o ano da publicação do artigo;\n";
+					
+					if (empty($_POST['Artigo']['Autor']))
+						$msg .= " - Preencha o(s) autor(es) do artigo;\n";
+					
+					if (empty($_POST['Artigo']['Resumo']))
+						$msg .= " - Preencha o resumo do artigo;\n";
+					
+					if (empty($_POST['Artigo']['Palavra']))
+						$msg .= " - Preencha a(s) palavra(s)-chave do artigo;\n";
+					
+					if (empty($_POST['Artigo']['Analise']))
+						$msg .= " - Marque ao menos um tipo de análise;\n";
+					
+					if (empty($_POST['Artigo']['Objetivo']))
+						$msg .= " - Marque ao menos um tipo de objetivo;\n";
+					
+					if (empty($_POST['Artigo']['Procedimento']))
+						$msg .= " - Marque ao menos um tipo de procedimento;\n";
+					
+					if (empty($_POST['Artigo']['Instituicao']))
+						$msg .= " - Preencha a(s) instituição(ões) do artigo;\n";
+					
+					if (empty($_POST['Artigo']['Coordenador']))
+						$msg .= " - Preencha o(s) coordenador(es) do artigo;\n";
+					
+					if (empty($_POST['Artigo']['CodAbrangencia']))
+						$msg .= " - Escolha uma Abrangência;\n";
+					
+					$dataInicioEstudo = DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']);
+					$dataFimEstudo = DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']);
+					
+					if ($dataInicioEstudo > $dataFimEstudo)
+						$msg .= " - A data inicial do estudo deve ser igual ou anterior a data final do estudo;\n";
+
+					if (!empty($msg))
+						throw new CException($msg);
 					
 					$artigo->CodObjetoPesquisa = $_POST['Artigo']['CodObjetoPesquisa'];
 					$artigo->NomeArtigo = $_POST['Artigo']['Nome'];
@@ -77,8 +127,10 @@ class ArtigoController extends BaseController
 					$artigo->AnoPublicacao = $_POST['Artigo']['AnoPublicacao'];
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
 					$artigo->Resumo = $_POST['Artigo']['Resumo'];
-					$artigo->DataInicioEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']))->format('Y-m-d');
-					$artigo->DataFimEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']))->format('Y-m-d');
+					// $artigo->DataInicioEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']))->format('Y-m-d');
+					// $artigo->DataFimEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']))->format('Y-m-d');
+					$artigo->DataInicioEstudo = $dataInicioEstudo->format('Y-m-d');
+					$artigo->DataFimEstudo = $dataFimEstudo->format('Y-m-d');
 					
 					if (isset($_POST['Artigo']['Multicentrico']))
 						$artigo->Multicentrico = 'S';
@@ -200,24 +252,33 @@ class ArtigoController extends BaseController
 						$transaction->commit();
 					}
 					else
-						throw new CException('NÃ£o foi possÃ­vel salvar o Artigo');
+						throw new CException('Não foi possível salvar o Artigo');
 
 					
 					Yii::app()->user->setFlash('success', 'Artigo salvo com sucesso!');
-					$this->redirect(array('artigo/listar'));
+					// $this->redirect(array('artigo/listar'));
+					
+					echo json_encode(array(
+						"msg" => utf8_encode('Artigo salvo com sucesso!'),
+						"erro" => 0,
+					));
 				}
 				catch (CException $e)
 				{
-					Yii::app()->user->setFlash('danger', $e->getMessage());
-					$this->render('formulario', array(
-						'artigo'=>new Artigo(), 
-						'autores'=>array(),
-						'coordenadores'=>array(),
-						'palavras'=>array(),
-						'analises'=>array(),
-						'objetivos'=>array(),
-						'procedimentos'=>array(),
-						'instituicoes'=>array(),
+					// Yii::app()->user->setFlash('danger', $e->getMessage());
+					// $this->render('formulario', array(
+						// 'artigo'=>new Artigo(), 
+						// 'autores'=>array(),
+						// 'coordenadores'=>array(),
+						// 'palavras'=>array(),
+						// 'analises'=>array(),
+						// 'objetivos'=>array(),
+						// 'procedimentos'=>array(),
+						// 'instituicoes'=>array(),
+					// ));
+					echo json_encode(array(
+						"msg" => utf8_encode($e->getMessage()),
+						"erro" => 1,
 					));
 				}
 			}
