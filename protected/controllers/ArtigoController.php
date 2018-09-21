@@ -123,19 +123,20 @@ class ArtigoController extends BaseController
 					
 					$artigo->CodObjetoPesquisa = $_POST['Artigo']['CodObjetoPesquisa'];
 					$artigo->NomeArtigo = $_POST['Artigo']['Nome'];
-					$artigo->RevistaConferencia = $_POST['Artigo']['RevistaConferencia'];
+					$artigo->NomeRevistaConferencia = $_POST['Artigo']['RevistaConferencia'];
 					$artigo->AnoPublicacao = $_POST['Artigo']['AnoPublicacao'];
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
 					$artigo->Resumo = $_POST['Artigo']['Resumo'];
+					$artigo->IndicadorRevistaConferencia = 'R';
 					// $artigo->DataInicioEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']))->format('Y-m-d');
 					// $artigo->DataFimEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']))->format('Y-m-d');
 					$artigo->DataInicioEstudo = $dataInicioEstudo->format('Y-m-d');
 					$artigo->DataFimEstudo = $dataFimEstudo->format('Y-m-d');
 					
 					if (isset($_POST['Artigo']['Multicentrico']))
-						$artigo->Multicentrico = 'S';
+						$artigo->IndicadorMulticentrico = 'S';
 					else
-						$artigo->Multicentrico = 'N';
+						$artigo->IndicadorMulticentrico = 'N';
 					
 					if (empty($_POST['Artigo']['Volume']))
 						$artigo->Volume = NULL;

@@ -10,6 +10,8 @@ USE tcc;
 
 -- ************************************** `Usuario`
 
+-- ************************************** `Usuario`
+
 CREATE TABLE `Usuario`
 (
  `CodUsuario`        INT NOT NULL ,
@@ -174,21 +176,23 @@ CONSTRAINT `FK_164` FOREIGN KEY `fkIdx_164` (`CodObjetoPesquisaPai`) REFERENCES 
 
 CREATE TABLE `Artigo`
 (
- `CodArtigo`           INT NOT NULL ,
- `Resumo`              VARCHAR(3000) NOT NULL ,
- `Multicentrico`       VARCHAR(1) NOT NULL ,
- `DataInicioEstudo`    DATE NOT NULL ,
- `DataFimEstudo`       DATE NOT NULL ,
- `DataInsercao`        DATETIME NOT NULL ,
- `DataUltimaAtu`       DATETIME NOT NULL ,
- `CodAbrangencia`      INT NOT NULL ,
- `CodObjetoPesquisa`   INT NOT NULL ,
- `NomeArtigo`          VARCHAR(300) NOT NULL ,
- `RevistaConferencia`  VARCHAR(300) NOT NULL ,
- `Volume`              VARCHAR(45) ,
- `AnoPublicacao`       YEAR NOT NULL ,
- `CodUsuarioInsercao`  INT NOT NULL ,
- `CodUsuarioUltimaAtu` INT NOT NULL ,
+ `CodArtigo`                   INT NOT NULL ,
+ `Resumo`                      VARCHAR(2000) NOT NULL ,
+ `IndicadorMulticentrico`      VARCHAR(1) NOT NULL ,
+ `DataInicioEstudo`            DATE NOT NULL ,
+ `DataFimEstudo`               DATE NOT NULL ,
+ `DataInsercao`                DATETIME NOT NULL ,
+ `DataUltimaAtu`               DATETIME NOT NULL ,
+ `CodAbrangencia`              INT NOT NULL ,
+ `CodObjetoPesquisa`           INT NOT NULL ,
+ `NomeArtigo`                  VARCHAR(300) NOT NULL ,
+ `NomeRevistaConferencia`      VARCHAR(300) NOT NULL ,
+ `Volume`                      VARCHAR(45) ,
+ `AnoPublicacao`               YEAR NOT NULL ,
+ `CodUsuarioInsercao`          INT NOT NULL ,
+ `CodUsuarioUltimaAtu`         INT NOT NULL ,
+ `IndicadorRevistaConferencia` VARCHAR(1) NOT NULL,
+ `Paginas`                     VARCHAR(15) ,
 
 PRIMARY KEY (`CodArtigo`),
 KEY `fkIdx_99` (`CodAbrangencia`),
@@ -352,9 +356,6 @@ CONSTRAINT `FK_47` FOREIGN KEY `fkIdx_47` (`CodTipoAnalise`) REFERENCES `TipoAna
 KEY `fkIdx_66` (`CodArtigo`),
 CONSTRAINT `FK_66` FOREIGN KEY `fkIdx_66` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`)
 );
-
-
-
 
 
 INSERT INTO objetopesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(1,'Programa Mais Médicos', NULL);

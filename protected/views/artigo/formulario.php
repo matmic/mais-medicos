@@ -23,7 +23,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Revista / Conferência*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->RevistaConferencia, array('required'=>true, 'class'=>'form-control'));
+			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome da conferência ou revista em que o artigo foi publicado.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -106,7 +106,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Multicêntrico: ', 'lblMulticentrico', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-				echo CHtml::checkBox('Artigo[Multicentrico]', $artigo->Multicentrico == 'S' ? true : false, array('style'=>'margin-top: 13px;'));
+				echo CHtml::checkBox('Artigo[Multicentrico]', $artigo->IndicadorMulticentrico == 'S' ? true : false, array('style'=>'margin-top: 13px;'));
 		echo '</div>';
 		
 		echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-2 col-form-label alinharDireita'));

@@ -79,7 +79,7 @@
 			),
 			array(
 				'header'=>'Revista / Conferência',
-				'value'=>'$data->RevistaConferencia',
+				'value'=>'$data->NomeRevistaConferencia',
 			),
 			array(
 				'header'=>'Volume',

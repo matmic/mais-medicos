@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'artigo':
  * @property integer $CodArtigo
+ * @property string $IndicadorRevistaConferencia
  * @property string $Resumo
  * @property string $Multicentrico
  * @property string $DataInicioEstudo
@@ -16,8 +17,9 @@
  * @property integer $CodAbrangencia
  * @property integer $CodObjetoPesquisa
  * @property string $NomeArtigo
- * @property string $RevistaConferencia
+ * @property string $NomeRevistaConferencia
  * @property string $Volume
+ * @property string $Paginas
  * @property string $Ano
  *
  * The followings are the available model relations:
@@ -49,16 +51,17 @@ class Artigo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, AnoPublicacao', 'required'),
+			array('Resumo, IndicadorMulticentrico, DataInicioEstudo, DataFimEstudo, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, AnoPublicacao', 'required'),
 			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>2000),
-			array('Multicentrico', 'length', 'max'=>1),
-			array('NomeArtigo, RevistaConferencia', 'length', 'max'=>300),
+			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),
+			array('NomeArtigo, NomeRevistaConferencia', 'length', 'max'=>300),
 			array('Volume', 'length', 'max'=>45),
+			array('Paginas', 'length', 'max'=>15),
 			array('AnoPublicacao', 'length', 'max'=>4),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodArtigo, Resumo, Multicentrico, DataInicioEstudo, DataFimEstudo, CodUsuarioInsercao, DataInsercao, CodUsuarioUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, RevistaConferencia, Volume, AnoPublicacao', 'safe', 'on'=>'search'),
+			array('CodArtigo, Resumo, IndicadorMulticentrico, DataInicioEstudo, DataFimEstudo, CodUsuarioInsercao, DataInsercao, CodUsuarioUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, Volume, Paginas, AnoPublicacao', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -90,7 +93,7 @@ class Artigo extends CActiveRecord
 		return array(
 			'CodArtigo' => 'Cod Artigo',
 			'Resumo' => 'Resumo',
-			'Multicentrico' => 'Multicentrico',
+			'IndicadorMulticentrico' => 'Multicentrico',
 			'DataInicioEstudo' => 'Data Inicio Estudo',
 			'DataFimEstudo' => 'Data Fim Estudo',
 			'CodUsuarioInsercao' => 'Cod Pessoa Insercao',
@@ -100,7 +103,7 @@ class Artigo extends CActiveRecord
 			'CodAbrangencia' => 'Cod Abrangencia',
 			'CodObjetoPesquisa' => 'Cod Objeto Pesquisa',
 			'NomeArtigo' => 'Nome Artigo',
-			'RevistaConferencia' => 'Revista Conferencia',
+			'NomeRevistaConferencia' => 'Revista Conferencia',
 			'Volume' => 'Volume',
 			'AnoPublicacao' => 'Ano',
 		);
@@ -136,8 +139,9 @@ class Artigo extends CActiveRecord
 		$criteria->compare('CodAbrangencia',$this->CodAbrangencia);
 		$criteria->compare('CodObjetoPesquisa',$this->CodObjetoPesquisa);
 		$criteria->compare('NomeArtigo',$this->NomeArtigo,true);
-		$criteria->compare('RevistaConferencia',$this->RevistaConferencia,true);
+		$criteria->compare('NomeRevistaConferencia',$this->NomeRevistaConferencia,true);
 		$criteria->compare('Volume',$this->Volume,true);
+		$criteria->compare('Paginas',$this->Paginas,true);
 		$criteria->compare('AnoPublicacao',$this->AnoPublicacao,true);
 
 		return new CActiveDataProvider($this, array(
