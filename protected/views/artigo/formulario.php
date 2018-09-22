@@ -21,6 +21,22 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
+		echo CHtml::label('Autores*: ', 'lblAutores', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-10">';
+			echo CHtml::dropdownList('Artigo[Autor]', $autores, Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
+			echo '<div class="invalid-feedback">Por favor, insira pelo menos um autor.</div>';
+		echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="form-group row">';
+		echo CHtml::label('Resumo*: ', 'lblResumoArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-10">';
+			echo CHtml::textArea('Artigo[Resumo]', $artigo->Resumo, array('required'=>true, 'class'=>'form-control', 'rows'=>6));
+			echo '<div class="invalid-feedback">Por favor, insira o resumo do artigo.</div>';
+		echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="form-group row">';
 		echo CHtml::label('Revista / Conferência*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
 			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('required'=>true, 'class'=>'form-control'));
@@ -37,24 +53,21 @@
 		
 		echo CHtml::label('Ano da Publicação*: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::numberField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
+			echo CHtml::textField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'required'=>true));
 			echo '<div class="invalid-feedback">Por favor, insira ano da publicação.</div>';
 		echo '</div>';		
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Autores*: ', 'lblAutores', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Autor]', $autores, Autor::getAutores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
-			echo '<div class="invalid-feedback">Por favor, insira pelo menos um autor.</div>';
+		echo CHtml::label('Publicado em*: ', 'lblIndicadorRevConf', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div style="margin-top: 9px;" class="col-sm-4">';
+			echo CHtml::radioButtonList('Artigo[IndicadorRevistaConferencia]', $artigo->IndicadorRevistaConferencia, array('R'=>'Revista', 'C'=>'Conferência'), array('style'=>'margin-left: 5px;', 'separator'=>'',));
+			echo '<div class="invalid-feedback">Por favor, selecione onde foi publicado o artigo.</div>';
 		echo '</div>';
-	echo '</div>';
-	
-	echo '<div class="form-group row">';
-		echo CHtml::label('Resumo*: ', 'lblResumoArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-		echo '<div class="col-sm-10">';
-			echo CHtml::textArea('Artigo[Resumo]', $artigo->Resumo, array('required'=>true, 'class'=>'form-control', 'rows'=>6));
-			echo '<div class="invalid-feedback">Por favor, insira o resumo do artigo.</div>';
+		
+		echo CHtml::label('Páginas: ', 'lblPaginas', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-4">';
+			echo CHtml::textField('Artigo[Paginas]', $artigo->Paginas, array('class'=>'form-control'));
 		echo '</div>';
 	echo '</div>';
 	
@@ -163,16 +176,6 @@
 </div>
 
 <script>
-    !function() {
-        "use strict";
-        window.addEventListener("load", function() {
-            var e = document.getElementById("needs-validation");
-            e.addEventListener("submit", function(t) {
-                !1 === e.checkValidity() && (t.preventDefault(), t.stopPropagation()), e.classList.add("was-validated")
-            }, !1)
-        }, !1)
-    }()
-
 	$(document).ready(function(){
 		$('#Artigo_Autor').tokenize2({
 			dataSource: 'select',
@@ -202,27 +205,39 @@
 		$('#Artigo_DataFimEstudo').mask('00/00/0000');
 	});
 	
-	function salvarArtigo()
+	function salvarArtigo() 
 	{
-		var data = $("#needs-validation").serialize();
+		var hasError = false;
+		var e = document.getElementById("needs-validation");
+		if (!1 === e.checkValidity())
+		{
+			hasError = true;
+			e.classList.add("was-validated");
+			return false;
+		}
 		
-		$.ajax({
-			type: 'POST',
-			url: '<?php echo Yii::app()->createAbsoluteUrl("artigo/formulario"); ?>',
-			data:data,
-			success:function(retorno)
-			{
-				var obj = JSON.parse(retorno);
-
-				if (obj.erro == 0)
+		if (!hasError)
+		{
+			var data = $("#needs-validation").serialize();
+			
+			$.ajax({
+				type: 'POST',
+				url: '<?php echo Yii::app()->createAbsoluteUrl("artigo/formulario"); ?>',
+				data:data,
+				success:function(retorno)
 				{
-					alert(obj.msg);
-					window.location.href = "<?php echo Yii::app()->createUrl('artigo/listar'); ?>";
-				}
-				else
-					alert('Por favor, corrija o(s) seguinte(s) erro(s):\n' + obj.msg);
-			},
-			dataType:'html',
-		});
-	}
+					var obj = JSON.parse(retorno);
+
+					if (obj.erro == 0)
+					{
+						alert(obj.msg);
+						window.location.href = "<?php echo Yii::app()->createUrl('artigo/listar'); ?>";
+					}
+					else
+						alert('Por favor, corrija o(s) seguinte(s) erro(s):\n' + obj.msg);
+				},
+				dataType:'html',
+			});
+		}
+	}	
 </script>

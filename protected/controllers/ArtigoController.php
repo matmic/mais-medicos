@@ -82,6 +82,9 @@ class ArtigoController extends BaseController
 					if (empty($_POST['Artigo']['RevistaConferencia']))
 						$msg .= " - Preencha a revista/conferência onde o artigo foi publicado;\n";
 					
+					if (empty($_POST['Artigo']['IndicadorRevistaConferencia']))
+						$msg .= " - Selecione onde o artigo foi publicado;\n";
+					
 					if (empty($_POST['Artigo']['AnoPublicacao']))
 						$msg .= " - Preencha o ano da publicação do artigo;\n";
 					
@@ -127,9 +130,7 @@ class ArtigoController extends BaseController
 					$artigo->AnoPublicacao = $_POST['Artigo']['AnoPublicacao'];
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
 					$artigo->Resumo = $_POST['Artigo']['Resumo'];
-					$artigo->IndicadorRevistaConferencia = 'R';
-					// $artigo->DataInicioEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']))->format('Y-m-d');
-					// $artigo->DataFimEstudo = (DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']))->format('Y-m-d');
+					$artigo->IndicadorRevistaConferencia = $_POST['Artigo']['IndicadorRevistaConferencia'];
 					$artigo->DataInicioEstudo = $dataInicioEstudo->format('Y-m-d');
 					$artigo->DataFimEstudo = $dataFimEstudo->format('Y-m-d');
 					
@@ -137,6 +138,11 @@ class ArtigoController extends BaseController
 						$artigo->IndicadorMulticentrico = 'S';
 					else
 						$artigo->IndicadorMulticentrico = 'N';
+					
+					if (empty($_POST['Artigo']['Paginas']))
+						$artigo->Paginas = NULL;
+					else
+						$artigo->Paginas = $_POST['Artigo']['Paginas'];
 					
 					if (empty($_POST['Artigo']['Volume']))
 						$artigo->Volume = NULL;
@@ -255,9 +261,7 @@ class ArtigoController extends BaseController
 					else
 						throw new CException('Não foi possível salvar o Artigo');
 
-					
 					Yii::app()->user->setFlash('success', 'Artigo salvo com sucesso!');
-					// $this->redirect(array('artigo/listar'));
 					
 					echo json_encode(array(
 						"msg" => utf8_encode('Artigo salvo com sucesso!'),
@@ -266,17 +270,6 @@ class ArtigoController extends BaseController
 				}
 				catch (CException $e)
 				{
-					// Yii::app()->user->setFlash('danger', $e->getMessage());
-					// $this->render('formulario', array(
-						// 'artigo'=>new Artigo(), 
-						// 'autores'=>array(),
-						// 'coordenadores'=>array(),
-						// 'palavras'=>array(),
-						// 'analises'=>array(),
-						// 'objetivos'=>array(),
-						// 'procedimentos'=>array(),
-						// 'instituicoes'=>array(),
-					// ));
 					echo json_encode(array(
 						"msg" => utf8_encode($e->getMessage()),
 						"erro" => 1,
