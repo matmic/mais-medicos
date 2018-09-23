@@ -55,7 +55,7 @@
 				';
 			}
 		?>
-
+		chart.set("dataPointWidth", 20, true);
 		chart.render();
 	}, 1000);
 </script>
