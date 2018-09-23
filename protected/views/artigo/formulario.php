@@ -53,7 +53,7 @@
 		
 		echo CHtml::label('Ano da Publicação*: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::textField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'required'=>true));
+			echo CHtml::textField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('maxLength'=>4, 'placeholder'=>'aaaa', 'class'=>'form-control', 'required'=>true));
 			echo '<div class="invalid-feedback">Por favor, insira ano da publicação.</div>';
 		echo '</div>';		
 	echo '</div>';

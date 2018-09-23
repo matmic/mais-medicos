@@ -43,6 +43,7 @@ class GraficoController extends BaseController
 			INNER JOIN objetopesquisa OP
 				ON OP.CodObjetoPesquisa = ART.CodObjetoPesquisa
 			GROUP BY AnoPublicacao, CodObjetoPesquisa
+			ORDER BY AnoPublicacao ASC
 		';
 		
 		$command = Yii::app()->db->createCommand($sql);

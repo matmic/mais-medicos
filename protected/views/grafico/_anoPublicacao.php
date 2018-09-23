@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Artigos Publicados por Ano</h4>
+﻿<h4 class="c-grey-900 mB-20">Artigos Publicados por Ano</h4>
 <div class="mT-30">
 	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 </div>
@@ -21,11 +21,15 @@
 			},
 			data: [
 			<?php
+			
+			
+				
 				for ($i=0; $i < count($dados); $i++)
 				{
 					echo '
 						{
-							type: "line",
+							type: "column",
+							connectNullData: true,
 							showInLegend: true, 
 							legendText: "{nome}",
 							cursor:"pointer",
@@ -53,5 +57,5 @@
 		?>
 
 		chart.render();
-	},500);
+	}, 1000);
 </script>
