@@ -6,15 +6,15 @@
 		echo '<br /><br />';
 	}
 	
-	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="clicavel toggleField" src="'. Yii::app()->baseUrl . '/images/expandir.gif">Filtro</legend>';
-		echo '<div id="divFieldset" class="collapse">';
+	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="clicavel toggleField" src="'. Yii::app()->baseUrl . '/images/'. $imgUrl . '">Filtro</legend>';
+		echo '<div id="divFieldset" class="' . ($filtroUsado ? 'collapse show' : 'collapse') .'">';
 			echo CHtml::beginForm(Yii::app()->createUrl('artigo/listar'), 'GET', array('class'=>'container'));
 			echo '<div class="form-group row">';
 				echo CHtml::label('Nome do Artigo: ', 'lblNomeArtigo', array('class'=>'col-sm-3 col-form-label alinharDireita'));
 				echo '<div class="col-sm-9">';
 					$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 						'sourceUrl'=>array('auxiliar/autoCompleteArtigo'),
-						'name'=>'Artigo[NomeArtigo]',
+						'name'=>'NomeArtigo',
 						'value' => $NomeArtigo,
 						'options'=>array(
 							'minLength'=>'3',
@@ -28,34 +28,34 @@
 							'encode'=>false,
 						),
 					));
-					echo CHtml::hiddenField('Artigo[CodArtigo]', $CodObjetoPesquisa, array('id'=>'iptCodArtigo'));
+					echo CHtml::hiddenField('CodArtigo', $CodArtigo, array('id'=>'iptCodArtigo'));
 				echo '</div>';
 			echo '</div>';
 			
 			echo '<div class="form-group row">';
 				echo CHtml::label('Ano de Publicação: ', 'lblAnoPublicacao', array('class'=>'col-sm-3 col-form-label alinharDireita'));
 				echo '<div class="col-sm-9">';
-					echo CHtml::numberField('Artigo[AnoPublicacao]', $AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
+					echo CHtml::numberField('AnoPublicacao', $AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
 				echo '</div>';
 			echo '</div>';
 			
 			echo '<div class="form-group row">';
 				echo CHtml::label('Objeto de Pesquisa: ', 'lblObjetoPesquisa', array('class'=>'col-sm-3 col-form-label alinharDireita'));
 				echo '<div class="col-sm-9">';
-					echo CHtml::dropDownList('Artigo[CodObjetoPesquisa]', $CodObjetoPesquisa, ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+					echo CHtml::dropDownList('CodObjetoPesquisa', $CodObjetoPesquisa, ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 				echo '</div>';
 			echo '</div>';
 			
 			echo '<div class="form-group row">';
 				echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-3 col-form-label alinharDireita'));
 				echo '<div class="col-sm-9">';
-					echo CHtml::dropdownList('Artigo[CodAbrangencia]', $CodAbrangencia, Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+					echo CHtml::dropdownList('CodAbrangencia', $CodAbrangencia, Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 				echo '</div>';
 			echo '</div>';
 			
 			echo '<div class="text-center form-group row">';
 				echo '<div class="col-sm-12">';
-					echo CHtml::submitButton('Salvar', array('class'=>"btn btn-primary"));
+					echo CHtml::submitButton('Filtrar', array('class'=>"btn btn-primary"));
 				echo '</div>';
 			echo '</div>';
 		echo '</div>';

@@ -297,26 +297,55 @@ class ArtigoController extends BaseController
 	
 	public function actionListar()
 	{
+		$CodArtigo = '';
 		$NomeArtigo = '';
 		$CodObjetoPesquisa = '';
 		$AnoPublicacao = '';
 		$CodObjetoPesquisa = '';
 		$CodAbrangencia = '';
+		$filtroUsado = false;
+		$imgUrl = 'expandir.gif';
 		
 		$criteria = new CDbCriteria();
-		$criteria->order = 'NomeInstituicao ASC';
+		$criteria->order = 'CodArtigo ASC';
 		
-		if (isset($_GET['Instituicao']['NomeInstituicao']) && !empty($_GET['Instituicao']['NomeInstituicao']))
+		if (isset($_GET['NomeArtigo']) && !empty($_GET['NomeArtigo']))
 		{
-			if (isset($_GET['Instituicao']['CodInstituicao']) && !empty($_GET['Instituicao']['CodInstituicao']))
+			if (isset($_GET['CodArtigo']) && !empty($_GET['CodArtigo']))
 			{
-				$criteria->condition = 'CodInstituicao = ' . $_GET['Instituicao']['CodInstituicao'];
-				$CodInstituicao = $_GET['Instituicao']['CodInstituicao'];
-				$NomeInstituicao = $_GET['Instituicao']['NomeInstituicao'];
+				$criteria->addCondition('CodArtigo = ' . $_GET['CodArtigo']);
+				$CodArtigo = $_GET['CodArtigo'];
+				$NomeArtigo = $_GET['NomeArtigo'];
+				$filtroUsado = true;
+				$imgUrl = 'contrair.gif';
 			}
 		}
 		
-		$artigos = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findAll(array('order'=>'CodArtigo ASC'));
+		if (isset($_GET['AnoPublicacao']) && !empty($_GET['AnoPublicacao']))
+		{
+			$criteria->addCondition('t.AnoPublicacao = ' . $_GET['AnoPublicacao']);
+			$AnoPublicacao = $_GET['AnoPublicacao'];
+			$filtroUsado = true;
+			$imgUrl = 'contrair.gif';
+		}
+		
+		if (isset($_GET['CodObjetoPesquisa']) && !empty($_GET['CodObjetoPesquisa']))
+		{
+			$criteria->addCondition('t.CodObjetoPesquisa = ' . $_GET['CodObjetoPesquisa']);
+			$CodObjetoPesquisa = $_GET['CodObjetoPesquisa'];
+			$filtroUsado = true;
+			$imgUrl = 'contrair.gif';
+		}
+		
+		if (isset($_GET['CodAbrangencia']) && !empty($_GET['CodAbrangencia']))
+		{
+			$criteria->addCondition('t.CodAbrangencia = ' . $_GET['CodAbrangencia']);
+			$CodAbrangencia = $_GET['CodAbrangencia'];
+			$filtroUsado = true;
+			$imgUrl = 'contrair.gif';
+		}
+		
+		$artigos = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findAll($criteria);
 		$dataProvider = new CArrayDataProvider($artigos, array(
 			'keyField'=>'CodArtigo',
 			'pagination'=>array(
@@ -326,11 +355,14 @@ class ArtigoController extends BaseController
 		
 		$this->render('listar', array(
 			'dataProvider'=>$dataProvider,
+			'CodArtigo'=>$CodArtigo,
 			'NomeArtigo'=>$NomeArtigo,
 			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
 			'AnoPublicacao'=>$AnoPublicacao,
 			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
 			'CodAbrangencia'=>$CodAbrangencia,
+			'filtroUsado'=>$filtroUsado,
+			'imgUrl'=>$imgUrl
 		));
 	}
 }
