@@ -24,7 +24,7 @@
 			
 			
 				
-				for ($i=0; $i < count($dados); $i++)
+				for ($i=0; $i < count($dataPoints); $i++)
 				{
 					echo '
 						{
@@ -35,7 +35,7 @@
 							cursor:"pointer",
 							indexLabel: "{y}",
 							xValueFormatString: "0000",
-							dataPoints: ' . json_encode($dados[$i]) . '
+							dataPoints: ' . json_encode($dataPoints[$i]) . '
 						},
 					';
 				}
@@ -44,7 +44,7 @@
 		});	
 	
 		<?php
-			for ($i=0; $i < count($dados); $i++)
+			for ($i=0; $i < count($dataPoints); $i++)
 			{
 				echo '
 					chart.options.data['.$i.'].click = function(e){ 

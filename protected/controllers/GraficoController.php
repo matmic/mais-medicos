@@ -14,23 +14,17 @@ class GraficoController extends BaseController
 		$command = Yii::app()->db->createCommand($sql);
 		$result = $command->queryAll();
 		
-		$dados = array();
-		$dados2 = array();
-		$dados[] = array('Objetos de Pesquisa', 'Número de Artigos');
-		
+		$dataPoints = array();
 		foreach($result as $p) {
-			$dados[] = array($p['NomeObjetoPesquisa'], (int)$p['Count']);
-			$dados2[] = array(
+			$dataPoints[] = array(
 				"label"=>$p['NomeObjetoPesquisa'], 
 				"y"=>(int)$p['Count'],
 				"link"=>Yii::app()->createUrl('artigo/listar', array('CodObjetoPesquisa'=>$p['CodObjetoPesquisa'])),
 			);
 		}
-		//CVarDumper::dump(json_encode($dados2), 10, true);die;
+
 		$this->render('_objetoPesquisa', array(
-			'dados'=>$dados,
-			'dados2'=>$dados2,
-			'title'=>'Número de Artigos por Objeto de Pesquisa',
+			'dataPoints'=>$dataPoints,
 		));
 	}
 	
@@ -67,11 +61,110 @@ class GraficoController extends BaseController
 			);
 		}
 		
+		$dataPoints = array();
 		foreach ($arrCodObjetosPesquisas as $CodObjetoPesquisa)
-			$dados[] = ${"dados$CodObjetoPesquisa"};
+			$dataPoints[] = ${"dados$CodObjetoPesquisa"};
 		
 		$this->render('_anoPublicacao', array(
-			'dados'=>$dados,
+			'dataPoints'=>$dataPoints,
+		));
+	}
+	
+	public function actionTeste()
+	{
+		// BUSCA A QUANTIDADE DE ARTIGOS POR OBJETO DE PESQUISA, E AGRUPA-OS PELO NOME
+		$sql = '
+			SELECT OP.CodObjetoPesquisa, OP.NomeObjetoPesquisa, COUNT(ART.CodObjetoPesquisa) AS Count
+			FROM objetopesquisa OP
+			LEFT JOIN artigo ART 
+				ON OP.CodObjetoPesquisa = ART.CodObjetoPesquisa
+			GROUP BY NomeObjetoPesquisa
+		';
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		
+		foreach($result as $objetoPesquisa) {
+			$data[] = array(
+				"name"=>$objetoPesquisa['NomeObjetoPesquisa'], 
+				"y"=>(int)$objetoPesquisa['Count'],
+			);
+		}
+
+		$this->render('teste', array(
+			'data'=>$data,
+		));
+	}
+	
+	public function actionTeste2()
+	{
+		// BUSCA OS ANOS DISTINTOS NA TABELA DE ARTIGO E ORDENA DO MENOR PARA O MAIOR
+		$sqlAnos = '
+			SELECT DISTINCT AnoPublicacao
+			FROM artigo 
+			ORDER BY AnoPublicacao ASC
+		';
+		$commandAnos = Yii::app()->db->createCommand($sqlAnos);
+		$resultAnos = $commandAnos->queryAll();
+		
+		// BUSCA OS OBJETOS DE PESQUISA CADASTRADOS NO BANCO E ORDENA PELO COD (MENOR PARA MAIOR)
+		$sqlObjetoPesquisa = '
+			SELECT CodObjetoPesquisa, NomeObjetoPesquisa
+			FROM objetopesquisa
+			order by CodObjetoPesquisa ASC
+		';
+		$commandObjetoPesquisa = Yii::app()->db->createCommand($sqlObjetoPesquisa);
+		$resultObjetoPesquisa = $commandObjetoPesquisa->queryAll();
+		
+		$anos = array();
+		$arrCodObjetosPesquisas = array();
+		
+		//CRIA OS ARRAYS DE CADA OBJETO DE PESQUISA QUE SERÃO MOSTRADOS NO GRÁFICO
+		foreach ($resultObjetoPesquisa as $objetoPesquisa)
+		{
+			${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"} = array();
+			${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"}['name'] = $objetoPesquisa['NomeObjetoPesquisa'];
+			$arrCodObjetosPesquisas[] = $objetoPesquisa['CodObjetoPesquisa'];
+		}
+		
+		// PARA CADA ANO ENCONTRADO NO BANCO, INICIALIZA COM 0 O NÚMERO DE ARTIGOS DO OBJETO DE PESQUISA
+		foreach($resultAnos as $ano) 
+		{
+			$anos[] = $ano['AnoPublicacao'];
+			
+			foreach ($arrCodObjetosPesquisas as $CodObjetoPesquisa)
+				${"arrCodObjetoPesquisa$CodObjetoPesquisa"}['data'][] = 0;
+		}
+		
+		$series = array();
+		
+		// PARA CADA OBJETO DE PESQUISA E PARA CADA ANO ENCONTRADO NO BANCO, VERIFICA SE EXISTE ALGUM ARTIGO
+		foreach ($arrCodObjetosPesquisas as $CodObjetoPesquisa)
+		{
+			$i = 0;
+			foreach ($anos as $ano)
+			{
+				$sql = "
+					SELECT COUNT(*) as Count 
+					FROM artigo
+					WHERE CodObjetoPesquisa = $CodObjetoPesquisa
+					AND AnoPublicacao = $ano
+				";
+			
+				$command = Yii::app()->db->createCommand($sql);
+				$result = $command->queryRow();
+				
+				${"arrCodObjetoPesquisa$CodObjetoPesquisa"}['data'][$i] = (int)$result['Count'];
+				$i++;
+			}
+			// ARMAZENA NO ARRAY DE SERIES
+			$series[] = ${"arrCodObjetoPesquisa$CodObjetoPesquisa"};
+		}
+
+		$this->render('teste2', array(
+			'anos'=>$anos,
+			'series'=>$series,
 		));
 	}
 }
