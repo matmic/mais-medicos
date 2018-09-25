@@ -24,7 +24,14 @@
                 enabled: true,
 				format: '{point.percentage:.1f} %',
             },
-            showInLegend: true
+            showInLegend: true,
+			point: {
+				events: {
+					click: function() {
+						window.open(this.options.url,'_blank');
+					}
+				}
+            },
         }
     },
     series: [{
