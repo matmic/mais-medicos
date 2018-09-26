@@ -35,7 +35,15 @@
 		plotOptions: {
 			column: {
 				pointPadding: 0.2,
-				borderWidth: 0
+				borderWidth: 0,
+				cursor: 'pointer',
+				point: {
+					events: {
+						click: function () {
+							window.open('<?php echo Yii::app()->createUrl('artigo/listar'); ?>' + '?CodObjetoPesquisa='+this.series.userOptions.key+'&AnoPublicacao='+this.category, '_blank'); 
+						}
+					}
+				}
 			}
 		},
 		series: <?php echo json_encode($series); ?>

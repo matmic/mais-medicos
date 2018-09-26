@@ -196,6 +196,7 @@ class GraficoController extends BaseController
 		{
 			${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"} = array();
 			${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"}['name'] = $objetoPesquisa['NomeObjetoPesquisa'];
+			${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"}['key'] = $objetoPesquisa['CodObjetoPesquisa'];
 			$arrCodObjetosPesquisas[] = $objetoPesquisa['CodObjetoPesquisa'];
 		}
 		
@@ -226,14 +227,62 @@ class GraficoController extends BaseController
 			$command = Yii::app()->db->createCommand($sql);
 			$result = $command->queryAll();
 			
-			foreach ($result as $result)
-				${"arrCodObjetoPesquisa$CodObjetoPesquisa"}['data'][$result['AnoPublicacao']] = (int)$result['Count'];
+			foreach ($result as $r)
+				${"arrCodObjetoPesquisa$CodObjetoPesquisa"}['data'][$r['AnoPublicacao']] = (int)$r['Count'];
 			
 			// TRANSFORMA AS CHAVES DO ARRAY. ERAM ANO E PASSAM PRA INDEXAÇÃO NORMAL
 			${"arrCodObjetoPesquisa$CodObjetoPesquisa"}['data'] = array_values(${"arrCodObjetoPesquisa$CodObjetoPesquisa"}['data']);
+
 			$series[] = ${"arrCodObjetoPesquisa$CodObjetoPesquisa"};
 		}
 
+		$this->render('teste2', array(
+			'anos'=>$anos,
+			'series'=>$series,
+		));
+	}
+	
+	public function actionSqlNovo()
+	{
+		$sqlObjetoPesquisa = '
+			SELECT CodObjetoPesquisa, NomeObjetoPesquisa
+			FROM objetopesquisa
+			order by CodObjetoPesquisa ASC
+		';
+		$commandObjetoPesquisa = Yii::app()->db->createCommand($sqlObjetoPesquisa);
+		$resultObjetoPesquisa = $commandObjetoPesquisa->queryAll();
+		
+		$series = array();
+		$i = 0;
+		$anos = array();
+		foreach ($resultObjetoPesquisa as $objetoPesquisa)
+		{
+			
+			$sql = "
+				SELECT OP.CodObjetoPesquisa, OP.NomeObjetoPesquisa, ART.AnoPublicacao, IF(OP.CodObjetoPesquisa is null, 0, count(*)) as Count
+				FROM artigo ART
+				LEFT JOIN objetopesquisa OP
+					ON OP.CodObjetoPesquisa = ART.CodObjetoPesquisa AND ART.CodObjetoPesquisa = $objetoPesquisa[CodObjetoPesquisa]
+				GROUP BY AnoPublicacao
+				ORDER BY AnoPublicacao ASC
+			";
+			$command = Yii::app()->db->createCommand($sql);
+			$result = $command->queryAll();
+			
+			foreach ($result as $r)
+			{
+				if ($i == 0)
+					$anos[] = $r['AnoPublicacao'];
+				
+				${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"}['data'][] = (int)$r['Count'];
+				if ($r['NomeObjetoPesquisa'] != NULL)
+					${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"}['name'] = $r['NomeObjetoPesquisa'];
+			}
+			$i++;
+			$series[] = ${"arrCodObjetoPesquisa$objetoPesquisa[CodObjetoPesquisa]"};
+			
+		}
+		//CVarDumper::dump($series, 10, true);die;
 		$this->render('teste2', array(
 			'anos'=>$anos,
 			'series'=>$series,
