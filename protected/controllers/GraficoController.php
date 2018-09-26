@@ -125,6 +125,6 @@ class GraficoController extends BaseController
 			);
 		}
 		
-		$this->render('instituicao', array('data'=>$data));
+		$this->render('_instituicao', array('data'=>$data));
 	}
 }
