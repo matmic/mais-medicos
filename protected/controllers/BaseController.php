@@ -40,7 +40,13 @@ class BaseController extends Controller
 				),
 				array(
 					'label'=>'Ano de Publicação',
-					'url'=>Yii::app()->createUrl('grafico/anoPublicacao', array()),
+					'url'=>Yii::app()->createUrl('grafico/anoPublicacaoObjetoPesquisa', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Instituição',
+					'url'=>Yii::app()->createUrl('grafico/instituicao', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
