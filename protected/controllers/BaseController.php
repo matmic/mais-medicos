@@ -44,12 +44,12 @@ class BaseController extends Controller
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
-				array(
-					'label'=>'Instituição',
-					'url'=>Yii::app()->createUrl('grafico/instituicao', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
+				// array(
+					// 'label'=>'Instituição',
+					// 'url'=>Yii::app()->createUrl('grafico/instituicao', array()),
+					// 'tipo'=>'entrada',
+					// 'pertenceDropdown'=>true,
+				// ),
 				array(
 					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,

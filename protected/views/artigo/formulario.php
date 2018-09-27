@@ -208,6 +208,8 @@
 	function salvarArtigo() 
 	{
 		var hasError = false;
+		var msg = 'Por favor, corrija o(s) seguinte(s) erro(s): \n';
+		
 		var e = document.getElementById("needs-validation");
 		if (!1 === e.checkValidity())
 		{
@@ -218,26 +220,52 @@
 		
 		if (!hasError)
 		{
-			var data = $("#needs-validation").serialize();
+			if ($('#Artigo_AnoPublicacao').val().length < 4)
+			{
+				msg += ' - Ano de Publicação deve estar no formato aaaa;\n';
+				hasError = true;
+			}
 			
-			$.ajax({
-				type: 'POST',
-				url: '<?php echo Yii::app()->createAbsoluteUrl("artigo/formulario"); ?>',
-				data:data,
-				success:function(retorno)
-				{
-					var obj = JSON.parse(retorno);
-
-					if (obj.erro == 0)
+			if ($('#Artigo_DataInicioEstudo').val().length < 10)
+			{
+				msg += ' - Data Inicial do Estudo deve estar no formato dd/mm/aaaa;\n';
+				hasError = true;
+			}
+			
+			if ($('#Artigo_DataFimEstudo').val().length < 10)
+			{
+				msg += ' - Data Final do Estudo deve estar no formato dd/mm/aaaa;\n';
+				hasError = true;
+			}
+			
+			if (!hasError)
+			{
+				var data = $("#needs-validation").serialize();
+				
+				$.ajax({
+					type: 'POST',
+					url: '<?php echo Yii::app()->createAbsoluteUrl("artigo/formulario"); ?>',
+					data:data,
+					success:function(retorno)
 					{
-						alert(obj.msg);
-						window.location.href = "<?php echo Yii::app()->createUrl('artigo/listar'); ?>";
-					}
-					else
-						alert('Por favor, corrija o(s) seguinte(s) erro(s):\n' + obj.msg);
-				},
-				dataType:'html',
-			});
+						var obj = JSON.parse(retorno);
+
+						if (obj.erro == 0)
+						{
+							alert(obj.msg);
+							window.location.href = "<?php echo Yii::app()->createUrl('artigo/listar'); ?>";
+						}
+						else
+							alert('Por favor, corrija o(s) seguinte(s) erro(s):\n' + obj.msg);
+					},
+					dataType:'html',
+				});
+			}
+			else
+			{
+				alert(msg);
+				return false;
+			}
 		}
 	}	
 </script>
