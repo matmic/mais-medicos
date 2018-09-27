@@ -1,6 +1,6 @@
 <h4 class="c-grey-900 mB-20">Lista de Instituições</h4>
 <?php
-	echo '<fieldset><legend>Filtro</legend>';
+	echo '<fieldset style="background-color: #F7F7F7;"><legend>Filtro</legend>';
 		echo CHtml::beginForm(Yii::app()->createUrl('instituicao/listar'), 'GET', array('class'=>'container'));
 		echo '<div class="form-group row">';
 			echo CHtml::label('Nome ou Sigla da Instituição: ', 'lblNomeSiglaInst', array('class'=>'col-sm-3 col-form-label alinharDireita'));

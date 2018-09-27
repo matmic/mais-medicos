@@ -12,7 +12,6 @@
 		<link href="<?php echo Yii::app()->baseUrl; ?>/css/style.css" rel="stylesheet">
 		<link href="<?php echo Yii::app()->baseUrl; ?>/css/tokenize2.css" rel="stylesheet">
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.mask.min.js"></script>
-		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/highcharts.js"></script>
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/tokenize2.js"></script>
 	</head>

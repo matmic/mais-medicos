@@ -24,7 +24,7 @@
 						),
 						'htmlOptions'=>array(
 							'class'=>'form-control',
-							'placeholder'=>'Digite o nome ou sigla da instituição',
+							'placeholder'=>'Digite o nome do artigo',
 							'encode'=>false,
 						),
 					));
@@ -97,7 +97,7 @@
 				'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
 				'header'=>'Operações',
 				'class'=>'CButtonColumn',
-				'template'=>'{view}{update}',
+				'template'=>'{view} {update}',
 				'buttons'=>array(
 					'view'=>array
 					(
