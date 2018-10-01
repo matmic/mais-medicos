@@ -345,6 +345,17 @@ class ArtigoController extends BaseController
 			$imgUrl = 'contrair.gif';
 		}
 		
+		/* SQL 
+		SELECT ART.* 
+		FROM artigo ART
+		INNER JOIN objetopesquisa OP 
+			ON OP.CodObjetoPesquisa = ART.CodObjetoPesquisa
+		INNER JOIN abrangencia AB 
+			ON AB.CodAbrangencia = ART.CodAbrangencia
+		INNER JOIN artigoinstituicao AI
+			ON AI.CodArtigo = ART.CodArtigo
+		*/
+		
 		$artigos = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findAll($criteria);
 		$dataProvider = new CArrayDataProvider($artigos, array(
 			'keyField'=>'CodArtigo',
