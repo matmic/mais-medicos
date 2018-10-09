@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Número de Artigos por Objeto de Pesquisa</h4>
+<h4 class="c-grey-900 mB-20">Número de Artigos por Tipo de Objetivo</h4>
 <div class="mT-30">
 	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
 </div>
@@ -6,39 +6,42 @@
 	setTimeout(function() {
 		Highcharts.chart('container', {
 			chart: {
-				plotBackgroundColor: null,
-				plotBorderWidth: null,
-				plotShadow: false,
-				type: 'pie'
+				type: 'column'
 			},
 			title: {
 				text: ''
 			},
 			subtitle: {
-				text: 'Clique em um pedaço para filtrar'
+				text: 'Clique nas colunas para filtrar'
+			},
+			xAxis: {
+				type: 'category',
+				title: {
+					text: 'Tipos de Objetivos'
+				}
+			},
+			yAxis: {
+				title: {
+					text: 'Número de Artigos'
+				}
 			},
 			tooltip: {
 				pointFormat: 'Número de Artigos: <b>{point.y}</b>'
 			},
 			plotOptions: {
-				pie: {
-					allowPointSelect: true,
+				series: {
 					cursor: 'pointer',
-					dataLabels: {
-						enabled: true,
-						format: '{point.percentage:.1f} %',
-					},
-					showInLegend: true,
 					point: {
 						events: {
-							click: function() {
-								window.open(this.options.url,'_blank');
+							click: function () {
+								window.open(this.options.url, '_blank');
 							}
 						}
-					},
+					}
 				}
 			},
 			series: [{
+				showInLegend: false,
 				colorByPoint: true,
 				data: <?php echo json_encode($data); ?>
 			}]

@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">InstituiÃ§Ãµes com mais artigos publicados</h4>
+<h4 class="c-grey-900 mB-20">Número de Artigos por Tipo de Publicação</h4>
 <div class="mT-30">
 	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
 </div>
@@ -17,16 +17,16 @@
 			xAxis: {
 				type: 'category',
 				title: {
-					text: 'InstituiÃ§Ãµes'
+					text: 'Publicado em'
 				}
 			},
 			yAxis: {
 				title: {
-					text: 'NÃºmero de Artigos'
+					text: 'Número de Artigos'
 				}
 			},
 			tooltip: {
-				pointFormat: 'NÃºmero de Artigos: <b>{point.y}</b>'
+				pointFormat: 'Número de Artigos: <b>{point.y}</b>'
 			},
 			plotOptions: {
 				series: {

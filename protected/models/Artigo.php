@@ -73,15 +73,12 @@ class Artigo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ObjetoPesquisa' => array(self::BELONGS_TO, 'Objetopesquisa', 'CodObjetoPesquisa'),
-			'Abrangencia' => array(self::BELONGS_TO, 'Abrangencia', 'CodAbrangencia'),
-			'autors' => array(self::MANY_MANY, 'Autor', 'artigoautor(CodArtigo, CodAutor)'),
-			'instituicaos' => array(self::MANY_MANY, 'Instituicao', 'artigoinstituicao(CodArtigo, CodInstituicao)'),
-			'tipoanalises' => array(self::MANY_MANY, 'Tipoanalise', 'artigotipoanalise(CodArtigo, CodTipoAnalise)'),
-			'tipoobjetivos' => array(self::MANY_MANY, 'Tipoobjetivo', 'artigotipoobjetivo(CodArtigo, CodTipoObjetivo)'),
-			'tipoprocedimentos' => array(self::MANY_MANY, 'Tipoprocedimento', 'artigotipoprocedimento(CodArtigo, CodTipoProcedimento)'),
-			'coordenadors' => array(self::HAS_MANY, 'Coordenador', 'CodArtigo'),
-			'palavras' => array(self::HAS_MANY, 'Palavra', 'CodArtigo'),
+			'ObjetoPesquisa' => array(self::BELONGS_TO, 'Objetopesquisa', 'CodObjetoPesquisa', 'joinType'=>'INNER JOIN'),
+			'Abrangencia' => array(self::BELONGS_TO, 'Abrangencia', 'CodAbrangencia', 'joinType'=>'INNER JOIN'),
+			'Instituicao'=> array(self::BELONGS_TO, 'ArtigoInstituicao', 'CodArtigo', 'joinType'=>'INNER JOIN'),
+			'Analise'=> array(self::BELONGS_TO, 'ArtigoTipoAnalise', 'CodArtigo', 'joinType'=>'INNER JOIN'),
+			'Objetivo'=> array(self::BELONGS_TO, 'ArtigoTipoObjetivo', 'CodArtigo', 'joinType'=>'INNER JOIN'),
+			'Procedimento'=> array(self::BELONGS_TO, 'ArtigoTipoProcedimento', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 		);
 	}
 

@@ -299,26 +299,44 @@ class ArtigoController extends BaseController
 	{
 		$CodArtigo = '';
 		$NomeArtigo = '';
-		$CodObjetoPesquisa = '';
+		
+		$CodInstituicao = '';
+		$NomeInstituicao = '';
+		
 		$AnoPublicacao = '';
-		$CodObjetoPesquisa = '';
 		$CodAbrangencia = '';
+		
+		$CodObjetoPesquisa = '';
+		$IndicadorRevistaConferencia = '';
+		
+		$CodTipoAnalise = '';
+		$CodTipoObjetivo = '';
+		$CodTipoProcedimento = '';
+		
+		$imgFiltro = Yii::app()->baseUrl . '/images/expandir.gif';
 		$filtroUsado = false;
-		$imgUrl = 'expandir.gif';
+		$with = array('ObjetoPesquisa', 'Abrangencia');
 		
 		$criteria = new CDbCriteria();
-		$criteria->order = 'CodArtigo ASC';
-		
-		if (isset($_GET['NomeArtigo']) && !empty($_GET['NomeArtigo']))
+		$criteria->order = 't.CodArtigo ASC';
+
+		if (isset($_GET['CodArtigo']) && !empty($_GET['CodArtigo']))
 		{
-			if (isset($_GET['CodArtigo']) && !empty($_GET['CodArtigo']))
-			{
-				$criteria->addCondition('CodArtigo = ' . $_GET['CodArtigo']);
-				$CodArtigo = $_GET['CodArtigo'];
-				$NomeArtigo = $_GET['NomeArtigo'];
-				$filtroUsado = true;
-				$imgUrl = 'contrair.gif';
-			}
+			$criteria->addCondition('t.CodArtigo = ' . $_GET['CodArtigo']);
+			$CodArtigo = $_GET['CodArtigo'];
+			$NomeArtigo = $_GET['NomeArtigo'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+		
+		if (isset($_GET['CodInstituicao']) && !empty($_GET['CodInstituicao']))
+		{
+			$with[] = 'Instituicao';
+			$criteria->addCondition('Instituicao.CodInstituicao = ' . $_GET['CodInstituicao']);
+			$CodInstituicao = $_GET['CodInstituicao'];
+			$NomeInstituicao = $_GET['NomeInstituicao'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
 		}
 		
 		if (isset($_GET['AnoPublicacao']) && !empty($_GET['AnoPublicacao']))
@@ -326,15 +344,7 @@ class ArtigoController extends BaseController
 			$criteria->addCondition('t.AnoPublicacao = ' . $_GET['AnoPublicacao']);
 			$AnoPublicacao = $_GET['AnoPublicacao'];
 			$filtroUsado = true;
-			$imgUrl = 'contrair.gif';
-		}
-		
-		if (isset($_GET['CodObjetoPesquisa']) && !empty($_GET['CodObjetoPesquisa']))
-		{
-			$criteria->addCondition('t.CodObjetoPesquisa = ' . $_GET['CodObjetoPesquisa']);
-			$CodObjetoPesquisa = $_GET['CodObjetoPesquisa'];
-			$filtroUsado = true;
-			$imgUrl = 'contrair.gif';
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
 		}
 		
 		if (isset($_GET['CodAbrangencia']) && !empty($_GET['CodAbrangencia']))
@@ -342,7 +352,54 @@ class ArtigoController extends BaseController
 			$criteria->addCondition('t.CodAbrangencia = ' . $_GET['CodAbrangencia']);
 			$CodAbrangencia = $_GET['CodAbrangencia'];
 			$filtroUsado = true;
-			$imgUrl = 'contrair.gif';
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+		
+		if (isset($_GET['CodObjetoPesquisa']) && !empty($_GET['CodObjetoPesquisa']))
+		{
+			$criteria->addCondition('t.CodObjetoPesquisa = ' . $_GET['CodObjetoPesquisa']);
+			$CodObjetoPesquisa = $_GET['CodObjetoPesquisa'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+
+		if (isset($_GET['IndicadorRevistaConferencia']) && !empty($_GET['IndicadorRevistaConferencia']))
+		{
+			if ($_GET['IndicadorRevistaConferencia'] == 1)
+				$criteria->addCondition('t.IndicadorRevistaConferencia = "R"');
+			else
+				$criteria->addCondition('t.IndicadorRevistaConferencia = "C"');
+			
+			$IndicadorRevistaConferencia = $_GET['IndicadorRevistaConferencia'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+		
+		if (isset($_GET['CodTipoAnalise']) && !empty($_GET['CodTipoAnalise']))
+		{
+			$with[] = 'Analise';
+			$criteria->addCondition('Analise.CodTipoAnalise = ' . $_GET['CodTipoAnalise']);
+			$CodTipoAnalise = $_GET['CodTipoAnalise'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+		
+		if (isset($_GET['CodTipoObjetivo']) && !empty($_GET['CodTipoObjetivo']))
+		{
+			$with[] = 'Objetivo';
+			$criteria->addCondition('Objetivo.CodTipoObjetivo = ' . $_GET['CodTipoObjetivo']);
+			$CodTipoObjetivo = $_GET['CodTipoObjetivo'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+		
+		if (isset($_GET['CodTipoProcedimento']) && !empty($_GET['CodTipoProcedimento']))
+		{
+			$with[] = 'Procedimento';
+			$criteria->addCondition('Procedimento.CodTipoProcedimento = ' . $_GET['CodTipoProcedimento']);
+			$CodTipoProcedimento = $_GET['CodTipoProcedimento'];
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
 		}
 		
 		/* SQL 
@@ -356,7 +413,9 @@ class ArtigoController extends BaseController
 			ON AI.CodArtigo = ART.CodArtigo
 		*/
 		
-		$artigos = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findAll($criteria);
+		//CVarDumper::dump($with, 10, true);die;
+		
+		$artigos = Artigo::model()->with($with)->findAll($criteria);
 		$dataProvider = new CArrayDataProvider($artigos, array(
 			'keyField'=>'CodArtigo',
 			'pagination'=>array(
@@ -368,12 +427,17 @@ class ArtigoController extends BaseController
 			'dataProvider'=>$dataProvider,
 			'CodArtigo'=>$CodArtigo,
 			'NomeArtigo'=>$NomeArtigo,
-			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
+			'CodInstituicao'=>$CodInstituicao,
+			'NomeInstituicao'=>$NomeInstituicao,
 			'AnoPublicacao'=>$AnoPublicacao,
-			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
 			'CodAbrangencia'=>$CodAbrangencia,
+			'CodObjetoPesquisa'=>$CodObjetoPesquisa,
+			'IndicadorRevistaConferencia'=>$IndicadorRevistaConferencia,
+			'CodTipoAnalise'=>$CodTipoAnalise,
+			'CodTipoObjetivo'=>$CodTipoObjetivo,
+			'CodTipoProcedimento'=>$CodTipoProcedimento,
 			'filtroUsado'=>$filtroUsado,
-			'imgUrl'=>$imgUrl
+			'imgFiltro'=>$imgFiltro,
 		));
 	}
 }

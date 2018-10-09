@@ -121,10 +121,116 @@ class GraficoController extends BaseController
 			$data[] = array(
 				'name' => $row['NomeInstituicao'], 
 				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('CodInstituicao'=>$row['CodInstituicao'])),
+				'url' => Yii::app()->createUrl('artigo/listar', array('CodInstituicao'=>$row['CodInstituicao'], 'NomeInstituicao'=>$row['NomeInstituicao'])),
 			);
 		}
 		
 		$this->render('_instituicao', array('data'=>$data));
+	}
+	
+	public function actionTipoAnalise()
+	{
+		$sql = '
+			SELECT TA.NomeTipoAnalise, ATA.CodTipoAnalise, COUNT(*) AS Count
+			FROM artigotipoanalise ATA
+			INNER JOIN tipoanalise TA
+				ON TA.CodTipoAnalise = ATA.CodTipoAnalise
+			GROUP BY CodTipoAnalise
+		';
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		foreach ($result as $row)
+		{
+			$data[] = array(
+				'name' => $row['NomeTipoAnalise'], 
+				'y' => (int)$row['Count'],
+				'url' => Yii::app()->createUrl('artigo/listar', array('CodTipoAnalise'=>$row['CodTipoAnalise'])),
+			);
+		}
+		
+		$this->render('_tipoAnalise', array('data'=>$data));
+	}
+	
+	public function actionTipoObjetivo()
+	{
+		$sql = '
+			SELECT TOB.NomeTipoObjetivo, ATO.CodTipoObjetivo, COUNT(*) AS Count
+			FROM artigotipoobjetivo ATO
+			INNER JOIN tipoobjetivo TOB
+				ON TOB.CodTipoObjetivo = ATO.CodTipoObjetivo
+			GROUP BY CodTipoObjetivo
+		';
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		foreach ($result as $row)
+		{
+			$data[] = array(
+				'name' => $row['NomeTipoObjetivo'], 
+				'y' => (int)$row['Count'],
+				'url' => Yii::app()->createUrl('artigo/listar', array('CodTipoObjetivo'=>$row['CodTipoObjetivo'])),
+			);
+		}
+		
+		$this->render('_tipoObjetivo', array('data'=>$data));
+	}
+	
+	public function actionTipoProcedimento()
+	{
+		$sql = '
+			SELECT TP.NomeTipoProcedimento, ATP.CodTipoProcedimento, COUNT(*) AS Count
+			FROM artigotipoprocedimento ATP
+			INNER JOIN tipoprocedimento TP
+				ON TP.CodTipoProcedimento = ATP.CodTipoProcedimento
+			GROUP BY CodTipoProcedimento
+		';
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		foreach ($result as $row)
+		{
+			$data[] = array(
+				'name' => $row['NomeTipoProcedimento'], 
+				'y' => (int)$row['Count'],
+				'url' => Yii::app()->createUrl('artigo/listar', array('CodTipoProcedimento'=>$row['CodTipoProcedimento'])),
+			);
+		}
+		
+		$this->render('_tipoProcedimento', array('data'=>$data));
+	}
+	
+	public function actionTipoPublicacao()
+	{
+		$sql = "
+			SELECT COUNT(*) AS Count,
+			CASE
+				WHEN IndicadorRevistaConferencia = 'C' THEN 1
+				ELSE 2
+			END AS IndicadorRevistaConferencia,
+			CASE
+				WHEN IndicadorRevistaConferencia = 'R' THEN 'Revista'
+				ELSE 'Conferência'
+			END AS TipoPublicacao
+			FROM artigo
+			GROUP BY IndicadorRevistaConferencia
+		";
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		foreach ($result as $row)
+		{
+			$data[] = array(
+				'name' => $row['TipoPublicacao'], 
+				'y' => (int)$row['Count'],
+				'url' => Yii::app()->createUrl('artigo/listar', array('IndicadorRevistaConferencia'=>$row['IndicadorRevistaConferencia'])),
+			);
+		}
+		
+		$this->render('_tipoProcedimento', array('data'=>$data));
 	}
 }

@@ -6,60 +6,21 @@
 		echo '<br /><br />';
 	}
 	
-	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="clicavel toggleField" src="'. Yii::app()->baseUrl . '/images/'. $imgUrl . '">Filtro</legend>';
-		echo '<div id="divFieldset" class="' . ($filtroUsado ? 'collapse show' : 'collapse') .'">';
-			echo CHtml::beginForm(Yii::app()->createUrl('artigo/listar'), 'GET', array('class'=>'container'));
-			echo '<div class="form-group row">';
-				echo CHtml::label('Nome do Artigo: ', 'lblNomeArtigo', array('class'=>'col-sm-3 col-form-label alinharDireita'));
-				echo '<div class="col-sm-9">';
-					$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-						'sourceUrl'=>array('auxiliar/autoCompleteArtigo'),
-						'name'=>'NomeArtigo',
-						'value' => $NomeArtigo,
-						'options'=>array(
-							'minLength'=>'3',
-							'select'=>"js: function(event, ui) {
-								$('#iptCodArtigo').val(ui.item['CodArtigo']);                   
-							}"
-						),
-						'htmlOptions'=>array(
-							'class'=>'form-control',
-							'placeholder'=>'Digite o nome do artigo',
-							'encode'=>false,
-						),
-					));
-					echo CHtml::hiddenField('CodArtigo', $CodArtigo, array('id'=>'iptCodArtigo'));
-				echo '</div>';
-			echo '</div>';
-			
-			echo '<div class="form-group row">';
-				echo CHtml::label('Ano de Publicação: ', 'lblAnoPublicacao', array('class'=>'col-sm-3 col-form-label alinharDireita'));
-				echo '<div class="col-sm-9">';
-					echo CHtml::numberField('AnoPublicacao', $AnoPublicacao, array('placeholder'=>'aaaa', 'class'=>'form-control', 'min'=>2000, 'max'=>2100));
-				echo '</div>';
-			echo '</div>';
-			
-			echo '<div class="form-group row">';
-				echo CHtml::label('Objeto de Pesquisa: ', 'lblObjetoPesquisa', array('class'=>'col-sm-3 col-form-label alinharDireita'));
-				echo '<div class="col-sm-9">';
-					echo CHtml::dropDownList('CodObjetoPesquisa', $CodObjetoPesquisa, ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
-				echo '</div>';
-			echo '</div>';
-			
-			echo '<div class="form-group row">';
-				echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-3 col-form-label alinharDireita'));
-				echo '<div class="col-sm-9">';
-					echo CHtml::dropdownList('CodAbrangencia', $CodAbrangencia, Abrangencia::getAbrangencias(), array('empty'=>'Selecione...', 'class'=>'form-control'));
-				echo '</div>';
-			echo '</div>';
-			
-			echo '<div class="text-center form-group row">';
-				echo '<div class="col-sm-12">';
-					echo CHtml::submitButton('Filtrar', array('class'=>"btn btn-primary"));
-				echo '</div>';
-			echo '</div>';
-		echo '</div>';
-	echo '</fieldset>';
+	$this->renderPartial('filtro', array(
+		'CodArtigo'=>$CodArtigo,
+		'NomeArtigo'=>$NomeArtigo,
+		'CodInstituicao'=>$CodInstituicao,
+		'NomeInstituicao'=>$NomeInstituicao,
+		'AnoPublicacao'=>$AnoPublicacao,
+		'CodAbrangencia'=>$CodAbrangencia,
+		'CodObjetoPesquisa'=>$CodObjetoPesquisa,
+		'IndicadorRevistaConferencia'=>$IndicadorRevistaConferencia,
+		'CodTipoAnalise'=>$CodTipoAnalise,
+		'CodTipoObjetivo'=>$CodTipoObjetivo,
+		'CodTipoProcedimento'=>$CodTipoProcedimento,
+		'filtroUsado'=>$filtroUsado,
+		'imgFiltro'=>$imgFiltro,
+	));
 	
 	$this->widget('zii.widgets.grid.CGridView', array(
 		'dataProvider'=>$dataProvider,
@@ -76,6 +37,10 @@
 			array(
 				'header'=>'Objeto de Pesquisa',
 				'value'=>'$data->ObjetoPesquisa->NomeObjetoPesquisa',
+			),
+			array(
+				'header'=>'Publicado Em',
+				'value'=>'$data->IndicadorRevistaConferencia == "R" ? "Revista" : "Conferência"',
 			),
 			array(
 				'header'=>'Revista / Conferência',
@@ -120,14 +85,35 @@
 <script>
 	$(document).ready(function() {
 		$('.toggleField').unbind('click');
-	    $('.toggleField').click(function() {
-	        if($(this).attr('src')=='<?php echo Yii::app()->baseUrl; ?>/images/contrair.gif') {
+	    
+		$('.toggleField').click(function() {
+	        if($(this).attr('src')=='<?php echo Yii::app()->baseUrl; ?>/images/contrair.gif') 
+			{
 	            $(this).attr('src','<?php echo Yii::app()->baseUrl; ?>/images/expandir.gif');
-	        } else {
+	        } else 
+			{
 	            $(this).attr('src','<?php echo Yii::app()->baseUrl; ?>/images/contrair.gif');
 	        }
 	        $('#divFieldset').slideToggle();
 	    });
 	    
+		$('#AnoPublicacao').mask('0000');
 	});
+	
+	$('#NomeArtigo').change(function() {
+		if ($(this).val() == '')
+			$('#iptCodArtigo').val('');
+	});
+	
+	$('#NomeInstituicao').change(function() {
+		if ($(this).val() == '')
+			$('#iptCodInstituicao').val('');
+	});
+	
+	function limparFiltros()
+	{
+		$('#frmFiltro *').filter(':input').each(function(){
+			$(this).val('');
+		});
+	}
 </script>

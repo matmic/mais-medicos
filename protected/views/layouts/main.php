@@ -2,8 +2,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-		<!--<meta charset="utf-8">-->
-		<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+		<meta charset="utf-8">
+		<!--<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">-->
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 		<title>Portal Programa Mais Médicos</title>
 		<style>
@@ -37,10 +37,10 @@
 								<a class="sidebar-link td-n" href="<?php echo Yii::app()->baseUrl; ?>/site/index">
 									<div class="peers ai-c fxw-nw">
 										<div class="peer">
-											<div class="logo"><img src="<?php echo Yii::app()->baseUrl; ?>/images/mais-medicos-brasileiros.png" alt=""></div>
+											<div class="logo"><!--<img src="<?php echo Yii::app()->baseUrl; ?>/images/mais-medicos-brasileiros.png" alt="">--></div>
 										</div>
 										<div class="peer peer-greed">
-											<h5 class="lh-1 mB-0 logo-text">PPMM</h5>
+											<h5 class="lh-1 mB-0 logo-text">PMM-PUB</h5>
 										</div>
 									</div>
 								</a>

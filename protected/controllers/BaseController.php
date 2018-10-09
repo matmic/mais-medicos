@@ -44,155 +44,88 @@ class BaseController extends Controller
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
-				// array(
-					// 'label'=>'Instituição',
-					// 'url'=>Yii::app()->createUrl('grafico/instituicao', array()),
-					// 'tipo'=>'entrada',
-					// 'pertenceDropdown'=>true,
-				// ),
+				array(
+					'label'=>'Instituição',
+					'url'=>Yii::app()->createUrl('grafico/instituicao', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Abordagem',
+					'url'=>Yii::app()->createUrl('grafico/tipoAnalise', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Objetivo',
+					'url'=>Yii::app()->createUrl('grafico/tipoObjetivo', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Procedimento',
+					'url'=>Yii::app()->createUrl('grafico/tipoProcedimento', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Publicação',
+					'url'=>Yii::app()->createUrl('grafico/tipoPublicacao', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
 				array(
 					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
 				),
 				// INSTITUIÇÕES
 				array(
-					'label'=>'Ger. Instituições',
+					'label'=>'Instituições',
 					'icone'=>'c-green-500 ti-blackboard',
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Nova Instituição',
-					'url'=>Yii::app()->createUrl('instituicao/formulario', array()),
 					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Listar Instituições',
-					'url'=>Yii::app()->createUrl('instituicao/listar', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('instituicao/listar', array()),
 				),
 				// OBJETOS DE PESQUISA
 				array(
-					'label'=>'Ger. Objetos de Pesquisa',
+					'label'=>'Objetos de Pesquisa',
 					'icone'=>'c-brown-500 ti-target',
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Novo Objeto de Pesquisa',
-					'url'=>Yii::app()->createUrl('objetoPesquisa/formulario', array()),
 					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Listar Objetos de Pesquisa',
-					'url'=>Yii::app()->createUrl('objetoPesquisa/listar', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('objetoPesquisa/listar', array()),
 				),
 				// ABRANGÊNCIA
 				array(
-					'label'=>'Ger. Abrangências',
+					'label'=>'Abrangências',
 					'icone'=>'c-red-500 ti-fullscreen',
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Nova Abrangência',
-					'url'=>Yii::app()->createUrl('abrangencia/formulario', array()),
 					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Listar Abrangências',
-					'url'=>Yii::app()->createUrl('abrangencia/listar', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('abrangencia/listar', array()),
 				),
 				// ABORDAGEM - TIPO ANÁLISE
 				array(
-					'label'=>'Ger. Abordagens',
+					'label'=>'Abordagens',
 					'icone'=>'c-yellow-500 ti-search',
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Nova Abordagem',
-					'url'=>Yii::app()->createUrl('tipoAnalise/formulario', array()),
 					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Listar Abordagens',
-					'url'=>Yii::app()->createUrl('tipoAnalise/listar', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('tipoAnalise/listar', array()),
 				),
 				// TIPO OBJETIVO
 				array(
-					'label'=>'Ger. Objetivos',
+					'label'=>'Objetivos',
 					'icone'=>'c-orange-500 ti-direction-alt',
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Novo Objetivo',
-					'url'=>Yii::app()->createUrl('tipoObjetivo/formulario', array()),
 					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Listar Objetivos',
+					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('tipoObjetivo/listar', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
 				),
 				array(
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>false,
-				),
-				// TIPO PROCEDIMENTO
-				array(
-					'label'=>'Ger. Procedimentos',
+					'label'=>'Procedimentos',
 					'icone'=>'c-blue-500 ti-stats-up',
-					'tipo'=>'dropdown',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Novo Procedimento',
-					'url'=>Yii::app()->createUrl('tipoProcedimento/formulario', array()),
 					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'label'=>'Listar Procedimentos',
-					'url'=>Yii::app()->createUrl('tipoProcedimento/listar', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
-				),
-				array(
-					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('tipoProcedimento/listar', array()),
 				),
-				// ARTIGO
+				// USUÁRIOS
 				array(
 					'label'=>'Usuários',
 					'icone'=>'c-black-500 ti-user',
