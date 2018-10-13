@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "unidadefederacao".
+ * This is the model class for table "UnidadeFederacao".
  *
- * The followings are the available columns in table 'unidadefederacao':
+ * The followings are the available columns in table 'UnidadeFederacao':
  * @property integer $CodUF
  * @property string $NomeUF
  * @property string $SiglaUF
@@ -18,7 +18,7 @@ class UnidadeFederacao extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'unidadefederacao';
+		return 'UnidadeFederacao';
 	}
 
 	/**

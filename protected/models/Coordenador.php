@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "coordenador".
+ * This is the model class for table "Coordenador".
  *
- * The followings are the available columns in table 'coordenador':
+ * The followings are the available columns in table 'Coordenador':
  * @property integer $CodCoordenador
  * @property string $NomeCoordenador
  *
@@ -17,7 +17,7 @@ class Coordenador extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'coordenador';
+		return 'Coordenador';
 	}
 
 	/**
@@ -45,7 +45,7 @@ class Coordenador extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'artigos' => array(self::MANY_MANY, 'Artigo', 'artigocoordenador(CodCoordenador, CodArtigo)'),
+			'artigos' => array(self::MANY_MANY, 'Artigo', 'ArtigoCoordenador(CodCoordenador, CodArtigo)'),
 		);
 	}
 
@@ -107,7 +107,7 @@ class Coordenador extends CActiveRecord
 	
 	private function setCodCoordenador()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodCoordenador), 0)+1 AS CodCoordenador FROM coordenador');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodCoordenador), 0)+1 AS CodCoordenador FROM Coordenador');
 		$result = $command->queryRow();
 		$this->CodCoordenador = $result['CodCoordenador'];
 	}

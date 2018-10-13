@@ -30,36 +30,34 @@
 		echo '</div>';
 	echo '</fieldset>';
 
-	$this->widget('zii.widgets.grid.CGridView', array(
-		'dataProvider'=>$dataProvider,
-		'itemsCssClass'=>'table table-striped table-bordered table-condensed',
-		'columns'=>array(
-			array(
-				'header'=>'#',
-				'value'=>'$data->CodInstituicao',
+	echo '<div class="table-responsive">';
+		$this->widget('zii.widgets.grid.CGridView', array(
+			'dataProvider'=>$dataProvider,
+			'itemsCssClass'=>'table table-striped table-bordered table-condensed',
+			'columns'=>array(
+				array(
+					'header'=>'Nome',
+					'value'=>'$data->NomeInstituicao',
+				),
+				array(
+					'header'=>'Sigla',
+					'value'=>'$data->SiglaInstituicao',
+				),
+				array(
+					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
+					'header'=>'Operações',
+					'class'=>'CButtonColumn',
+					'template'=>'{update}',
+					'buttons'=>array(
+						'update' => array
+						(
+							'label'=>'Editar',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
+							'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
+						),
+					)
+				),
 			),
-			array(
-				'header'=>'Nome',
-				'value'=>'$data->NomeInstituicao',
-			),
-			array(
-				'header'=>'Sigla',
-				'value'=>'$data->SiglaInstituicao',
-			),
-			array(
-				'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
-				'header'=>'Operações',
-				'class'=>'CButtonColumn',
-				'template'=>'{update}',
-				'buttons'=>array(
-					'update' => array
-					(
-						'label'=>'Editar',
-						'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
-						'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
-					),
-				)
-			),
-		),
-	));
+		));
+	echo '</div>';
 ?>

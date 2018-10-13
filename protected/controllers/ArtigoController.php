@@ -290,11 +290,6 @@ class ArtigoController extends BaseController
 		}
 	}
 	
-	public function actionFormulario2()
-	{
-		$this->render('formulario2');
-	}
-	
 	public function actionListar()
 	{
 		$CodArtigo = '';

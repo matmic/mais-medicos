@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "artigotipoanalise".
+ * This is the model class for table "ArtigoTipoAnalise".
  *
- * The followings are the available columns in table 'artigotipoanalise':
+ * The followings are the available columns in table 'ArtigoTipoAnalise':
  * @property integer $CodArtigo
  * @property integer $CodTipoAnalise
  */
@@ -14,7 +14,7 @@ class ArtigoTipoAnalise extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'artigotipoanalise';
+		return 'ArtigoTipoAnalise';
 	}
 
 	/**
@@ -94,7 +94,7 @@ class ArtigoTipoAnalise extends CActiveRecord
 	
 	public static function deletarRelacoes($CodArtigo) 
 	{
-		$command = Yii::app()->db->createCommand('DELETE FROM artigotipoanalise WHERE CodArtigo = :CodArtigo');
+		$command = Yii::app()->db->createCommand('DELETE FROM ArtigoTipoAnalise WHERE CodArtigo = :CodArtigo');
 		$command->bindParam(":CodArtigo", $CodArtigo, PDO::PARAM_INT);
 		$result = $command->query();
 	}

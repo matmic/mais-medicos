@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "objetopesquisa".
+ * This is the model class for table "ObjetoPesquisa".
  *
- * The followings are the available columns in table 'objetopesquisa':
+ * The followings are the available columns in table 'ObjetoPesquisa':
  * @property integer $CodObjetoPesquisa
  * @property string $NomeObjetoPesquisa
  * @property integer $CodObjetoPesquisaPai
@@ -20,7 +20,7 @@ class ObjetoPesquisa extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'objetopesquisa';
+		return 'ObjetoPesquisa';
 	}
 
 	/**
@@ -115,7 +115,7 @@ class ObjetoPesquisa extends CActiveRecord
 	
 	private function setCodObjetoPesquisa()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodObjetoPesquisa), 0)+1 AS CodObjetoPesquisa FROM objetopesquisa');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodObjetoPesquisa), 0)+1 AS CodObjetoPesquisa FROM ObjetoPesquisa');
 		$result = $command->queryRow();
 		$this->CodObjetoPesquisa = $result['CodObjetoPesquisa'];
 	}

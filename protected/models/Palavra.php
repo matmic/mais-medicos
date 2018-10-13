@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "palavra".
+ * This is the model class for table "Palavra".
  *
- * The followings are the available columns in table 'palavra':
+ * The followings are the available columns in table 'Palavra':
  * @property integer $CodPalavra
  * @property string $NomePalavra
  * @property integer $CodArtigo
@@ -18,7 +18,7 @@ class Palavra extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'palavra';
+		return 'Palavra';
 	}
 
 	/**
@@ -96,7 +96,7 @@ class Palavra extends CActiveRecord
 	
 	private function setCodPalavra()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodPalavra), 0)+1 AS CodPalavra FROM palavra');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodPalavra), 0)+1 AS CodPalavra FROM Palavra');
 		$result = $command->queryRow();
 		$this->CodPalavra = $result['CodPalavra'];
 	}

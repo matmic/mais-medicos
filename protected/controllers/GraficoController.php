@@ -7,8 +7,8 @@ class GraficoController extends BaseController
 		// BUSCA A QUANTIDADE DE ARTIGOS POR OBJETO DE PESQUISA, E AGRUPA-OS PELO NOME
 		$sql = '
 			SELECT OP.CodObjetoPesquisa, OP.NomeObjetoPesquisa, COUNT(ART.CodObjetoPesquisa) AS Count
-			FROM objetopesquisa OP
-			LEFT JOIN artigo ART 
+			FROM ObjetoPesquisa OP
+			LEFT JOIN Artigo ART 
 				ON OP.CodObjetoPesquisa = ART.CodObjetoPesquisa
 			GROUP BY NomeObjetoPesquisa
 		';
@@ -34,7 +34,7 @@ class GraficoController extends BaseController
 		// BUSCA OS ANOS DISTINTOS NA TABELA DE ARTIGO E ORDENA DO MENOR PARA O MAIOR
 		$sqlAnos = '
 			SELECT DISTINCT AnoPublicacao
-			FROM artigo 
+			FROM Artigo 
 			ORDER BY AnoPublicacao ASC
 		';
 		$commandAnos = Yii::app()->db->createCommand($sqlAnos);
@@ -43,8 +43,8 @@ class GraficoController extends BaseController
 		// BUSCA OS OBJETOS DE PESQUISA CADASTRADOS NO BANCO E ORDENA PELO COD (MENOR PARA MAIOR)
 		$sqlObjetoPesquisa = '
 			SELECT CodObjetoPesquisa, NomeObjetoPesquisa
-			FROM objetopesquisa
-			order by CodObjetoPesquisa ASC
+			FROM ObjetoPesquisa
+			ORDER BY CodObjetoPesquisa ASC
 		';
 		$commandObjetoPesquisa = Yii::app()->db->createCommand($sqlObjetoPesquisa);
 		$resultObjetoPesquisa = $commandObjetoPesquisa->queryAll();
@@ -75,8 +75,8 @@ class GraficoController extends BaseController
 		{
 			$sql = "
 				SELECT OP.CodObjetoPesquisa, OP.NomeObjetoPesquisa, ART.AnoPublicacao, COUNT(*) AS Count 
-				FROM artigo ART
-				INNER JOIN objetopesquisa OP
+				FROM Artigo ART
+				INNER JOIN ObjetoPesquisa OP
 					ON OP.CodObjetoPesquisa = ART.CodObjetoPesquisa
 				WHERE ART.CodObjetoPesquisa = $CodObjetoPesquisa
 				GROUP BY AnoPublicacao, CodObjetoPesquisa
@@ -105,8 +105,8 @@ class GraficoController extends BaseController
 	{
 		$sql = '
 			SELECT INST.NomeInstituicao, ARTINST.CodInstituicao, COUNT(*) AS Count
-			FROM artigoinstituicao ARTINST
-			INNER JOIN instituicao INST
+			FROM ArtigoInstituicao ARTINST
+			INNER JOIN Instituicao INST
 				ON INST.CodInstituicao = ARTINST.CodInstituicao
 			GROUP BY ARTINST.CodInstituicao
 			ORDER BY Count DESC
@@ -132,8 +132,8 @@ class GraficoController extends BaseController
 	{
 		$sql = '
 			SELECT TA.NomeTipoAnalise, ATA.CodTipoAnalise, COUNT(*) AS Count
-			FROM artigotipoanalise ATA
-			INNER JOIN tipoanalise TA
+			FROM ArtigoTipoAnalise ATA
+			INNER JOIN TipoAnalise TA
 				ON TA.CodTipoAnalise = ATA.CodTipoAnalise
 			GROUP BY CodTipoAnalise
 		';
@@ -157,8 +157,8 @@ class GraficoController extends BaseController
 	{
 		$sql = '
 			SELECT TOB.NomeTipoObjetivo, ATO.CodTipoObjetivo, COUNT(*) AS Count
-			FROM artigotipoobjetivo ATO
-			INNER JOIN tipoobjetivo TOB
+			FROM ArtigoTipoObjetivo ATO
+			INNER JOIN TipoObjetivo TOB
 				ON TOB.CodTipoObjetivo = ATO.CodTipoObjetivo
 			GROUP BY CodTipoObjetivo
 		';
@@ -182,8 +182,8 @@ class GraficoController extends BaseController
 	{
 		$sql = '
 			SELECT TP.NomeTipoProcedimento, ATP.CodTipoProcedimento, COUNT(*) AS Count
-			FROM artigotipoprocedimento ATP
-			INNER JOIN tipoprocedimento TP
+			FROM ArtigoTipoProcedimento ATP
+			INNER JOIN TipoProcedimento TP
 				ON TP.CodTipoProcedimento = ATP.CodTipoProcedimento
 			GROUP BY CodTipoProcedimento
 		';
@@ -215,7 +215,7 @@ class GraficoController extends BaseController
 				WHEN IndicadorRevistaConferencia = 'R' THEN 'Revista'
 				ELSE 'Conferência'
 			END AS TipoPublicacao
-			FROM artigo
+			FROM Artigo
 			GROUP BY IndicadorRevistaConferencia
 		";
 		$command = Yii::app()->db->createCommand($sql);

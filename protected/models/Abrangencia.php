@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "abrangencia".
+ * This is the model class for table "Abrangencia".
  *
- * The followings are the available columns in table 'abrangencia':
+ * The followings are the available columns in table 'Abrangencia':
  * @property integer $CodAbrangencia
  * @property string $NomeAbrangencia
  *
@@ -17,7 +17,7 @@ class Abrangencia extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'abrangencia';
+		return 'Abrangencia';
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Abrangencia extends CActiveRecord
 	
 	private function setCodAbrangencia()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodAbrangencia), 0)+1 AS CodAbrangencia FROM abrangencia');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodAbrangencia), 0)+1 AS CodAbrangencia FROM Abrangencia');
 		$result = $command->queryRow();
 		$this->CodAbrangencia = $result['CodAbrangencia'];
 	}

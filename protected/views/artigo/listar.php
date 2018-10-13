@@ -22,65 +22,63 @@
 		'imgFiltro'=>$imgFiltro,
 	));
 	
-	$this->widget('zii.widgets.grid.CGridView', array(
-		'dataProvider'=>$dataProvider,
-		'itemsCssClass'=>'table table-striped table-bordered table-condensed',
-		'columns'=>array(
-			array(
-				'header'=>'#',
-				'value'=>'$data->CodArtigo',
+	echo '<div class="table-responsive">';
+		$this->widget('zii.widgets.grid.CGridView', array(
+			'dataProvider'=>$dataProvider,
+			'itemsCssClass'=>'table table-striped table-bordered table-condensed',
+			'columns'=>array(
+				array(
+					'header'=>'Nome',
+					'value'=>'$data->NomeArtigo',
+				),
+				array(
+					'header'=>'Objeto de Pesquisa',
+					'value'=>'$data->ObjetoPesquisa->NomeObjetoPesquisa',
+				),
+				array(
+					'header'=>'Publicado Em',
+					'value'=>'$data->IndicadorRevistaConferencia == "R" ? "Revista" : "Conferência"',
+				),
+				array(
+					'header'=>'Revista / Conferência',
+					'value'=>'$data->NomeRevistaConferencia',
+				),
+				array(
+					'header'=>'Volume',
+					'value'=>'empty($data->Volume) ? "-" : $data->Volume',
+				),
+				array(
+					'header'=>'Ano de Publicação',
+					'value'=>'$data->AnoPublicacao',
+				),
+				array(
+					'header'=>'Abrangência',
+					'value'=>'$data->Abrangencia->NomeAbrangencia',
+				),
+				array(
+					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
+					'header'=>'Operações',
+					'class'=>'CButtonColumn',
+					'template'=>'{view} {update}',
+					'buttons'=>array(
+						'view'=>array
+						(
+							'label'=>'Visualizar',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
+							'url'=>'Yii::app()->createUrl("artigo/visualizar", array("CodArtigo"=>"$data->CodArtigo"))',
+						),
+						'update' => array
+						(
+							'label'=>'Editar',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
+							'url'=>'Yii::app()->createUrl("artigo/formulario", array("CodArtigo"=>"$data->CodArtigo"))',
+							'visible'=>'Yii::app()->user->isGuest ? false : true',
+						),
+					)
+				),
 			),
-			array(
-				'header'=>'Nome',
-				'value'=>'$data->NomeArtigo',
-			),
-			array(
-				'header'=>'Objeto de Pesquisa',
-				'value'=>'$data->ObjetoPesquisa->NomeObjetoPesquisa',
-			),
-			array(
-				'header'=>'Publicado Em',
-				'value'=>'$data->IndicadorRevistaConferencia == "R" ? "Revista" : "Conferência"',
-			),
-			array(
-				'header'=>'Revista / Conferência',
-				'value'=>'$data->NomeRevistaConferencia',
-			),
-			array(
-				'header'=>'Volume',
-				'value'=>'empty($data->Volume) ? "-" : $data->Volume',
-			),
-			array(
-				'header'=>'Ano de Publicação',
-				'value'=>'$data->AnoPublicacao',
-			),
-			array(
-				'header'=>'Abrangência',
-				'value'=>'$data->Abrangencia->NomeAbrangencia',
-			),
-			array(
-				'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
-				'header'=>'Operações',
-				'class'=>'CButtonColumn',
-				'template'=>'{view} {update}',
-				'buttons'=>array(
-					'view'=>array
-					(
-						'label'=>'Visualizar',
-						'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
-						'url'=>'Yii::app()->createUrl("artigo/visualizar", array("CodArtigo"=>"$data->CodArtigo"))',
-					),
-					'update' => array
-					(
-						'label'=>'Editar',
-						'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
-						'url'=>'Yii::app()->createUrl("artigo/formulario", array("CodArtigo"=>"$data->CodArtigo"))',
-						'visible'=>'Yii::app()->user->isGuest ? false : true',
-					),
-				)
-			),
-		),
-	));
+		));
+	echo '</div>';
 ?>
 <script>
 	$(document).ready(function() {

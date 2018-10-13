@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "artigo".
+ * This is the model class for table "Artigo".
  *
- * The followings are the available columns in table 'artigo':
+ * The followings are the available columns in table 'Artigo':
  * @property integer $CodArtigo
  * @property string $IndicadorRevistaConferencia
  * @property string $Resumo
@@ -40,7 +40,7 @@ class Artigo extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'artigo';
+		return 'Artigo';
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Artigo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ObjetoPesquisa' => array(self::BELONGS_TO, 'Objetopesquisa', 'CodObjetoPesquisa', 'joinType'=>'INNER JOIN'),
+			'ObjetoPesquisa' => array(self::BELONGS_TO, 'ObjetoPesquisa', 'CodObjetoPesquisa', 'joinType'=>'INNER JOIN'),
 			'Abrangencia' => array(self::BELONGS_TO, 'Abrangencia', 'CodAbrangencia', 'joinType'=>'INNER JOIN'),
 			'Instituicao'=> array(self::BELONGS_TO, 'ArtigoInstituicao', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 			'Analise'=> array(self::BELONGS_TO, 'ArtigoTipoAnalise', 'CodArtigo', 'joinType'=>'INNER JOIN'),
@@ -159,8 +159,11 @@ class Artigo extends CActiveRecord
 	
 	public function afterFind()
 	{
-		$this->DataInicioEstudo = (DateTime::createFromFormat('Y-m-d', $this->DataInicioEstudo))->format('d/m/Y');
-		$this->DataFimEstudo = (DateTime::createFromFormat('Y-m-d', $this->DataFimEstudo))->format('d/m/Y');
+		$dataInicioEstudo = DateTime::createFromFormat('Y-m-d', $this->DataInicioEstudo);
+		$dataFimEstudo = DateTime::createFromFormat('Y-m-d', $this->DataFimEstudo);
+		
+		$this->DataInicioEstudo = $dataInicioEstudo->format('d/m/Y');
+		$this->DataFimEstudo = $dataFimEstudo->format('d/m/Y');
 	}
 	
 	public function beforeSave()
@@ -180,7 +183,7 @@ class Artigo extends CActiveRecord
 	
 	private function setCodArtigo()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodArtigo), 0)+1 AS CodArtigo FROM artigo');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodArtigo), 0)+1 AS CodArtigo FROM Artigo');
 		$result = $command->queryRow();
 		$this->CodArtigo = $result['CodArtigo'];
 	}

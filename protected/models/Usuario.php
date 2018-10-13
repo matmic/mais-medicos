@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "usuario".
+ * This is the model class for table "Usuario".
  *
- * The followings are the available columns in table 'usuario':
+ * The followings are the available columns in table 'Usuario':
  * @property integer $CodUsuario
  * @property string $NomeUsuario
  * @property string $EmailUsuario
@@ -20,7 +20,7 @@ class Usuario extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'usuario';
+		return 'Usuario';
 	}
 
 	/**
@@ -89,7 +89,7 @@ class Usuario extends CActiveRecord
 	
 	private function setCodUsuario()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodUsuario), 0)+1 AS CodUsuario FROM usuario');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodUsuario), 0)+1 AS CodUsuario FROM Usuario');
 		$result = $command->queryRow();
 		$this->CodUsuario = $result['CodUsuario'];
 	}

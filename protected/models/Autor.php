@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "autor".
+ * This is the model class for table "Autor".
  *
- * The followings are the available columns in table 'autor':
+ * The followings are the available columns in table 'Autor':
  * @property integer $CodAutor
  * @property string $NomeAutor
  *
@@ -17,7 +17,7 @@ class Autor extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'autor';
+		return 'Autor';
 	}
 
 	/**
@@ -45,7 +45,7 @@ class Autor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'artigos' => array(self::MANY_MANY, 'Artigo', 'artigoautor(CodAutor, CodArtigo)'),
+			'artigos' => array(self::MANY_MANY, 'Artigo', 'ArtigoAutor(CodAutor, CodArtigo)'),
 		);
 	}
 

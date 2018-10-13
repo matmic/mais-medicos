@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "instituicao".
+ * This is the model class for table "Instituicao".
  *
- * The followings are the available columns in table 'instituicao':
+ * The followings are the available columns in table 'Instituicao':
  * @property integer $CodInstituicao
  * @property string $NomeInstituicao
  * @property string $SiglaInstituicao
@@ -20,7 +20,7 @@ class Instituicao extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'instituicao';
+		return 'Instituicao';
 	}
 
 	/**
@@ -49,8 +49,8 @@ class Instituicao extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'artigos' => array(self::MANY_MANY, 'Artigo', 'artigoinstituicao(CodInstituicao, CodArtigo)'),
-			'codUF' => array(self::BELONGS_TO, 'Unidadefederacao', 'CodUF'),
+			'artigos' => array(self::MANY_MANY, 'Artigo', 'ArtigoInstituicao(CodInstituicao, CodArtigo)'),
+			'codUF' => array(self::BELONGS_TO, 'UnidadeFederacao', 'CodUF'),
 		);
 	}
 
@@ -116,7 +116,7 @@ class Instituicao extends CActiveRecord
 	
 	private function setCodInstituicao()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodInstituicao), 0)+1 AS CodInstituicao FROM instituicao');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodInstituicao), 0)+1 AS CodInstituicao FROM Instituicao');
 		$result = $command->queryRow();
 		$this->CodInstituicao = $result['CodInstituicao'];
 	}

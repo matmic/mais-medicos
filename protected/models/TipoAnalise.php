@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "tipoanalise".
+ * This is the model class for table "TipoAnalise".
  *
- * The followings are the available columns in table 'tipoanalise':
+ * The followings are the available columns in table 'TipoAnalise':
  * @property integer $CodTipoAnalise
  * @property string $NomeTipoAnalise
  *
@@ -17,7 +17,7 @@ class TipoAnalise extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tipoanalise';
+		return 'TipoAnalise';
 	}
 
 	/**
@@ -46,7 +46,7 @@ class TipoAnalise extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'artigos' => array(self::MANY_MANY, 'Artigo', 'artigotipoanalise(CodTipoAnalise, CodArtigo)'),
+			'artigos' => array(self::MANY_MANY, 'Artigo', 'ArtigoTipoAnalise(CodTipoAnalise, CodArtigo)'),
 		);
 	}
 
@@ -108,7 +108,7 @@ class TipoAnalise extends CActiveRecord
 	
 	private function setCodTipoAnalise()
 	{
-		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodTipoAnalise), 0)+1 AS CodTipoAnalise FROM tipoanalise');
+		$command = Yii::app()->db->createCommand('SELECT IFNULL(MAX(CodTipoAnalise), 0)+1 AS CodTipoAnalise FROM TipoAnalise');
 		$result = $command->queryRow();
 		$this->CodTipoAnalise = $result['CodTipoAnalise'];
 	}
