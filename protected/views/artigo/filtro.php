@@ -36,7 +36,7 @@
 							'options'=>array(
 								'minLength'=>'3',
 								'select'=>"js: function(event, ui) {
-									$('#iptCodInsituicao').val(ui.item['CodInstituicao']);                   
+									$('#iptCodInstituicao').val(ui.item['CodInstituicao']);
 								}"
 							),
 							'htmlOptions'=>array(
@@ -45,7 +45,7 @@
 								'encode'=>false,
 							),
 						));
-						echo CHtml::hiddenField('CodInstituicao', $CodInstituicao, array('id'=>'iptCodInsituicao'));
+						echo CHtml::hiddenField('CodInstituicao', $CodInstituicao, array('id'=>'iptCodInstituicao'));
 					echo '</div>';
 				echo '</div>';
 			

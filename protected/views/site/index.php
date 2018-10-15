@@ -8,6 +8,6 @@ $this->pageTitle=Yii::app()->name;
 
 <div class="container h-100">
 	<div class="row h-100 justify-content-center align-items-center">
-		<img src="<?php echo Yii::app()->baseUrl; ?>/images/logo-mais-medicos.jpg" alt="">
+		<img class="img-fluid" src="<?php echo Yii::app()->baseUrl; ?>/images/logo-mais-medicos.jpg" alt="">
 	</div>
 </div>
