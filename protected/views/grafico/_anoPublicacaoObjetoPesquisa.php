@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Número de Artigos por Objeto de Pesquisa</h4>
+<h4 class="c-grey-900 mB-20">Número de Artigos por Objeto de Pesquisa e Ano de Publicação</h4>
 <div class="mT-30">
 	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
 </div>

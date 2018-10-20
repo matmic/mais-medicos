@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Instituições com mais artigos publicados</h4>
+<h4 class="c-grey-900 mB-20">Instituições com Mais Artigos Publicados</h4>
 <div class="mT-30">
 	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
 </div>
