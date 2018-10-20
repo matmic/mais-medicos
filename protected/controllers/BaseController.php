@@ -153,6 +153,59 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('artigo/listar', array()),
 				),
+				// GRÁFICOS
+				array(
+					'label'=>'Gráficos',
+					'icone'=>'c-brown-500 ti-pie-chart',
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Objeto de Pesquisa',
+					'url'=>Yii::app()->createUrl('grafico/objetoPesquisa', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Ano de Publicação',
+					'url'=>Yii::app()->createUrl('grafico/anoPublicacaoObjetoPesquisa', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Instituição',
+					'url'=>Yii::app()->createUrl('grafico/instituicao', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Abordagem',
+					'url'=>Yii::app()->createUrl('grafico/tipoAnalise', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Objetivo',
+					'url'=>Yii::app()->createUrl('grafico/tipoObjetivo', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Procedimento',
+					'url'=>Yii::app()->createUrl('grafico/tipoProcedimento', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipo de Publicação',
+					'url'=>Yii::app()->createUrl('grafico/tipoPublicacao', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>false,
+				),
 			);
 	
 		return parent::beforeAction($action);
@@ -184,6 +237,11 @@ class BaseController extends Controller
 				'users' => array('*'),
 				'controllers' => array('artigo'),
 				'actions'=>array('listar', 'visualizar'),
+			),
+			array(
+				'allow',
+				'users' => array('*'),
+				'controllers' => array('auxiliar', 'grafico'),
 			),
 			array(
 				'deny',

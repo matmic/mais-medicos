@@ -11,6 +11,7 @@
 		</style>
 		<link href="<?php echo Yii::app()->baseUrl; ?>/css/style.css" rel="stylesheet">
 		<link href="<?php echo Yii::app()->baseUrl; ?>/css/tokenize2.css" rel="stylesheet">
+		<link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/images/ufrgs.png">
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.mask.min.js"></script>
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/highcharts.js"></script>
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/tokenize2.js"></script>
