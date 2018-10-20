@@ -82,6 +82,8 @@ class Artigo extends CActiveRecord
 			'Analise'=> array(self::BELONGS_TO, 'ArtigoTipoAnalise', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 			'Objetivo'=> array(self::BELONGS_TO, 'ArtigoTipoObjetivo', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 			'Procedimento'=> array(self::BELONGS_TO, 'ArtigoTipoProcedimento', 'CodArtigo', 'joinType'=>'INNER JOIN'),
+			'Palavra'=> array(self::BELONGS_TO, 'ArtigoPalavra', 'CodArtigo', 'joinType'=>'INNER JOIN'),
+			'Autor'=> array(self::BELONGS_TO, 'ArtigoAutor', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 		);
 	}
 

@@ -37,4 +37,40 @@ class AuxiliarController extends BaseController
 		echo CJSON::encode($results);
 		Yii::app()->end();
 	}
+	
+	public function actionAutoCompletePalavra($term) 
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'UPPER(NomePalavra) LIKE UPPER(:termo)';
+		$criteria->params = array(':termo' => '%'.$term.'%');
+		$criteria->limit = 10;
+		$results = array();
+		foreach(Palavra::model()->findAll($criteria) as $palavra)
+		{
+		  $results[] = array(
+			  'label' => $palavra->NomePalavra,
+			  'CodPalavra' => $palavra->CodPalavra,
+		  );
+		}
+		echo CJSON::encode($results);
+		Yii::app()->end();
+	}
+	
+	public function actionAutoCompleteAutor($term) 
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'UPPER(NomeAutor) LIKE UPPER(:termo)';
+		$criteria->params = array(':termo' => '%'.$term.'%');
+		$criteria->limit = 10;
+		$results = array();
+		foreach(Autor::model()->findAll($criteria) as $autor)
+		{
+		  $results[] = array(
+			  'label' => $autor->NomeAutor,
+			  'CodAutor' => $autor->CodAutor,
+		  );
+		}
+		echo CJSON::encode($results);
+		Yii::app()->end();
+	}
 }

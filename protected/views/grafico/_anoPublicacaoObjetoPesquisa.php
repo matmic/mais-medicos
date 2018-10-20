@@ -41,7 +41,7 @@
 					point: {
 						events: {
 							click: function () {
-								window.open('<?php echo Yii::app()->createUrl('artigo/listar'); ?>' + '?CodObjetoPesquisa='+this.series.userOptions.key+'&AnoPublicacao='+this.category, '_blank'); 
+								window.open('<?php echo Yii::app()->createUrl('artigo/listar'); ?>' + '?Filtro[CodObjetoPesquisa]='+this.series.userOptions.key+'&Filtro[AnoPublicacao]='+this.category, '_blank'); 
 							}
 						}
 					}

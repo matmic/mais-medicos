@@ -22,7 +22,7 @@ class GraficoController extends BaseController
 			$data[] = array(
 				"name"=>$objetoPesquisa['NomeObjetoPesquisa'], 
 				"y"=>(int)$objetoPesquisa['Count'],
-				"url"=>Yii::app()->createUrl('artigo/listar', array('CodObjetoPesquisa'=>$objetoPesquisa['CodObjetoPesquisa'])),
+				"url"=>Yii::app()->createUrl('artigo/listar', array('Filtro[CodObjetoPesquisa]'=>$objetoPesquisa['CodObjetoPesquisa'])),
 			);
 		}
 
@@ -121,7 +121,7 @@ class GraficoController extends BaseController
 			$data[] = array(
 				'name' => $row['NomeInstituicao'], 
 				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('CodInstituicao'=>$row['CodInstituicao'], 'NomeInstituicao'=>$row['NomeInstituicao'])),
+				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodInstituicao]'=>$row['CodInstituicao'], 'Filtro[NomeInstituicao]'=>$row['NomeInstituicao'])),
 			);
 		}
 		
@@ -146,7 +146,7 @@ class GraficoController extends BaseController
 			$data[] = array(
 				'name' => $row['NomeTipoAnalise'], 
 				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('CodTipoAnalise'=>$row['CodTipoAnalise'])),
+				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodTipoAnalise]'=>$row['CodTipoAnalise'])),
 			);
 		}
 		
@@ -171,7 +171,7 @@ class GraficoController extends BaseController
 			$data[] = array(
 				'name' => $row['NomeTipoObjetivo'], 
 				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('CodTipoObjetivo'=>$row['CodTipoObjetivo'])),
+				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodTipoObjetivo]'=>$row['CodTipoObjetivo'])),
 			);
 		}
 		
@@ -196,7 +196,7 @@ class GraficoController extends BaseController
 			$data[] = array(
 				'name' => $row['NomeTipoProcedimento'], 
 				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('CodTipoProcedimento'=>$row['CodTipoProcedimento'])),
+				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodTipoProcedimento]'=>$row['CodTipoProcedimento'])),
 			);
 		}
 		
@@ -227,7 +227,7 @@ class GraficoController extends BaseController
 			$data[] = array(
 				'name' => $row['TipoPublicacao'], 
 				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('IndicadorRevistaConferencia'=>$row['IndicadorRevistaConferencia'])),
+				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[IndicadorRevistaConferencia]'=>$row['IndicadorRevistaConferencia'])),
 			);
 		}
 		

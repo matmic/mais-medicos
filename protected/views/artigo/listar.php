@@ -7,17 +7,7 @@
 	}
 	
 	$this->renderPartial('filtro', array(
-		'CodArtigo'=>$CodArtigo,
-		'NomeArtigo'=>$NomeArtigo,
-		'CodInstituicao'=>$CodInstituicao,
-		'NomeInstituicao'=>$NomeInstituicao,
-		'AnoPublicacao'=>$AnoPublicacao,
-		'CodAbrangencia'=>$CodAbrangencia,
-		'CodObjetoPesquisa'=>$CodObjetoPesquisa,
-		'IndicadorRevistaConferencia'=>$IndicadorRevistaConferencia,
-		'CodTipoAnalise'=>$CodTipoAnalise,
-		'CodTipoObjetivo'=>$CodTipoObjetivo,
-		'CodTipoProcedimento'=>$CodTipoProcedimento,
+		'arrFiltros'=>$arrFiltros,
 		'filtroUsado'=>$filtroUsado,
 		'imgFiltro'=>$imgFiltro,
 	));
@@ -95,18 +85,25 @@
 	        $('#divFieldset').slideToggle();
 	    });
 	    
-		$('#AnoPublicacao').mask('0000');
+		$('#Filtro_AnoPublicacao').mask('0000');
 	});
 	
-	$('#NomeArtigo').change(function() {
-		if ($(this).val() == '')
+	function enviarFiltros()
+	{
+		if ($('#Filtro_NomeArtigo').val() == '')
 			$('#iptCodArtigo').val('');
-	});
-	
-	$('#NomeInstituicao').change(function() {
-		if ($(this).val() == '')
+		
+		if ($('#Filtro_NomeInstituicao').val() == '')
 			$('#iptCodInstituicao').val('');
-	});
+	
+		if ($('#Filtro_NomeAutor').val() == '')
+			$('#iptCodAutor').val('');
+
+		if ($('#Filtro_NomePalavra').val() == '')
+			$('#iptCodPalavra').val('');
+		
+		$("#frmFiltro").submit();
+	}
 	
 	function limparFiltros()
 	{
