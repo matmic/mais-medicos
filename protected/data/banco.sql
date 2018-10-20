@@ -1,14 +1,63 @@
 -- ****************** SqlDBM: MySQL ******************;
 -- ***************************************************;
 
-DROP DATABASE tcc;
-
-CREATE DATABASE tcc;
-
-USE tcc;
+DROP TABLE `ArtigoCoordenador`;
 
 
--- ************************************** `Usuario`
+DROP TABLE `ArtigoPalavra`;
+
+
+DROP TABLE `ArtigoAutor`;
+
+
+DROP TABLE `ArtigoInstituicao`;
+
+
+DROP TABLE `ArtigoTipoObjetivo`;
+
+
+DROP TABLE `ArtigoTipoProcedimento`;
+
+
+DROP TABLE `ArtigoTipoAnalise`;
+
+
+DROP TABLE `Artigo`;
+
+
+DROP TABLE `Instituicao`;
+
+
+DROP TABLE `Usuario`;
+
+
+DROP TABLE `UnidadeFederacao`;
+
+
+DROP TABLE `Autor`;
+
+
+DROP TABLE `Palavra`;
+
+
+DROP TABLE `Coordenador`;
+
+
+DROP TABLE `Abrangencia`;
+
+
+DROP TABLE `TipoProcedimento`;
+
+
+DROP TABLE `TipoObjetivo`;
+
+
+DROP TABLE `TipoAnalise`;
+
+
+DROP TABLE `ObjetoPesquisa`;
+
+
 
 -- ************************************** `Usuario`
 
@@ -177,22 +226,24 @@ CONSTRAINT `FK_164` FOREIGN KEY `fkIdx_164` (`CodObjetoPesquisaPai`) REFERENCES 
 CREATE TABLE `Artigo`
 (
  `CodArtigo`                   INT NOT NULL ,
- `Resumo`                      VARCHAR(2000) NOT NULL ,
- `IndicadorMulticentrico`      VARCHAR(1) NOT NULL ,
- `DataInicioEstudo`            DATE NOT NULL ,
- `DataFimEstudo`               DATE NOT NULL ,
- `DataInsercao`                DATETIME NOT NULL ,
- `DataUltimaAtu`               DATETIME NOT NULL ,
- `CodAbrangencia`              INT NOT NULL ,
- `CodObjetoPesquisa`           INT NOT NULL ,
  `NomeArtigo`                  VARCHAR(300) NOT NULL ,
+ `NomeArtigoIngles`            VARCHAR(300) ,
+ `Resumo`                      VARCHAR(5000) NOT NULL ,
  `NomeRevistaConferencia`      VARCHAR(300) NOT NULL ,
  `Volume`                      VARCHAR(45) ,
+ `Numero`                      VARCHAR(10) ,
  `AnoPublicacao`               YEAR NOT NULL ,
+ `Paginas`                     VARCHAR(15) ,
+ `IndicadorRevistaConferencia` VARCHAR(1) NOT NULL ,
+ `DataInicioEstudo`            DATE NOT NULL ,
+ `DataFimEstudo`               DATE NOT NULL ,
+ `IndicadorMulticentrico`      VARCHAR(1) NOT NULL ,
+ `CodObjetoPesquisa`           INT NOT NULL ,
+ `CodAbrangencia`              INT NOT NULL ,
  `CodUsuarioInsercao`          INT NOT NULL ,
  `CodUsuarioUltimaAtu`         INT NOT NULL ,
- `IndicadorRevistaConferencia` VARCHAR(1) NOT NULL,
- `Paginas`                     VARCHAR(15) ,
+ `DataInsercao`                DATETIME NOT NULL ,
+ `DataUltimaAtu`               DATETIME NOT NULL ,
 
 PRIMARY KEY (`CodArtigo`),
 KEY `fkIdx_99` (`CodAbrangencia`),
@@ -357,68 +408,68 @@ KEY `fkIdx_66` (`CodArtigo`),
 CONSTRAINT `FK_66` FOREIGN KEY `fkIdx_66` (`CodArtigo`) REFERENCES `Artigo` (`CodArtigo`)
 );
 
+INSERT INTO Usuario (CodUsuario, NomeUsuario, EmailUsuario, SenhaUsuario, IndicadorExclusao) VALUES
+(1, 'Matheus Michel', 'admin@admin.com', '$2y$10$UmagW5DtwAWsYS1omM2PAuRZ9yl72PkyMWHgmWSOrrgKEkjM4/avW', NULL),
+(2, 'Renata Galante', 'teste@teste.com', '$2y$10$skCvWr63wPVo716BPbi9Xumja9CdNVVx3P5VASPWuvZ9MB8wNXws6', NULL);
 
-INSERT INTO objetopesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(1,'Programa Mais Médicos', NULL);
-INSERT INTO objetopesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(2,'Provimento emergencial de médicos', NULL);
-INSERT INTO objetopesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(3,'Formação de médicos', NULL);  
-INSERT INTO objetopesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(4,'Expandir a (i) infraestrutura física e da (ii) oferta de saúde', NULL);
-INSERT INTO objetopesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(5,'Outros', NULL);
-
-
-INSERT INTO tipoanalise (CodTipoAnalise, NomeTipoAnalise) Values(1,'Quantitativas');
-INSERT INTO tipoanalise (CodTipoAnalise, NomeTipoAnalise) Values(2,'Qualitativas');
-INSERT INTO tipoanalise (CodTipoAnalise, NomeTipoAnalise) Values(3,'Triangulação');  
-INSERT INTO tipoanalise (CodTipoAnalise, NomeTipoAnalise) Values(4,'Outros');
+INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(1,'Programa Mais Médicos', NULL);
+INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(2,'Provimento emergencial de médicos', NULL);
+INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(3,'Formação de médicos', NULL);  
+INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(4,'Expandir a (i) infraestrutura física e da (ii) oferta de saúde', NULL);
+INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(5,'Outros', NULL);
 
 
-INSERT INTO tipoobjetivo (CodTipoObjetivo, NomeTipoObjetivo) Values(1,'Exploratório');
-INSERT INTO tipoobjetivo (CodTipoObjetivo, NomeTipoObjetivo) Values(2,'Descritiva');
-INSERT INTO tipoobjetivo (CodTipoObjetivo, NomeTipoObjetivo) Values(3,'Explicativa');
+INSERT INTO TipoAnalise (CodTipoAnalise, NomeTipoAnalise) Values(1,'Quantitativas');
+INSERT INTO TipoAnalise (CodTipoAnalise, NomeTipoAnalise) Values(2,'Qualitativas');
+INSERT INTO TipoAnalise (CodTipoAnalise, NomeTipoAnalise) Values(3,'Triangulação');  
+INSERT INTO TipoAnalise (CodTipoAnalise, NomeTipoAnalise) Values(4,'Outros');
 
 
-INSERT INTO tipoprocedimento (CodTipoProcedimento, NomeTipoProcedimento) Values(1,'Bibliográfico');
-INSERT INTO tipoprocedimento (CodTipoProcedimento, NomeTipoProcedimento) Values(2,'Documental');
-INSERT INTO tipoprocedimento (CodTipoProcedimento, NomeTipoProcedimento) Values(3,'Campo');
+INSERT INTO TipoObjetivo (CodTipoObjetivo, NomeTipoObjetivo) Values(1,'Exploratório');
+INSERT INTO TipoObjetivo (CodTipoObjetivo, NomeTipoObjetivo) Values(2,'Descritiva');
+INSERT INTO TipoObjetivo (CodTipoObjetivo, NomeTipoObjetivo) Values(3,'Explicativa');
 
 
-INSERT INTO abrangencia (CodAbrangencia, NomeAbrangencia) Values(1,'Local');
-INSERT INTO abrangencia (CodAbrangencia, NomeAbrangencia) Values(2,'Regional');
-INSERT INTO abrangencia (CodAbrangencia, NomeAbrangencia) Values(3,'Nacional');
-INSERT INTO abrangencia (CodAbrangencia, NomeAbrangencia) Values(4,'Internacional');
+INSERT INTO TipoProcedimento (CodTipoProcedimento, NomeTipoProcedimento) Values(1,'Bibliográfico');
+INSERT INTO TipoProcedimento (CodTipoProcedimento, NomeTipoProcedimento) Values(2,'Documental');
+INSERT INTO TipoProcedimento (CodTipoProcedimento, NomeTipoProcedimento) Values(3,'Campo');
 
 
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(12,'AC','Acre');  
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(27,'AL','Alagoas');  
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(13,'AM','Amazonas');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(16,'AP','Amapá');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(29,'BA','Bahia');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(23,'CE','Ceará');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(53,'DF','Distrito Federal');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(32,'ES','Espírito Santo');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(52,'GO','Goiás');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(21,'MA','Maranhão');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(31,'MG','Minas Gerais');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(50,'MS','Mato Grosso do Sul');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(51,'MT','Mato Grosso');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(15,'PA','Pará');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(25,'PB','Paraíba');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(26,'PE','Pernambuco');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(22,'PI','Piauí');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(41,'PR','Paraná');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(33,'RJ','Rio de Janeiro');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(24,'RN','Rio Grande do Norte');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(11,'RO','Rondônia');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(14,'RR','Roraima');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(43,'RS','Rio Grande do Sul');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(42,'SC','Santa Catarina');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(28,'SE','Sergipe');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(35,'SP','São Paulo');
-INSERT INTO unidadefederacao (CodUF, SiglaUF, NomeUF) Values(17,'TO','Tocantins');
+INSERT INTO Abrangencia (CodAbrangencia, NomeAbrangencia) Values(1,'Local');
+INSERT INTO Abrangencia (CodAbrangencia, NomeAbrangencia) Values(2,'Regional');
+INSERT INTO Abrangencia (CodAbrangencia, NomeAbrangencia) Values(3,'Nacional');
+INSERT INTO Abrangencia (CodAbrangencia, NomeAbrangencia) Values(4,'Internacional');
 
-INSERT INTO usuario (CodUsuario, NomeUsuario, EmailUsuario, SenhaUsuario, IndicadorExclusao) VALUES
-(1, 'Matheus Michel', 'admin@admin.com', '$2y$10$.lp1vGYCsaaunPDhN4es7u2KIQAqqWUAwsuZDxQwzIGyHY/Uo8nYm', NULL);
 
-INSERT INTO instituicao (CodInstituicao, NomeInstituicao, SiglaInstituicao, CodUF) VALUES
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(12,'AC','Acre');  
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(27,'AL','Alagoas');  
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(13,'AM','Amazonas');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(16,'AP','Amapá');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(29,'BA','Bahia');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(23,'CE','Ceará');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(53,'DF','Distrito Federal');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(32,'ES','Espírito Santo');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(52,'GO','Goiás');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(21,'MA','Maranhão');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(31,'MG','Minas Gerais');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(50,'MS','Mato Grosso do Sul');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(51,'MT','Mato Grosso');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(15,'PA','Pará');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(25,'PB','Paraíba');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(26,'PE','Pernambuco');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(22,'PI','Piauí');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(41,'PR','Paraná');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(33,'RJ','Rio de Janeiro');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(24,'RN','Rio Grande do Norte');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(11,'RO','Rondônia');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(14,'RR','Roraima');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(43,'RS','Rio Grande do Sul');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(42,'SC','Santa Catarina');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(28,'SE','Sergipe');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(35,'SP','São Paulo');
+INSERT INTO UnidadeFederacao (CodUF, SiglaUF, NomeUF) Values(17,'TO','Tocantins');
+
+INSERT INTO Instituicao (CodInstituicao, NomeInstituicao, SiglaInstituicao, CodUF) VALUES
 (1, 'Universidade Federal De Mato Grosso', 'UFMT', 51),
 (2, 'Universidade De Brasília', 'UNB', 53),
 (3, 'Universidade Federal De Sergipe', 'UFS', 28),
@@ -1244,7 +1295,7 @@ INSERT INTO instituicao (CodInstituicao, NomeInstituicao, SiglaInstituicao, CodU
 (1497, 'Faculdade De Administração De Santa Cruz Do Rio Pardo', 'FASC', 35),
 (1498, 'Instituto De Ensino Superior E Formação Avançada De Vitória', 'FAVI', 32),
 (1499, 'Faculdade Anhanguera De Taboão Da Serra', 'FATS', 35);
-INSERT INTO `instituicao` (`CodInstituicao`, `NomeInstituicao`, `SiglaInstituicao`, `CodUF`) VALUES
+INSERT INTO `Instituicao` (`CodInstituicao`, `NomeInstituicao`, `SiglaInstituicao`, `CodUF`) VALUES
 (1500, 'Faculdade De Ensino Superior De São Miguel Do Iguaçu', 'FAESI', 41),
 (1501, 'Faculdade Latino Americana De Educação', 'FLATED', 23),
 (1502, 'Faculdade Pitágoras De Jundiaí', 'PIT JUNDIAÍ', 35),
@@ -2091,7 +2142,7 @@ INSERT INTO `instituicao` (`CodInstituicao`, `NomeInstituicao`, `SiglaInstituica
 (3428, 'Faculdade Alfa', 'FA', 35),
 (3430, 'Faculdade De Marketing E Negócios', 'UNIESSA', 31),
 (3431, 'Faculdade Do Seridó', 'FAS', 24);
-INSERT INTO `instituicao` (`CodInstituicao`, `NomeInstituicao`, `SiglaInstituicao`, `CodUF`) VALUES
+INSERT INTO `Instituicao` (`CodInstituicao`, `NomeInstituicao`, `SiglaInstituicao`, `CodUF`) VALUES
 (3432, 'Faculdades Integradas De Ciências Humanas, Saúde E Educação De Guarulhos', 'FG', 35),
 (3434, 'Faculdade De Saúde Ibituruna', 'FASI', 31),
 (3436, 'Faculdade De Araraquara', 'FS', 35),
@@ -2786,3 +2837,162 @@ INSERT INTO `instituicao` (`CodInstituicao`, `NomeInstituicao`, `SiglaInstituica
 (16453, 'Faculdade De Tecnologia Apoena', 'FTA', 23),
 (16759, 'Faculdade Do Bico Do Papagaio', 'FABIC', 17),
 (17542, 'Faculdade De Ciências Gerenciais De Guarapari', NULL, 32);
+
+INSERT INTO `Artigo` (`CodArtigo`, `NomeArtigo`, `NomeArtigoIngles`, `Resumo`, `NomeRevistaConferencia`, `Volume`, `Numero`, `AnoPublicacao`, `Paginas`, `IndicadorRevistaConferencia`, `DataInicioEstudo`, `DataFimEstudo`, `IndicadorMulticentrico`, `CodObjetoPesquisa`, `CodAbrangencia`, `CodUsuarioInsercao`, `CodUsuarioUltimaAtu`, `DataInsercao`, `DataUltimaAtu`) VALUES
+(1, 'A contribuição do Programa Mais Médicos: análise a partir das recomendações da OMS para provimento de médicos', 'Mais Médicos (More Doctors) Program: its contribution in view of WHO recommendations for provision of doctors', 'Este estudo tem como objetivo analisar se o Programa Mais Médicos (PMM) contemplou as recomendações da Organização Mundial da\r\nSaúde (OMS) relacionadas ao aprimoramento da atração, do recrutamento e da retenção de profissionais de saúde em áreas remotas e rurais.\r\nTrata-se de um estudo descritivo, qualitativo, baseado em análise documental, no intuito de comparar se as recomendações publicadas em 2010 pela OMS foram contempladas na Lei 12.871/13, que instituiu o PMM. Ao total, foram sistematizadas 16 recomendações da OMS, para as quais o PMM atendeu a 37,5%. Entre as recomendações não contempladas, encontram-se a ausência de programas de desenvolvimento da carreira e de medidas de reconhecimento público. Algumas recomendações que não foram atendidas pela PMM já estavam sendo desenvolvidas, tais como o Programa Nacional de Bolsa Permanência para estudantes de nível superior e a inserção de diferentes profissionais de saúde no SUS (Estratégia Saúde da Família). O programa apresenta fatores inovadores, como a mudança curricular do curso\r\nde medicina e o serviço médico obrigatório, entretanto, poderia ter feito mais investimentos na categoria de apoio pessoal e profissional.', 'Ciência e Saúde Coletiva', '21', '9', 2016, '2773-2784', 'R', '2016-01-01', '2016-12-31', 'S', 1, 3, 1, 1, '2018-10-11 12:49:37', '2018-10-20 13:10:39'),
+(2, 'Efetividade da Estratégia Saúde da Família em unidades com e sem Programa Mais Médicos em município no oeste do Paraná', 'Effectiveness of the Family Health Strategy in units with, and without, the Mais Médicos (More Doctors) Program in a municipality in the west of Paraná state, Brazil', 'Após dois anos de implantação do Programa Mais Médicos no país, estudar sua viabilidade faz-se necessário. Esta pesquisa teve como objetivo avaliar a efetividade da assistência oferecida na atenção primária, segundo a ótica dos profissionais de saúde, comparando-se unidades com e sem médicos do Programa Mais Médicos. Pesquisa quantitativa que utilizou para coleta de dados, o instrumento Primary Care Assesment Tool ? Brasil, versão para profissionais de saúde, na totalidade das unidades de saúde da família, em município de médio porte, no interior do Paraná, de novembro de 2015 a fevereiro de 2016. Abrangeu 72 profissionais, 47 alocados em unidades da estratégia saúde da família e 25 nessas unidades contendo o programa. Os resultados evidenciaram que os escores dos atributos essencial (6,93) e geral (7,10) obtiveram valores considerados orientados aos preceitos da atenção primária, em ambas as unidades. Contudo, a acessibilidade\r\n(4,17), em ambas as unidades e coordenação ? sistema de informações (6,57), em unidades com o Programa Mais Médicos, não atingiram avaliação satisfatória, o que remete à necessidade de alteração na organização da estratégia saúde da família, independente da implantação desse programa.', ' Ciência e Saúde Coletiva', '21', '9', 2016, '2849-2860', 'R', '2015-01-01', '2016-12-31', 'N', 2, 1, 1, 1, '2018-10-19 21:33:15', '2018-10-20 13:11:22'),
+(3, 'Avaliação da satisfação dos usuários e da responsividade dos serviços em municípios inscritos no Programa Mais Médicos', 'Evaluation of user satisfaction and service responsiveness in municipalities enrolled in the Mais Médicos (More Doctors) Program', 'A finalidade do Programa Mais Médicos é diminuir a carência de médicos e reduzir as desigualdades regionais no acesso à atenção à saúde.\r\nO estudo objetivou avaliar a satisfação dos usuários com os médicos do Programa e a responsividade destes serviços de saúde. Estudo transversal descritivo realizado em 32 municípios com 20% ou mais de extrema pobreza com 263 usuários dos serviços de saúde. Aplicou-se um questionário estruturado com perguntas abertas e fechadas. Os usuários expressaram satisfação quanto ao atendimento médico, às informações recebidas sobre a doença e o tratamento, e a clareza e a compreensão das indicações. O bom desempenho técnico e\r\nhumanizado dos médicos contribuiu para a satisfação dos usuários que ressaltaram a importância da continuidade do programa. Na dimensão responsividade, a maioria dos usuários externou contentamento quanto aos aspectos não médicos do cuidado: rapidez no agendamento, tempo de espera inferior a uma hora e privacidade. As sugestões dos usuários de melhorias na infraestrutura, maior disponibilidade de medicamentos e presença de mais médicos, devem ser consideradas pelos gestores do Sistema Único de Saúde para\r\navançar na garantia do direito constitucional de acesso à saúde no Brasil.', 'Ciência e Saúde Coletiva', '21', '9', 2016, '2749-2759', 'R', '2014-01-01', '2015-12-31', 'S', 2, 3, 1, 1, '2018-10-19 21:41:00', '2018-10-20 13:11:59'),
+(4, 'A implementação do Programa Mais Médicos e a integralidade nas práticas da Estratégia Saúde da Família', 'The implementation of the Mais Médicos (More Doctors) Program and comprehensiveness of care in the Family Health Strategy', 'O Programa Mais Médicos (PMM) é uma estratégia do governo do Brasil que visa à ampliação do acesso a profissionais médicos e,\r\nconsequentemente, melhorias na qualidade dos serviços de Atenção Primária à Saúde. Objetivou-se analisar a percepção dos outros membros das equipes de saúde da família acerca da integralidade nas práticas a partir da incorporação do médico do Programa. Estudo em 32 municípios pobres nas cinco regiões do Brasil, nos quais foram entrevistados 78 profissionais de saúde, não médicos,\r\ndas equipes que receberam médicos do PMM. As entrevistas foram submetidas à análise de conteúdo auxiliada pelo software Atlas.ti. Os principais achados revelaram o aumento do acesso e da acessibilidade ao serviço de saúde da Estratégia Saúde da Família; acolhimento humanizado e vínculo: compreensão, parceria, amizade e respeito; o resgate da clínica: tempo dedicado, escuta atenta, exame físico minucioso; o desejo e a disponibilidade para resolver problemas; a continuidade dos cuidados; a garantia de visitas domiciliares e as\r\nequipes multiprofissionais articuladas em redes. Conclui-se que o Programa Mais Médicos contribuiu na presença de traços de integralidade nas práticas de saúde, impactando positivamente na melhoria da Atenção Básica à Saúde.', 'Ciência e Saúde Coletiva', '21', '9', 2016, '2729-2738', 'R', '2014-01-01', '2015-12-31', 'S', 2, 3, 1, 1, '2018-10-19 21:41:01', '2018-10-20 13:12:29'),
+(5, 'Narrativas e Memórias de Docentes Médicos sobre o Ensino Baseado na Comunidade no Sertão Nordestino', 'Narratives and Memories of Professors of Medicine on Community-Based Education in the Brazilian Northeast', 'O ensino baseado na comunidade trata-se de uma abordagem educacional voltada à inserção de estudantes em cenários de prática real desde os anos iniciais dos cursos, principalmente em comunidades urbanas e/ou rurais e em serviços da atenção primária à saúde, em que o planejamento, a execução e a avaliação das ações desenvolvidas partem das necessidades de saúde local e, idealmente, inclui a participação de pessoas da comunidade, das equipes de saúde e da própria universidade em todas as suas etapas. Este estudo problematizou o processo de implementação de um currículo baseado no ensino em comunidade em uma escola médica criada no âmbito do Programa Mais Médicos, no sertão nordestino. Para isto, trabalhou-se com interlocuções teóricas entre narrativas, memória e currículo. Teve-se por objetivo compreender como docentes médicos vivenciam o ensino baseado na comunidade, tendo em vista suas memórias da formação médica. Trata-se de estudo qualitativo, nos marcos da história oral. Para a produção das narrativas e contextualização dos sujeitos, utilizaram-se observações participantes, questionários socioeconômicos e entrevistas individuais semi-estruturadas. As informações foram  analisadas  pela  técnica  de  codificação  temática.  Os  resultados  são  apresentados  e  discutidos por  meio  de  duas  categorias  temáticas:  ?eles  serão  médicos  dentro  de  uma  comunidade?:  currículo, memória e formação médica; e ?na hora em que eu cheguei lá, quis ir embora?: atuação docente no ensino baseado na comunidade. As narrativas desvelaram as disparidades e incongruências entre uma formação  médica  modelada  nas  prescrições  do  currículo  ?tradicional?  e  as  expectativas  de  atuação docente num currículo ?inovador?, caracterizado pela centralidade do estudante e das necessidades de saúde locais que produzem arranjos pedagógicos diversos próprios do ensino baseado na comunidade. Nesse panorama, imbricam-se desafios, dificuldades e gratificações num movimento ainda amorfo e num espaço ainda com muitos vazios que esperam para serem preenchidos, descritos, narrados com futuras histórias de vida que poderão elucidar como se aprendeu a ser docente nesse horizonte que se espraia a nossa frente. Cumpre destacar a polissemia do termo ?comunidade? no contexto estudado e as dificuldades vivenciadas no início da carreira docente, o que evidencia a necessidade de investimentos em desenvolvimento docente nos cursos médicos, em geral, e nos recém-criados, em particular.', 'Revista Brasileira de Educação Médica', '42', '1', 2018, '142-151', 'R', '2013-01-01', '2015-12-31', 'N', 3, 2, 1, 1, '2018-10-19 21:55:41', '2018-10-20 13:13:06');
+
+INSERT INTO Autor (CodAutor, NomeAutor) VALUES
+(2, 'Viviane Karoline da Silva Carvalho'),
+(3, 'Carla Pinta Marques'),
+(4, 'Everton Nunes da Silva'),
+(5, 'Andreia Carrer'),
+(6, 'Yamila Comes'),
+(7, 'Rebeca Maria de Medeiros Vieira'),
+(8, 'Tiago Rocha Pinto'),
+(9, 'Lucas Pereira de Melo');
+
+INSERT INTO ArtigoAutor (CodArtigo, CodAutor) VALUES
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 5),
+(3, 6),
+(4, 6),
+(5, 7),
+(5, 8),
+(5, 9);
+
+INSERT INTO Coordenador (CodCoordenador, NomeCoordenador) VALUES
+(1, 'Matheus'),
+(2, 'Yamila Comes'),
+(3, ' Josélia de Souza Trindade'),
+(4, ' Helena Eri Shimizu'),
+(5, ' Edgar Merchan Hamann'),
+(6, ' Florencia Bargioni'),
+(7, ' Loana Ramirez'),
+(8, ' Mauro Niskier Sanchez'),
+(9, ' Leonor Maria Pacheco Santos'),
+(10, 'Yamila Comes'),
+(11, ' Josélia de Souza Trindade'),
+(12, ' Helena Eri Shimizu'),
+(13, ' Edgar Merchan Hamann'),
+(14, ' Florencia Bargioni'),
+(15, ' Loana Ramirez'),
+(16, ' Mauro Niskier Sanchez'),
+(17, ' Leonor Maria Pacheco Santos'),
+(19, ' Josélia de Souza Trindade'),
+(20, ' Vanira Matos Pessoa'),
+(21, ' Ivana Cristina de Holanda Cunha Barreto'),
+(22, ' Helena Eri Shimizu'),
+(23, ' Diego Dewes'),
+(24, ' Carlos André Moura Arruda'),
+(25, ' Leonor Maria Pacheco Santos');
+
+INSERT INTO Palavra (CodPalavra, NomePalavra) VALUES
+(3, 'Atração'),
+(4, 'Provimento de profissionais de saúde'),
+(5, 'Médicos rurais'),
+(6, 'Escassez de médicos'),
+(7, 'Distribuição desigual'),
+(8, 'Retenção e recrutamento de força de trabalho'),
+(9, 'Atenção Primária à Saúde'),
+(10, 'Enfermeiros'),
+(11, 'Avaliação de serviços de saúde'),
+(12, 'Médicos de atenção primária'),
+(13, 'Distribuição de médicos'),
+(14, 'Atenção Primaria à Saúde'),
+(15, 'Qualidade'),
+(16, 'Acesso e avaliação da assistência á saúde'),
+(17, 'Satisfação dos usuários'),
+(18, 'Distribuição de médicos'),
+(19, 'Atenção Primaria à Saúde'),
+(20, 'Qualidade'),
+(21, 'Acesso e avaliação da assistência á saúde'),
+(22, 'Satisfação dos usuários'),
+(23, 'Integralidade em saúde'),
+(24, 'Estratégia Saúde da Família'),
+(25, 'Programas nacionais de saúde'),
+(26, 'Sistema Único de Saúde'),
+(27, 'Educação Médica'),
+(28, 'Narrativa e Memória'),
+(29, 'Currículo'),
+(30, 'Programa Mais Médicos'),
+(31, 'Ensino Baseado na Comunidade');
+
+INSERT INTO ArtigoCoordenador (CodArtigo, CodCoordenador) VALUES
+(3, 2),
+(3, 3),
+(3, 4),
+(3, 5),
+(3, 6),
+(3, 7),
+(3, 8),
+(3, 9),
+(4, 2),
+(4, 19),
+(4, 20),
+(4, 21),
+(4, 22),
+(4, 23),
+(4, 24),
+(4, 25);
+
+INSERT INTO ArtigoInstituicao (CodArtigo, CodInstituicao) VALUES
+(1, 2),
+(2, 609),
+(3, 2),
+(4, 2),
+(5, 570);
+
+INSERT INTO ArtigoPalavra (CodArtigo, CodPalavra) VALUES
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(2, 9),
+(2, 10),
+(2, 11),
+(2, 12),
+(3, 13),
+(3, 14),
+(3, 15),
+(3, 16),
+(3, 17),
+(4, 23),
+(4, 24),
+(4, 25),
+(4, 26),
+(5, 27),
+(5, 28),
+(5, 29),
+(5, 30),
+(5, 31);
+
+INSERT INTO ArtigoTipoAnalise (CodArtigo, CodTipoAnalise) VALUES
+(2, 1),
+(3, 1),
+(1, 2),
+(3, 2),
+(4, 2),
+(5, 2);
+
+INSERT INTO ArtigoTipoObjetivo (CodArtigo, CodTipoObjetivo) VALUES
+(1, 2),
+(2, 1),
+(2, 2),
+(3, 2),
+(4, 2),
+(5, 1);
+
+INSERT INTO ArtigoTipoProcedimento (CodArtigo, CodTipoProcedimento) VALUES
+(1, 2),
+(2, 3),
+(3, 3),
+(4, 3),
+(5, 3);
