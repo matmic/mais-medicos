@@ -13,9 +13,17 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Nome do Artigo*: ', 'lblNomeArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Título*: ', 'lblNomeArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
 			echo CHtml::textField('Artigo[Nome]', $artigo->NomeArtigo, array('required'=>true, 'class'=>'form-control'));
+			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
+		echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="form-group row">';
+		echo CHtml::label('Título em inglês: ', 'lblNomeArtigoIngles', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-10">';
+			echo CHtml::textField('Artigo[NomeIngles]', $artigo->NomeArtigoIngles, array('class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -37,8 +45,14 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
+		echo CHtml::label('Publicado em*: ', 'lblIndicadorRevConf', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div style="margin-top: 9px;" class="col-sm-4">';
+			echo CHtml::radioButtonList('Artigo[IndicadorRevistaConferencia]', $artigo->IndicadorRevistaConferencia, array('R'=>'Revista', 'C'=>'Conferência'), array('style'=>'margin-left: 5px;', 'separator'=>'',));
+			echo '<div class="invalid-feedback">Por favor, selecione onde foi publicado o artigo.</div>';
+		echo '</div>';
+		
 		echo CHtml::label('Revista / Conferência*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-		echo '<div class="col-sm-10">';
+		echo '<div class="col-sm-4">';
 			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira o nome da conferência ou revista em que o artigo foi publicado.</div>';
 		echo '</div>';
@@ -51,19 +65,18 @@
 			echo '<div class="invalid-feedback">Por favor, insira o volume da revista em que o artigo foi publicado.</div>';
 		echo '</div>';
 		
-		echo CHtml::label('Ano da Publicação*: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Número: ', 'lblNumero', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::textField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('maxLength'=>4, 'placeholder'=>'aaaa', 'class'=>'form-control', 'required'=>true));
-			echo '<div class="invalid-feedback">Por favor, insira ano da publicação.</div>';
+			echo CHtml::textField('Artigo[Numero]', $artigo->Numero, array('maxLength'=>4, 'class'=>'form-control'));
 		echo '</div>';		
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Publicado em*: ', 'lblIndicadorRevConf', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-		echo '<div style="margin-top: 9px;" class="col-sm-4">';
-			echo CHtml::radioButtonList('Artigo[IndicadorRevistaConferencia]', $artigo->IndicadorRevistaConferencia, array('R'=>'Revista', 'C'=>'Conferência'), array('style'=>'margin-left: 5px;', 'separator'=>'',));
-			echo '<div class="invalid-feedback">Por favor, selecione onde foi publicado o artigo.</div>';
-		echo '</div>';
+		echo CHtml::label('Ano da Publicação*: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-4">';
+			echo CHtml::textField('Artigo[AnoPublicacao]', $artigo->AnoPublicacao, array('maxLength'=>4, 'placeholder'=>'aaaa', 'class'=>'form-control', 'required'=>true));
+			echo '<div class="invalid-feedback">Por favor, insira ano da publicação.</div>';
+		echo '</div>';	
 		
 		echo CHtml::label('Páginas: ', 'lblPaginas', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
@@ -200,6 +213,7 @@
 		});
 		
 		$('#Artigo_AnoPublicacao').mask('0000');
+		$('#Artigo_Numero').mask('0000');
 		$('#Artigo_DataInicioEstudo').mask('00/00/0000');
 		$('#Artigo_DataFimEstudo').mask('00/00/0000');
 	});

@@ -146,6 +146,16 @@ class ArtigoController extends BaseController
 					else
 						$artigo->Volume = $_POST['Artigo']['Volume'];
 					
+					if (empty($_POST['Artigo']['Numero']))
+						$artigo->Numero = NULL;
+					else
+						$artigo->Numero = $_POST['Artigo']['Numero'];
+					
+					if (empty($_POST['Artigo']['NomeIngles']))
+						$artigo->NomeArtigoIngles = NULL;
+					else
+						$artigo->NomeArtigoIngles = $_POST['Artigo']['NomeIngles'];
+					
 					if ($artigo->save())
 					{
 						ArtigoTipoAnalise::deletarRelacoes($artigo->CodArtigo);

@@ -10,9 +10,16 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Nome do Artigo: ', 'lblNomeArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Título: ', 'lblNomeArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
 			echo '<span class="form-control-plaintext">' . $artigo->NomeArtigo . '</span>';
+		echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="form-group row">';
+		echo CHtml::label('Título em inglês: ', 'lblNomeArtigoIngles', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-10">';
+			echo '<span class="form-control-plaintext">' . $artigo->NomeArtigoIngles . '</span>';
 		echo '</div>';
 	echo '</div>';
 	
@@ -30,8 +37,13 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
+		echo CHtml::label('Publicado em*: ', 'lblIndicadorRevConf', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div style="margin-top: 9px;" class="col-sm-4">';
+			echo CHtml::radioButtonList('Artigo[IndicadorRevistaConferencia]', $artigo->IndicadorRevistaConferencia, array('R'=>'Revista', 'C'=>'Conferência'), array("disabled" => "disabled", 'style'=>'margin-left: 5px;', 'separator'=>'',));
+		echo '</div>';
+		
 		echo CHtml::label('Revista / Conferência: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-		echo '<div class="col-sm-10">';
+		echo '<div class="col-sm-4">';
 			echo '<span class="form-control-plaintext">' . $artigo->NomeRevistaConferencia . '</span>';
 		echo '</div>';
 	echo '</div>';
@@ -42,17 +54,17 @@
 			echo '<span class="form-control-plaintext">' . (!empty($artigo->Volume) ? $artigo->Volume : "-") . '</span>';
 		echo '</div>';
 		
-		echo CHtml::label('Ano da Publicação: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Numero: ', 'lblNumero', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo '<span class="form-control-plaintext">' . $artigo->AnoPublicacao . '</span>';
-		echo '</div>';		
+			echo '<span class="form-control-plaintext">' . (!empty($artigo->Numero) ? $artigo->Numero : "-") . '</span>';
+		echo '</div>';	
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Publicado em*: ', 'lblIndicadorRevConf', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-		echo '<div style="margin-top: 9px;" class="col-sm-4">';
-			echo CHtml::radioButtonList('Artigo[IndicadorRevistaConferencia]', $artigo->IndicadorRevistaConferencia, array('R'=>'Revista', 'C'=>'Conferência'), array("disabled" => "disabled", 'style'=>'margin-left: 5px;', 'separator'=>'',));
-		echo '</div>';
+		echo CHtml::label('Ano da Publicação: ', 'lblAnoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-4">';
+			echo '<span class="form-control-plaintext">' . $artigo->AnoPublicacao . '</span>';
+		echo '</div>';	
 		
 		echo CHtml::label('Páginas: ', 'lblPaginas', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';

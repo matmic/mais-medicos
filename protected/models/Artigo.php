@@ -17,8 +17,10 @@
  * @property integer $CodAbrangencia
  * @property integer $CodObjetoPesquisa
  * @property string $NomeArtigo
+ * @property string $NomeArtigoIngles
  * @property string $NomeRevistaConferencia
  * @property string $Volume
+ * @property string $Numero
  * @property string $Paginas
  * @property string $Ano
  *
@@ -55,8 +57,9 @@ class Artigo extends CActiveRecord
 			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>5000),
 			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),
-			array('NomeArtigo, NomeRevistaConferencia', 'length', 'max'=>300),
+			array('NomeArtigo, NomeArtigoIngles, NomeRevistaConferencia', 'length', 'max'=>300),
 			array('Volume', 'length', 'max'=>45),
+			array('Numero', 'length', 'max'=>10),
 			array('Paginas', 'length', 'max'=>15),
 			array('AnoPublicacao', 'length', 'max'=>4),
 			// The following rule is used by search().
