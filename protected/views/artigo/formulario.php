@@ -111,8 +111,7 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Coordenador(es)*: ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::dropdownList('Artigo[Coordenador]', $coordenadores, Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'required'=>true, 'class'=>'form-control'));
-			echo '<div class="invalid-feedback">Por favor, insira pelo menos um coordenador.</div>';
+			echo CHtml::dropdownList('Artigo[Coordenador]', $coordenadores, Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'class'=>'form-control'));
 		echo '</div>';
 	echo '</div>';
 	

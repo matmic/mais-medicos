@@ -109,9 +109,6 @@ class ArtigoController extends BaseController
 					if (empty($_POST['Artigo']['Instituicao']))
 						$msg .= " - Preencha a(s) instituição(ões) do artigo;\n";
 					
-					if (empty($_POST['Artigo']['Coordenador']))
-						$msg .= " - Preencha o(s) coordenador(es) do artigo;\n";
-					
 					if (empty($_POST['Artigo']['CodAbrangencia']))
 						$msg .= " - Escolha uma Abrangência;\n";
 					
@@ -234,25 +231,28 @@ class ArtigoController extends BaseController
 						}
 						
 						ArtigoCoordenador::deletarRelacoes($artigo->CodArtigo);
-						foreach ($_POST['Artigo']['Coordenador'] as $key => $value)
+						if (isset($_POST['Artigo']['Coordenador']) && !empty($_POST['Artigo']['Coordenador']))
 						{
-							if (is_numeric($value))
+							foreach ($_POST['Artigo']['Coordenador'] as $key => $value)
 							{
-								$artigoCoordenador = new ArtigoCoordenador();
-								$artigoCoordenador->CodArtigo = $artigo->CodArtigo;
-								$artigoCoordenador->CodCoordenador = $value;
-								$artigoCoordenador->save();
-							}
-							else
-							{
-								$coordenador = new Coordenador();
-								$coordenador->NomeCoordenador = $value;
-								$coordenador->save();
-								
-								$artigoCoordenador = new ArtigoCoordenador();
-								$artigoCoordenador->CodArtigo = $artigo->CodArtigo;
-								$artigoCoordenador->CodCoordenador = $coordenador->CodCoordenador;
-								$artigoCoordenador->save();
+								if (is_numeric($value))
+								{
+									$artigoCoordenador = new ArtigoCoordenador();
+									$artigoCoordenador->CodArtigo = $artigo->CodArtigo;
+									$artigoCoordenador->CodCoordenador = $value;
+									$artigoCoordenador->save();
+								}
+								else
+								{
+									$coordenador = new Coordenador();
+									$coordenador->NomeCoordenador = $value;
+									$coordenador->save();
+									
+									$artigoCoordenador = new ArtigoCoordenador();
+									$artigoCoordenador->CodArtigo = $artigo->CodArtigo;
+									$artigoCoordenador->CodCoordenador = $coordenador->CodCoordenador;
+									$artigoCoordenador->save();
+								}
 							}
 						}
 										
@@ -288,6 +288,11 @@ class ArtigoController extends BaseController
 					'instituicoes'=>array(),
 				));
 		}
+	}
+	
+	public function actionFormulario2()
+	{
+		$this->render('formulario2');
 	}
 	
 	public function actionListar()

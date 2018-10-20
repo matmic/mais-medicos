@@ -53,7 +53,7 @@ class Artigo extends CActiveRecord
 		return array(
 			array('Resumo, IndicadorMulticentrico, DataInicioEstudo, DataFimEstudo, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, AnoPublicacao', 'required'),
 			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
-			array('Resumo', 'length', 'max'=>2000),
+			array('Resumo', 'length', 'max'=>5000),
 			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),
 			array('NomeArtigo, NomeRevistaConferencia', 'length', 'max'=>300),
 			array('Volume', 'length', 'max'=>45),
