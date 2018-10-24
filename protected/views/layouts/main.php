@@ -136,8 +136,8 @@
 				</main>
 				<footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
 					<span>
-						Contato: <a href="http://www.ufrgs.br/laisc/" target="_blank" title="Colorlib">LAISC</a> - Avenida Princesa Isabel, 615, 1º andar, Santana, Porto Alegre.
-						<a href="mailto:laisc@ufrgs.br">Envie um e-mail</a>
+						Deseja enviar seu artigo ou tirar dúvidas? Entre em contato: <a href="http://www.ufrgs.br/laisc/" target="_blank" title="Laboratório de Apoio Integrado em Saúde Coletiva">LAISC</a> - Avenida Princesa Isabel, 615, 1º andar, Santana, Porto Alegre.
+						<a href="mailto:laisc@ufrgs.br">Envie um e-mail!</a>
 					</span>
 				</footer>
 			</div>
