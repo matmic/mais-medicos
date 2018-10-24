@@ -130,6 +130,7 @@ class ArtigoController extends BaseController
 					$artigo->IndicadorRevistaConferencia = $_POST['Artigo']['IndicadorRevistaConferencia'];
 					$artigo->DataInicioEstudo = $dataInicioEstudo->format('Y-m-d');
 					$artigo->DataFimEstudo = $dataFimEstudo->format('Y-m-d');
+					$artigo->UrlArtigo = (!empty($_POST['Artigo']['UrlArtigo']) ? $_POST['Artigo']['UrlArtigo'] : NULL);
 					
 					if (isset($_POST['Artigo']['Multicentrico']))
 						$artigo->IndicadorMulticentrico = 'S';

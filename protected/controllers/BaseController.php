@@ -25,7 +25,7 @@ class BaseController extends Controller
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Objeto de Pesquisa',
+					'label'=>'Tema da Pesquisa',
 					'url'=>Yii::app()->createUrl('grafico/objetoPesquisa', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
@@ -80,7 +80,7 @@ class BaseController extends Controller
 				),
 				// OBJETOS DE PESQUISA
 				array(
-					'label'=>'Objetos de Pesquisa',
+					'label'=>'Temas de Pesquisa',
 					'icone'=>'c-brown-500 ti-target',
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>false,
@@ -154,7 +154,7 @@ class BaseController extends Controller
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Objeto de Pesquisa',
+					'label'=>'Temas de Pesquisa',
 					'url'=>Yii::app()->createUrl('grafico/objetoPesquisa', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,

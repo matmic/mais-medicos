@@ -1,5 +1,5 @@
 <?php
-	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="clicavel toggleField" src="'. $imgFiltro . '">Filtro</legend>';
+	echo '<fieldset style="background-color: #F7F7F7;"><legend><img class="clicavel toggleField" src="'. $imgFiltro . '">Busca</legend>';
 		echo '<div id="divFieldset" class="' . ($filtroUsado ? 'collapse show' : 'collapse') .'">';
 			echo CHtml::beginForm(Yii::app()->createUrl('artigo/listar'), 'GET', array('class'=>'container', 'id'=>'frmFiltro'));
 
@@ -105,7 +105,7 @@
 				echo '</div>';
 			
 				echo '<div class="form-group row">';
-					echo CHtml::label('Objeto de Pesquisa: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+					echo CHtml::label('Tema da Pesquisa: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 					echo '<div class="col-sm-4">';
 						echo CHtml::dropDownList('Filtro[CodObjetoPesquisa]', $arrFiltros['CodObjetoPesquisa'], ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 					echo '</div>';
@@ -134,7 +134,7 @@
 			
 			echo '<div class="text-center form-group row">';
 				echo '<div class="col-sm-12">';
-					echo CHtml::button('Filtrar', array('class'=>"btn btn-primary", 'onClick'=>'enviarFiltros()'));
+					echo CHtml::button('Buscar', array('class'=>"btn btn-primary", 'onClick'=>'enviarFiltros()'));
 					echo CHtml::button('Limpar Filtros', array('style'=>'margin-left: 10px;', 'class'=>"btn btn-secondary", 'onClick'=>'limparFiltros()'));
 				echo '</div>';
 			echo '</div>';

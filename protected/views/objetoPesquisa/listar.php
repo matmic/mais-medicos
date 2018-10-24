@@ -1,6 +1,6 @@
-<h4 class="c-grey-900 mB-20">Lista de Objetos de Pesquisa</h4>
+<h4 class="c-grey-900 mB-20">Lista dos Temas de Pesquisa</h4>
 <?php	
-	echo CHtml::button('Novo Objeto de Pesquisa', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("objetoPesquisa/formulario") . '"'));
+	echo CHtml::button('Novo Tema de Pesquisa', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("objetoPesquisa/formulario") . '"'));
 
 	echo '<div class="table-responsive">';
 		$this->widget('zii.widgets.grid.CGridView', array(
@@ -12,7 +12,7 @@
 					'value'=>'$data->NomeObjetoPesquisa',
 				),
 				array(
-					'header'=>'Objeto de Pesquisa Pai',
+					'header'=>'Tema da Pesquisa Pai',
 					'value'=>'isset($data->codObjetoPesquisaPai->NomeObjetoPesquisa) ? $data->codObjetoPesquisaPai->NomeObjetoPesquisa : "-"',
 				),
 				array(

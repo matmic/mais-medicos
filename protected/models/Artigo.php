@@ -58,6 +58,7 @@ class Artigo extends CActiveRecord
 			array('Resumo', 'length', 'max'=>5000),
 			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),
 			array('NomeArtigo, NomeArtigoIngles, NomeRevistaConferencia', 'length', 'max'=>300),
+			array('UrlArtigo', 'length', 'max'=>500),
 			array('Volume', 'length', 'max'=>45),
 			array('Numero', 'length', 'max'=>10),
 			array('Paginas', 'length', 'max'=>15),

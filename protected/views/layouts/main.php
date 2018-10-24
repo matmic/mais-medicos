@@ -134,7 +134,12 @@
 						</div>
 					</div>
 				</main>
-				<!-- <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Designed by <a href="https://colorlib.com" target="_blank" title="Colorlib">Colorlib</a>. All rights reserved.</span></footer> -->
+				<footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+					<span>
+						Contato: <a href="http://www.ufrgs.br/laisc/" target="_blank" title="Colorlib">LAISC</a> - Avenida Princesa Isabel, 615, 1º andar, Santana, Porto Alegre.
+						<a href="mailto:laisc@ufrgs.br">Envie um e-mail</a>
+					</span>
+				</footer>
 			</div>
 		</div>
 		<script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/vendor.js"></script>

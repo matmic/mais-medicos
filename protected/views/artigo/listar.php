@@ -22,28 +22,20 @@
 					'value'=>'$data->NomeArtigo',
 				),
 				array(
-					'header'=>'Objeto de Pesquisa',
+					'header'=>'Tema da Pesquisa',
 					'value'=>'$data->ObjetoPesquisa->NomeObjetoPesquisa',
-				),
-				array(
-					'header'=>'Publicado Em',
-					'value'=>'$data->IndicadorRevistaConferencia == "R" ? "Revista" : "Conferência"',
 				),
 				array(
 					'header'=>'Revista / Conferência',
 					'value'=>'$data->NomeRevistaConferencia',
 				),
 				array(
-					'header'=>'Volume',
-					'value'=>'empty($data->Volume) ? "-" : $data->Volume',
-				),
-				array(
 					'header'=>'Ano de Publicação',
 					'value'=>'$data->AnoPublicacao',
 				),
 				array(
-					'header'=>'Abrangência',
-					'value'=>'$data->Abrangencia->NomeAbrangencia',
+					'header'=>'Autor(es)',
+					'value'=>'$data->Autor::getNomeAutores($data->CodArtigo)',
 				),
 				array(
 					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),

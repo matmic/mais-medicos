@@ -3,7 +3,7 @@
 <?php
 	// DADOS DO ARTIGO
 	echo '<div class="form-group row">';
-		echo CHtml::label('Objeto da Pesquisa: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Tema da Pesquisa: ', 'lblTemaPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
 			echo '<span class="form-control-plaintext">' . $artigo->ObjetoPesquisa->NomeObjetoPesquisa . '</span>';
 		echo '</div>';
@@ -111,6 +111,13 @@
 		echo CHtml::label('Coordenador(es): ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
 			echo '<span class="form-control-plaintext">' . $coordenadores . '</span>';
+		echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="form-group row">';
+		echo CHtml::label('Url: ', 'lblUrl', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo '<div class="col-sm-10">';
+			echo (!empty($artigo->UrlArtigo) ? '<a target="_blank" href="' . $artigo->UrlArtigo .'"><span style="color: #0275d8;" class="form-control-plaintext">' . $artigo->UrlArtigo . '</span></a>' : '');
 		echo '</div>';
 	echo '</div>';
 	

@@ -11,7 +11,7 @@ class ObjetoPesquisaController extends BaseController
 			
 			if (empty($objetoPesquisa))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrado um Objeto de Pesquisa válido!');
+				Yii::app()->user->setFlash('danger', 'Não foi encontrado um Tema de Pesquisa válido!');
 				$this->redirect(array('objetoPesquisa/listar'));
 			}
 			else
@@ -27,7 +27,7 @@ class ObjetoPesquisaController extends BaseController
 					$objetoPesquisa = ObjetoPesquisa::model()->findByPk($_POST['ObjetoPesquisa']['CodObjetoPesquisa']);
 					if (empty($objetoPesquisa))
 					{
-						Yii::app()->user->setFlash('danger', 'Não foi encontrado um Objeto de Pesquisa válido!');
+						Yii::app()->user->setFlash('danger', 'Não foi encontrado um Tema de Pesquisa válido!');
 						$this->redirect(array('objetoPesquisa/listar'));
 					}
 				}
@@ -47,9 +47,9 @@ class ObjetoPesquisaController extends BaseController
 					$objetoPesquisa->IndicadorExclusao = 'S';
 				
 				if (!$objetoPesquisa->save())
-					Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Objeto de Pesquisa');
+					Yii::app()->user->setFlash('danger', 'Não foi possível salvar o Tema de Pesquisa');
 				else
-					Yii::app()->user->setFlash('success', 'Objeto de Pesquisa salvo com sucesso!');
+					Yii::app()->user->setFlash('success', 'Tema de Pesquisa salvo com sucesso!');
 
 				$this->redirect(array('objetoPesquisa/listar'));
 			}
