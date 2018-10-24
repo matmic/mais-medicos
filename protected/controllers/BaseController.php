@@ -9,14 +9,6 @@ class BaseController extends Controller
 		if (!Yii::app()->user->isGuest)
 		{
 			$this->menu = array(
-				// LOGOUT
-				array(
-					'label'=>'Logout',
-					'icone'=>'c-red-500 ti-back-left',
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>false,
-					'url'=>Yii::app()->createUrl('site/logout', array()),
-				),
 				// ARTIGO
 				array(
 					'label'=>'Artigos',
@@ -118,12 +110,21 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('tipoObjetivo/listar', array()),
 				),
+				// TIPO PROCEDIMENTOS
 				array(
 					'label'=>'Procedimentos',
 					'icone'=>'c-blue-500 ti-stats-up',
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('tipoProcedimento/listar', array()),
+				),
+				// PALAVRAS
+				array(
+					'label'=>'Palavras-chave',
+					'icone'=>'c-brown-500 ti-tag',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('palavra/listar', array()),
 				),
 				// USUÁRIOS
 				array(
@@ -137,14 +138,6 @@ class BaseController extends Controller
 		}
 		else
 			$this->menu = array(
-				// LOGIN
-				array(
-					'label'=>'Login',
-					'icone'=>'c-red-500 ti-back-right',
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>false,
-					'url'=>Yii::app()->createUrl('site/login', array()),
-				),
 				// ARTIGO
 				array(
 					'label'=>'Artigos',
@@ -206,6 +199,14 @@ class BaseController extends Controller
 					'tipo'=>'dropdown',
 					'pertenceDropdown'=>false,
 				),
+				// PALAVRAS
+				array(
+					'label'=>'Palavras-chave',
+					'icone'=>'c-brown-500 ti-tag',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('palavra/listar', array()),
+				),
 			);
 	
 		return parent::beforeAction($action);
@@ -224,7 +225,7 @@ class BaseController extends Controller
 			array(
 				'allow',
 				'users' => array('@'),
-				'controllers' => array('grafico', 'auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
+				'controllers' => array('palavra', 'grafico', 'auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
 			),
 			array(
 				'allow',
@@ -241,7 +242,7 @@ class BaseController extends Controller
 			array(
 				'allow',
 				'users' => array('*'),
-				'controllers' => array('auxiliar', 'grafico'),
+				'controllers' => array('palavra', 'auxiliar', 'grafico'),
 			),
 			array(
 				'deny',

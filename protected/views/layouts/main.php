@@ -94,9 +94,23 @@
 						</ul>
 						<ul class="nav-right">
 							<li class="dropdown">
-								<a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-									<div class="peer"><span class="fsz-sm c-grey-900"><?php echo isset(Yii::app()->user->NomeUsuario) ? Yii::app()->user->NomeUsuario : '' ?></span></div>
-								</a>
+								<span style="min-height: 65px;" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+									<div class="peer">
+										<span class="fsz-sm c-grey-900">
+											<?php
+												if(Yii::app()->user->isGuest)
+												{
+													echo '<a href="' . Yii::app()->createUrl('site/login') . '"><span class="icon-holder botaoLoginLogout"><i class="c-red-500 fa fa-sign-in fa-fw"></i></span></a>';
+												}
+												else
+												{
+													echo Yii::app()->user->NomeUsuario;
+													echo '<a href="' . Yii::app()->createUrl('site/logout') . '"><span class="icon-holder botaoLoginLogout"><i class="c-red-500 fa fa-sign-out fa-fw"></i></span></a>';
+												}
+											?>
+										</span>
+									</div>
+								</span>
 							</li>
 						</ul>
 					</div>
