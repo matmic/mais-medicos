@@ -1881,6 +1881,10 @@ fieldset legend
 	.alinharDireita {     
 		text-align: left;    
 	}
+	
+	.footer {
+		display: none;
+	}
 }
 
 .clicavel {

@@ -134,7 +134,7 @@
 						</div>
 					</div>
 				</main>
-				<footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+				<footer class="footer bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
 					<span>
 						Deseja enviar seu artigo ou tirar dúvidas? Entre em contato: <a href="http://www.ufrgs.br/laisc/" target="_blank" title="Laboratório de Apoio Integrado em Saúde Coletiva">LAISC</a> - Avenida Princesa Isabel, 615, 1º andar, Santana, Porto Alegre.
 						<a href="mailto:laisc@ufrgs.br">Envie um e-mail!</a>
