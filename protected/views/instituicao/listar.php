@@ -4,7 +4,7 @@
 		echo CHtml::beginForm(Yii::app()->createUrl('instituicao/listar'), 'GET', array('class'=>'container'));
 		echo '<div class="form-group row">';
 			echo CHtml::label('Nome ou Sigla da Instituição: ', 'lblNomeSiglaInst', array('class'=>'col-sm-3 col-form-label alinharDireita'));
-			echo '<div class="col-sm-8">';
+			echo '<div class="col-sm-9">';
 				$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 					'sourceUrl'=>array('auxiliar/autoCompleteInstituicao'),
 					'name'=>'Instituicao[NomeInstituicao]',
@@ -23,9 +23,11 @@
 				));
 				echo CHtml::hiddenField('Instituicao[CodInstituicao]', $CodInstituicao, array('id'=>'iptCodInstituicao'));
 			echo '</div>';
+		echo '</div>';
 			
-			echo '<div class="col-sm-1">';
-				echo CHtml::submitButton('Filtrar', array('class'=>"btn btn-primary"));
+		echo '<div class="text-center form-group row">';
+			echo '<div class="col-sm-12">';
+				echo CHtml::submitButton('Buscar', array('class'=>"btn btn-primary"));
 			echo '</div>';
 		echo '</div>';
 	echo '</fieldset>';
