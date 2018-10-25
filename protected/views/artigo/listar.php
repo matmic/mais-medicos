@@ -35,7 +35,7 @@
 				),
 				array(
 					'header'=>'Autor(es)',
-					'value'=>'$data->Autor::getNomeAutores($data->CodArtigo)',
+					'value'=>'$data->Autor->getNomeAutores($data->CodArtigo)',
 				),
 				array(
 					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
