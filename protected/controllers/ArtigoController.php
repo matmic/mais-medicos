@@ -314,7 +314,6 @@ class ArtigoController extends BaseController
 	public function actionListar()
 	{
 		$arrFiltros = array(
-			'CodArtigo'=>'',
 			'NomeArtigo'=>'',
 			'CodInstituicao'=>'',
 			'NomeInstituicao'=>'',
@@ -342,9 +341,9 @@ class ArtigoController extends BaseController
 		$criteria = new CDbCriteria();
 		$criteria->order = 't.CodArtigo ASC';
 
-		if (isset($_GET['Filtro']['CodArtigo']) && !empty($_GET['Filtro']['CodArtigo']))
+		if (isset($_GET['Filtro']['NomeArtigo']) && !empty($_GET['Filtro']['NomeArtigo']))
 		{
-			$criteria->addCondition('t.CodArtigo = ' . $_GET['Filtro']['CodArtigo']);
+			$criteria->addSearchCondition('t.NomeArtigo', $_GET['Filtro']['NomeArtigo']);
 			$filtroUsado = true;
 			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
 		}

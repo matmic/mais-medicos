@@ -12,9 +12,6 @@
 							'value' => $arrFiltros['NomeArtigo'],
 							'options'=>array(
 								'minLength'=>'3',
-								'select'=>"js: function(event, ui) {
-									$('#iptCodArtigo').val(ui.item['CodArtigo']);                   
-								}"
 							),
 							'htmlOptions'=>array(
 								'class'=>'form-control',
@@ -22,7 +19,6 @@
 								'encode'=>false,
 							),
 						));
-						echo CHtml::hiddenField('Filtro[CodArtigo]', $arrFiltros['CodArtigo'], array('id'=>'iptCodArtigo'));
 					echo '</div>';
 				echo '</div>';
 			
