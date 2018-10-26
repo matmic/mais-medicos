@@ -1,5 +1,10 @@
 ﻿<h4 class="c-grey-900 mB-20">Formulário Artigo</h4>
 <div class="mT-30">
+
+<!-- DIV QUE APARECE QUANDO FAZ UMA CHAMADA AJAX -->
+<div id="overlayDiv" class="overlayDiv" style="display: none;">
+	<div class="loadingImg"><img src="<?php echo Yii::app()->baseUrl?>/images/loading-big.gif" /></div>
+</div>
 <?php
 	echo CHtml::beginForm(Yii::app()->createUrl('artigo/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
 	
@@ -15,7 +20,20 @@
 	echo '<div class="form-group row">';
 		echo CHtml::label('Título*: ', 'lblNomeArtigo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::textField('Artigo[Nome]', $artigo->NomeArtigo, array('required'=>true, 'class'=>'form-control'));
+			//echo CHtml::textField('Artigo[Nome]', $artigo->NomeArtigo, array('required'=>true, 'class'=>'form-control'));
+			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+				'sourceUrl'=>array('auxiliar/autoCompleteArtigo'),
+				'name'=>'Artigo[Nome]',
+				'value' => $artigo->NomeArtigo,
+				'options'=>array(
+					'minLength'=>'3',
+				),
+				'htmlOptions'=>array(
+					'class'=>'form-control',
+					'placeholder'=>'Digite o nome do artigo',
+					'required'=>true,
+				),
+			));
 			echo '<div class="invalid-feedback">Por favor, insira o nome do artigo.</div>';
 		echo '</div>';
 	echo '</div>';
@@ -120,7 +138,7 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Coordenador(es)*: ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Coordenador(es): ', 'lblCoordenador', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-10">';
 			echo CHtml::dropdownList('Artigo[Coordenador]', $coordenadores, Coordenador::getCoordenadores(), array('encode'=>false, 'multiple'=>true, 'class'=>'form-control'));
 		echo '</div>';
@@ -193,6 +211,13 @@
 </div>
 
 <script>
+	$(document).ajaxSend(function() {
+        $('#overlayDiv').show();
+    });
+    $(document).ajaxComplete(function() {
+        $('#overlayDiv').hide();
+    });
+	
 	$(document).ready(function(){
 		$('#Artigo_Autor').tokenize2({
 			dataSource: 'select',

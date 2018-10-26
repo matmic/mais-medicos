@@ -247,6 +247,7 @@ CREATE TABLE `Artigo`
  `DataUltimaAtu`               DATETIME NOT NULL ,
 
 PRIMARY KEY (`CodArtigo`),
+UNIQUE KEY `Ind_249` (`NomeArtigo`),
 KEY `fkIdx_99` (`CodAbrangencia`),
 CONSTRAINT `FK_99` FOREIGN KEY `fkIdx_99` (`CodAbrangencia`) REFERENCES `Abrangencia` (`CodAbrangencia`),
 KEY `fkIdx_103` (`CodObjetoPesquisa`),
