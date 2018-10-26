@@ -4,7 +4,7 @@
 	echo CHtml::beginForm(Yii::app()->createUrl('abrangencia/formulario'), 'POST', array('id'=>'needs-validation', 'class'=>'container', 'noValidate'=>""));
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'col-sm-2 col-form-label'));
+		echo CHtml::label('Abrangência*: ', 'lblAbrangencia', array('class'=>'alinharDireita col-sm-2 col-form-label'));
 		echo '<div class="col-sm-10">';
 			echo CHtml::activeTextField($abrangencia, 'NomeAbrangencia', array('required'=>true, 'class'=>'form-control'));
 			echo '<div class="invalid-feedback">Por favor, insira a abrangência.</div>';
