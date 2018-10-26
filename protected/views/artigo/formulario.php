@@ -211,13 +211,6 @@
 </div>
 
 <script>
-	$(document).ajaxSend(function() {
-        $('#overlayDiv').show();
-    });
-    $(document).ajaxComplete(function() {
-        $('#overlayDiv').hide();
-    });
-	
 	$(document).ready(function(){
 		$('#Artigo_Autor').tokenize2({
 			dataSource: 'select',
@@ -289,8 +282,12 @@
 					type: 'POST',
 					url: '<?php echo Yii::app()->createAbsoluteUrl("artigo/formulario"); ?>',
 					data:data,
+					beforeSend:function(){
+						$('#overlayDiv').show();    
+					},
 					success:function(retorno)
 					{
+						$('#overlayDiv').hide(); 
 						var obj = JSON.parse(retorno);
 
 						if (obj.erro == 0)

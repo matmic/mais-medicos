@@ -281,13 +281,8 @@ class ArtigoController extends BaseController
 				}
 				catch (CException $e)
 				{
-					$msg = $e->getMessage();
-					
-					if ($e instanceof CDbException)
-					   $msg = 'Já existe um artigo com este nome no banco de dados!';
-					
 					echo json_encode(array(
-						"msg" => utf8_encode($msg),
+						"msg" => utf8_encode($e->getMessage()),
 						"erro" => 1,
 					));
 				}

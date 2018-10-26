@@ -247,7 +247,6 @@ CREATE TABLE `Artigo`
  `DataUltimaAtu`               DATETIME NOT NULL ,
 
 PRIMARY KEY (`CodArtigo`),
-UNIQUE KEY `Ind_249` (`NomeArtigo`),
 KEY `fkIdx_99` (`CodAbrangencia`),
 CONSTRAINT `FK_99` FOREIGN KEY `fkIdx_99` (`CodAbrangencia`) REFERENCES `Abrangencia` (`CodAbrangencia`),
 KEY `fkIdx_103` (`CodObjetoPesquisa`),
@@ -411,8 +410,9 @@ CONSTRAINT `FK_66` FOREIGN KEY `fkIdx_66` (`CodArtigo`) REFERENCES `Artigo` (`Co
 );
 
 INSERT INTO Usuario (CodUsuario, NomeUsuario, EmailUsuario, SenhaUsuario, IndicadorExclusao) VALUES
-(1, 'Matheus Michel', 'admin@admin.com', '$2y$10$UmagW5DtwAWsYS1omM2PAuRZ9yl72PkyMWHgmWSOrrgKEkjM4/avW', NULL),
-(2, 'Renata Galante', 'teste@teste.com', '$2y$10$skCvWr63wPVo716BPbi9Xumja9CdNVVx3P5VASPWuvZ9MB8wNXws6', NULL);
+(1, 'Matheus Michel', 'matmic08@gmail.com', '$2y$10$D0GOoFW6Kal.LQ3H35.e5.kL5UtMlfuSztyAZiPBayXgExOSN6RG2', NULL),
+(2, 'Renata Galante', 'galante@inf.ufrgs.br', '$2y$10$604JSJZn2Ihp/9GTIWiMeOTxL5ZmtUPvIt5zqEWmfi4paI2MvZw9m', NULL),
+(3, 'Giovanni Kuhn', 'giovannikuhn@gmail.com', '$2y$10$nRaIO.1RPz9B0J8xFqi0tOn07Mv3h31yR5z1gbhxnDQQ5DsCvpe6O', NULL);
 
 INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(1,'Programa Mais Médicos', NULL);
 INSERT INTO ObjetoPesquisa (CodObjetoPesquisa, NomeObjetoPesquisa, CodObjetoPesquisaPai) Values(2,'Provimento emergencial de médicos', NULL);
