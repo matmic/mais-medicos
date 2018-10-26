@@ -126,18 +126,57 @@ class SiteController extends BaseController
 				
 				$usuario->EmailUsuario = $_POST['Usuario']['EmailUsuario'];
 				
-				if (!empty($_POST['Usuario']['SenhaUsuario']))
-					$usuario->SenhaUsuario = password_hash($_POST['Usuario']['SenhaUsuario'], PASSWORD_DEFAULT);
+				$isNewRecord = $usuario->isNewRecord;
+				$necessarioEnviarEmail = false;
 				
-				$usuario->NomeUsuario = $_POST['Usuario']['NomeUsuario'];
-				$usuario->IndicadorExclusao = isset($_POST['Usuario']['IndicadorExclusao']) ? NULL : 'S';
-				
-				if ($usuario->save())
+				if ($isNewRecord)
 				{
-					Yii::app()->user->setFlash('success', 'Usuário salvo com sucesso!');
-					$this->redirect(array('site/listar'));
+					$senha = $this->gerarSenhaAleatoria();
+					$necessarioEnviarEmail = true;
+					$usuario->SenhaUsuario = password_hash($senha, PASSWORD_DEFAULT);
 				}
 				else
+				{
+					if (!empty($_POST['Usuario']['SenhaUsuario']))
+					{
+						$senha = $_POST['Usuario']['SenhaUsuario'];
+						$necessarioEnviarEmail = true;
+						$usuario->SenhaUsuario = password_hash($senha, PASSWORD_DEFAULT);
+					}
+				}
+					
+				$usuario->NomeUsuario = $_POST['Usuario']['NomeUsuario'];
+				$usuario->IndicadorExclusao = isset($_POST['Usuario']['IndicadorExclusao']) ? NULL : 'S';
+
+				try
+				{
+					$usuario->save();
+					
+					if ($necessarioEnviarEmail)
+					{
+						$msg = "Olá " . $usuario->NomeUsuario . "!<br />";
+						$msg .= ($isNewRecord ? "Sua conta foi criada com sucesso!<br /><br />" : "Sua senha foi alterada com sucesso!<br /><br />");
+						$msg .= "<b>Login:</b> " . $usuario->EmailUsuario . "<br /><b>Senha:</b> " . $senha;
+						$msg .= "<br /><br />Faça login <a href='https://www.ufrgs.br/pmm-pub/portal/site/login'>aqui!</a>";
+						$msg .= "<br /><br />Atenciosamente,<br />Equipe <a href='http://www.ufrgs.br/laisc/'>LAISC</a>";
+						$to = $usuario->NomeUsuario . ' < ' . $usuario->EmailUsuario . '>';
+						$subject = ($isNewRecord ? 'Conta criada!' : 'Senha alterada!');
+						
+						$headers = 'From: naorespondapmmpub <naorespondapmmpub@ufrgs.br> ' . "\r\n" .
+								   'Content-Type: text/html;charset=utf-8' . "\r\n" .
+								   'X-Mailer: PHP/' . phpversion();
+
+
+						$real_sender = '-f naorespondapmmpub@ufrgs.br';
+
+						mail($to, $subject, $msg, $headers, $real_sender);
+					}
+					
+					Yii::app()->user->setFlash('success', 'Usuário salvo com sucesso!');
+					$this->redirect(array('site/listar'));
+					
+				}
+				catch(CException $e)
 				{
 					Yii::app()->user->setFlash('danger', 'Erro ao salvar Usuário!');
 					$this->redirect(array('site/formulario'));
@@ -163,5 +202,19 @@ class SiteController extends BaseController
 		));
 		
 		$this->render('listar', array('dataProvider'=>$dataProvider));
+	}
+	
+	private function gerarSenhaAleatoria()
+	{
+		$alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+		$pass = array();
+		$alphaLength = strlen($alphabet) - 1;
+		
+		for ($i = 0; $i < 8; $i++) 
+		{
+			$n = rand(0, $alphaLength);
+			$pass[] = $alphabet[$n];
+		}
+		return implode($pass);
 	}
 }
