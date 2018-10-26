@@ -1,5 +1,8 @@
 <h4 class="c-grey-900 mB-20">Lista de Instituições</h4>
 <?php
+	echo CHtml::button('Nova Instituição', array('class'=>'btn cur-p btn-primary', 'onClick'=>'window.location.href = "'. Yii::app()->createUrl("instituicao/formulario") . '"'));
+	echo '<br /><br />';
+
 	echo '<fieldset style="background-color: #F7F7F7;"><legend>Filtro</legend>';
 		echo CHtml::beginForm(Yii::app()->createUrl('instituicao/listar'), 'GET', array('class'=>'container'));
 		echo '<div class="form-group row">';
