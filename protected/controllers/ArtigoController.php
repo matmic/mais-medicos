@@ -78,6 +78,16 @@ class ArtigoController extends BaseController
 					
 					if (empty($_POST['Artigo']['Nome']))
 						$msg .= " - Preencha o nome do artigo;\n";
+					else
+					{
+						if ($artigo->isNewRecord)
+						{
+							$artigoComMesmoNome = Artigo::model()->findByAttributes(array('NomeArtigo'=>$_POST['Artigo']['Nome']));
+							
+							if (!empty($artigoComMesmoNome))
+								$msg .= " - Já existe um artigo com este nome na base de dados;\n";
+						}
+					}
 					
 					if (empty($_POST['Artigo']['RevistaConferencia']))
 						$msg .= " - Preencha a revista/conferência onde o artigo foi publicado;\n";
