@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Número de Artigos por Tipo de Abordagem</h4>
+<h4 class="c-grey-900 mB-20">Artigos por Tipo de Abordagem</h4>
 <div class="mT-30">
 	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
 </div>
@@ -12,7 +12,7 @@
 				text: ''
 			},
 			subtitle: {
-				text: 'Clique nas colunas para filtrar'
+				text: 'Clique nas colunas para acessar os artigos'
 			},
 			xAxis: {
 				type: 'category',
@@ -35,7 +35,10 @@
 						events: {
 							click: function () {
 								window.open(this.options.url, '_blank');
-							}
+							},
+							legendItemClick: function () {
+								return false; 
+							},
 						}
 					}
 				}

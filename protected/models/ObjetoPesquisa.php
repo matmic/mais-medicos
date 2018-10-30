@@ -125,7 +125,7 @@ class ObjetoPesquisa extends CActiveRecord
 		$criteria = new CDbCriteria();
 		$criteria->condition = "CodObjetoPesquisaPai IS NULL";
 		$criteria->addCondition("IndicadorExclusao IS NULL");
-		$criteria->order = 'NomeObjetoPesquisa ASC';
+		$criteria->order = 'CodObjetoPesquisa ASC';
 		$objetoPesquisas = self::model()->findAll($criteria);
 		
 		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
@@ -133,7 +133,7 @@ class ObjetoPesquisa extends CActiveRecord
 	
 	public static function getObjetosPesquisas()
 	{
-		$objetoPesquisas = self::model()->findAll(array('order'=>'NomeObjetoPesquisa ASC', 'condition'=>'IndicadorExclusao IS NULL'));
+		$objetoPesquisas = self::model()->findAll(array('order'=>'CodObjetoPesquisa ASC', 'condition'=>'IndicadorExclusao IS NULL'));
 		
 		return CHtml::listData($objetoPesquisas, 'CodObjetoPesquisa', 'NomeObjetoPesquisa');
 	}

@@ -24,7 +24,7 @@
 						'update' => array
 						(
 							'label'=>'Editar',
-							'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/editar.png',
 							'url'=>'Yii::app()->createUrl("tipoAnalise/formulario", array("CodTipoAnalise"=>"$data->CodTipoAnalise"))',
 						),
 					)

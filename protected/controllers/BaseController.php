@@ -43,28 +43,38 @@ class BaseController extends Controller
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Abordagem',
+					'label'=>'Palavras-chave',
+					'url'=>Yii::app()->createUrl('grafico/palavra', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipos de Pesquisa',
+					'icone'=>'',
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Quanto a Abordagem',
 					'url'=>Yii::app()->createUrl('grafico/tipoAnalise', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Objetivo',
+					'label'=>'Quanto ao Objetivo',
 					'url'=>Yii::app()->createUrl('grafico/tipoObjetivo', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Procedimento',
+					'label'=>'Quanto ao Procedimento',
 					'url'=>Yii::app()->createUrl('grafico/tipoProcedimento', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Publicação',
-					'url'=>Yii::app()->createUrl('grafico/tipoPublicacao', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>false,
 				),
 				array(
 					'tipo'=>'dropdown',
@@ -121,7 +131,7 @@ class BaseController extends Controller
 				// PALAVRAS
 				array(
 					'label'=>'Palavras-chave',
-					'icone'=>'c-brown-500 ti-tag',
+					'icone'=>'c-green-500 fa fa-font',
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('palavra/listar', array()),
@@ -154,7 +164,7 @@ class BaseController extends Controller
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Temas de Pesquisa',
+					'label'=>'Tema da Pesquisa',
 					'url'=>Yii::app()->createUrl('grafico/objetoPesquisa', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
@@ -172,28 +182,38 @@ class BaseController extends Controller
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Abordagem',
+					'label'=>'Palavras-chave',
+					'url'=>Yii::app()->createUrl('grafico/palavra', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Tipos de Pesquisa',
+					'icone'=>'',
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Quanto a Abordagem',
 					'url'=>Yii::app()->createUrl('grafico/tipoAnalise', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Objetivo',
+					'label'=>'Quanto ao Objetivo',
 					'url'=>Yii::app()->createUrl('grafico/tipoObjetivo', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Procedimento',
+					'label'=>'Quanto ao Procedimento',
 					'url'=>Yii::app()->createUrl('grafico/tipoProcedimento', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
 				array(
-					'label'=>'Tipo de Publicação',
-					'url'=>Yii::app()->createUrl('grafico/tipoPublicacao', array()),
-					'tipo'=>'entrada',
-					'pertenceDropdown'=>true,
+					'tipo'=>'dropdown',
+					'pertenceDropdown'=>false,
 				),
 				array(
 					'tipo'=>'dropdown',
@@ -202,7 +222,7 @@ class BaseController extends Controller
 				// PALAVRAS
 				array(
 					'label'=>'Palavras-chave',
-					'icone'=>'c-brown-500 ti-tag',
+					'icone'=>'c-green-500 fa fa-font',
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('palavra/listar', array()),

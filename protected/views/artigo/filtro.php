@@ -111,20 +111,24 @@
 					echo '</div>';
 				echo '</div>';
 			
-				echo '<div class="form-group row">';
-					echo CHtml::label('Análise: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-					echo '<div class="col-sm-2">';
-						echo CHtml::dropDownList('Filtro[CodTipoAnalise]', $arrFiltros['CodTipoAnalise'], TipoAnalise::getTiposAnalises(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+				echo '<fieldset style="padding-right: 15px"><legend>Tipos de Pesquisa</legend>';
+					echo '<div class="form-group row">';
+						echo CHtml::label('Abordagem: ', 'lblObjetoPesquisa', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+						echo '<div class="col-sm-2">';
+							echo CHtml::dropDownList('Filtro[CodTipoAnalise]', $arrFiltros['CodTipoAnalise'], TipoAnalise::getTiposAnalises(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+						echo '</div>';
+						echo CHtml::label('Objetivo: ', 'lblTipoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+						echo '<div class="col-sm-2">';
+							echo CHtml::dropDownList('Filtro[CodTipoObjetivo]', $arrFiltros['CodTipoObjetivo'], TipoObjetivo::getTiposObjetivos(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+						echo '</div>';
+						echo CHtml::label('Procedimento: ', 'lblTipoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+						echo '<div class="col-sm-2">';
+							echo CHtml::dropDownList('Filtro[CodTipoProcedimento]', $arrFiltros['CodTipoProcedimento'], TipoProcedimento::getTiposProcedimentos(), array('empty'=>'Selecione...', 'class'=>'form-control'));
+						echo '</div>';
 					echo '</div>';
-					echo CHtml::label('Objetivo: ', 'lblTipoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-					echo '<div class="col-sm-2">';
-						echo CHtml::dropDownList('Filtro[CodTipoObjetivo]', $arrFiltros['CodTipoObjetivo'], TipoObjetivo::getTiposObjetivos(), array('empty'=>'Selecione...', 'class'=>'form-control'));
-					echo '</div>';
-					echo CHtml::label('Procedimento: ', 'lblTipoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
-					echo '<div class="col-sm-2">';
-						echo CHtml::dropDownList('Filtro[CodTipoProcedimento]', $arrFiltros['CodTipoProcedimento'], TipoProcedimento::getTiposProcedimentos(), array('empty'=>'Selecione...', 'class'=>'form-control'));
-					echo '</div>';
-				echo '</div>';
+				echo '</fieldset>';
+				
+				echo '<br />';
 			
 			echo CHtml::endForm();
 			

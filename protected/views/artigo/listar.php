@@ -26,7 +26,7 @@
 					'value'=>'$data->ObjetoPesquisa->NomeObjetoPesquisa',
 				),
 				array(
-					'header'=>'Revista / Conferência',
+					'header'=>'Revista / Periódico',
 					'value'=>'$data->NomeRevistaConferencia',
 				),
 				array(
@@ -39,20 +39,20 @@
 				),
 				array(
 					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
-					'header'=>'Operações',
+					'header'=>'Visualizar',
 					'class'=>'CButtonColumn',
 					'template'=>'{view} {update}',
 					'buttons'=>array(
 						'view'=>array
 						(
 							'label'=>'Visualizar',
-							'imageUrl'=>Yii::app()->request->baseUrl.'/images/view-menor.png',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/documento.png',
 							'url'=>'Yii::app()->createUrl("artigo/visualizar", array("CodArtigo"=>"$data->CodArtigo"))',
 						),
 						'update' => array
 						(
 							'label'=>'Editar',
-							'imageUrl'=>Yii::app()->request->baseUrl.'/images/edit-menor.png',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/editar.png',
 							'url'=>'Yii::app()->createUrl("artigo/formulario", array("CodArtigo"=>"$data->CodArtigo"))',
 							'visible'=>'Yii::app()->user->isGuest ? false : true',
 						),

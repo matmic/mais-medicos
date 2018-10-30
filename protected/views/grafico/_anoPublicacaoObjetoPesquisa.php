@@ -1,4 +1,4 @@
-<h4 class="c-grey-900 mB-20">Número de Artigos por Objeto de Pesquisa e Ano de Publicação</h4>
+<h4 class="c-grey-900 mB-20">Artigos por Tema de Pesquisa e Ano de Publicação</h4>
 <div class="mT-30">
 	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
 </div>
@@ -12,7 +12,7 @@
 				text: ''
 			},
 			subtitle: {
-				text: 'Clique nas colunas para filtrar'
+				text: 'Clique nas colunas para acessar os artigos'
 			},
 			xAxis: {
 				categories: <?php echo json_encode($anos); ?>,
@@ -38,11 +38,16 @@
 					pointPadding: 0.2,
 					borderWidth: 0,
 					cursor: 'pointer',
+					events: {
+						legendItemClick: function () {
+							return false; 
+						},
+					},
 					point: {
 						events: {
 							click: function () {
 								window.open('<?php echo Yii::app()->createUrl('artigo/listar'); ?>' + '?Filtro[CodObjetoPesquisa]='+this.series.userOptions.key+'&Filtro[AnoPublicacao]='+this.category, '_blank'); 
-							}
+							},
 						}
 					}
 				}

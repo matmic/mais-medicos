@@ -233,4 +233,31 @@ class GraficoController extends BaseController
 		
 		$this->render('_tipoProcedimento', array('data'=>$data));
 	}
+	
+	public function actionPalavra()
+	{
+		$sql = '
+			SELECT P.NomePalavra, AP.CodPalavra, COUNT(*) AS Count
+			FROM ArtigoPalavra AP
+			INNER JOIN Palavra P
+				ON P.CodPalavra = AP.CodPalavra
+			GROUP BY AP.CodPalavra
+			ORDER BY Count DESC
+			LIMIT 10
+		';
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		foreach ($result as $row)
+		{
+			$data[] = array(
+				'name' => $row['NomePalavra'], 
+				'y' => (int)$row['Count'],
+				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodPalavra]'=>$row['CodPalavra'], 'Filtro[NomePalavra]'=>$row['NomePalavra'])),
+			);
+		}
+		
+		$this->render('_palavraChave', array('data'=>$data));
+	}
 }

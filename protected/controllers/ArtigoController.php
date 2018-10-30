@@ -354,7 +354,7 @@ class ArtigoController extends BaseController
 		$with = array('ObjetoPesquisa', 'Abrangencia');
 		
 		$criteria = new CDbCriteria();
-		$criteria->order = 't.CodArtigo ASC';
+		$criteria->order = 't.AnoPublicacao DESC';
 
 		if (isset($_GET['Filtro']['NomeArtigo']) && !empty($_GET['Filtro']['NomeArtigo']))
 		{
