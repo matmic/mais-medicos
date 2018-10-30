@@ -1,61 +1,61 @@
 -- ****************** SqlDBM: MySQL ******************;
 -- ***************************************************;
 
-DROP TABLE `ArtigoCoordenador`;
+DROP TABLE IF EXISTS `ArtigoCoordenador`;
 
 
-DROP TABLE `ArtigoPalavra`;
+DROP TABLE IF EXISTS `ArtigoPalavra`;
 
 
-DROP TABLE `ArtigoAutor`;
+DROP TABLE IF EXISTS `ArtigoAutor`;
 
 
-DROP TABLE `ArtigoInstituicao`;
+DROP TABLE  IF EXISTS `ArtigoInstituicao`;
 
 
-DROP TABLE `ArtigoTipoObjetivo`;
+DROP TABLE  IF EXISTS `ArtigoTipoObjetivo`;
 
 
-DROP TABLE `ArtigoTipoProcedimento`;
+DROP TABLE  IF EXISTS `ArtigoTipoProcedimento`;
 
 
-DROP TABLE `ArtigoTipoAnalise`;
+DROP TABLE  IF EXISTS `ArtigoTipoAnalise`;
 
 
-DROP TABLE `Artigo`;
+DROP TABLE  IF EXISTS `Artigo`;
 
 
-DROP TABLE `Instituicao`;
+DROP TABLE  IF EXISTS `Instituicao`;
 
 
-DROP TABLE `Usuario`;
+DROP TABLE  IF EXISTS `Usuario`;
 
 
-DROP TABLE `UnidadeFederacao`;
+DROP TABLE  IF EXISTS `UnidadeFederacao`;
 
 
-DROP TABLE `Autor`;
+DROP TABLE  IF EXISTS `Autor`;
 
 
-DROP TABLE `Palavra`;
+DROP TABLE  IF EXISTS `Palavra`;
 
 
-DROP TABLE `Coordenador`;
+DROP TABLE  IF EXISTS `Coordenador`;
 
 
-DROP TABLE `Abrangencia`;
+DROP TABLE  IF EXISTS `Abrangencia`;
 
 
-DROP TABLE `TipoProcedimento`;
+DROP TABLE  IF EXISTS `TipoProcedimento`;
 
 
-DROP TABLE `TipoObjetivo`;
+DROP TABLE  IF EXISTS `TipoObjetivo`;
 
 
-DROP TABLE `TipoAnalise`;
+DROP TABLE  IF EXISTS `TipoAnalise`;
 
 
-DROP TABLE `ObjetoPesquisa`;
+DROP TABLE  IF EXISTS `ObjetoPesquisa`;
 
 
 
@@ -235,8 +235,8 @@ CREATE TABLE `Artigo`
  `AnoPublicacao`               YEAR NOT NULL ,
  `Paginas`                     VARCHAR(15) ,
  `IndicadorRevistaConferencia` VARCHAR(1) NOT NULL ,
- `DataInicioEstudo`            DATE NOT NULL ,
- `DataFimEstudo`               DATE NOT NULL ,
+ `DataInicioEstudo`            DATE ,
+ `DataFimEstudo`               DATE ,
  `IndicadorMulticentrico`      VARCHAR(1) NOT NULL ,
  `UrlArtigo`      			   VARCHAR(500) ,
  `CodObjetoPesquisa`           INT NOT NULL ,

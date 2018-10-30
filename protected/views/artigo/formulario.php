@@ -165,7 +165,7 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Data Inicial do Estudo*: ', 'lblDataInicioEstudo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Data Inicial do Estudo: ', 'lblDataInicioEstudo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
 				$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 					'name' =>'Artigo[DataInicioEstudo]',
@@ -176,12 +176,11 @@
 						'dayNamesMin'=>'DSTQQSS',
 					),
 					'language' => 'pt',
-					'htmlOptions'=>array('required'=>true, 'placeholder'=>'dd/mm/aaaa', 'class'=>'date form-control'),
+					'htmlOptions'=>array('placeholder'=>'dd/mm/aaaa', 'class'=>'date form-control'),
 				));
-				echo '<div class="invalid-feedback">Por favor, insira a data de início do estudo.</div>';
 		echo '</div>';
 		
-		echo CHtml::label('Data Final do Estudo*: ', 'lblDataFimEstudo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Data Final do Estudo: ', 'lblDataFimEstudo', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
 				$this->widget('zii.widgets.jui.CJuiDatePicker', array(
 					'name' =>'Artigo[DataFimEstudo]',
@@ -192,9 +191,8 @@
 						'dayNamesMin'=>'DSTQQSS',
 					),
 					'language' => 'pt',
-					'htmlOptions'=>array('required'=>true, 'placeholder'=>'dd/mm/aaaa', 'class'=>'date form-control'),
+					'htmlOptions'=>array('placeholder'=>'dd/mm/aaaa', 'class'=>'date form-control'),
 				));
-				echo '<div class="invalid-feedback">Por favor, insira a data final do estudo.</div>';
 		echo '</div>';
 	echo '</div>';
 	// FIM MAPEAMENTO PESQUISAS
@@ -262,13 +260,13 @@
 				hasError = true;
 			}
 			
-			if ($('#Artigo_DataInicioEstudo').val().length < 10)
+			if ($('#Artigo_DataInicioEstudo').val().length > 0 && $('#Artigo_DataInicioEstudo').val().length < 10)
 			{
 				msg += ' - Data Inicial do Estudo deve estar no formato dd/mm/aaaa;\n';
 				hasError = true;
 			}
 			
-			if ($('#Artigo_DataFimEstudo').val().length < 10)
+			if ($('#Artigo_DataFimEstudo').val().length > 0 && $('#Artigo_DataFimEstudo').val().length < 10)
 			{
 				msg += ' - Data Final do Estudo deve estar no formato dd/mm/aaaa;\n';
 				hasError = true;

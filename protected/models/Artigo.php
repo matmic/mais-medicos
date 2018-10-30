@@ -53,7 +53,7 @@ class Artigo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Resumo, IndicadorMulticentrico, DataInicioEstudo, DataFimEstudo, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, AnoPublicacao', 'required'),
+			array('Resumo, IndicadorMulticentrico, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, AnoPublicacao', 'required'),
 			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>5000),
 			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),
@@ -165,11 +165,17 @@ class Artigo extends CActiveRecord
 	
 	public function afterFind()
 	{
-		$dataInicioEstudo = DateTime::createFromFormat('Y-m-d', $this->DataInicioEstudo);
-		$dataFimEstudo = DateTime::createFromFormat('Y-m-d', $this->DataFimEstudo);
+		if (!empty($this->DataInicioEstudo))
+		{
+			$dataInicioEstudo = DateTime::createFromFormat('Y-m-d', $this->DataInicioEstudo);
+			$this->DataInicioEstudo = $dataInicioEstudo->format('d/m/Y');
+		}
 		
-		$this->DataInicioEstudo = $dataInicioEstudo->format('d/m/Y');
-		$this->DataFimEstudo = $dataFimEstudo->format('d/m/Y');
+		if (!empty($this->DataFimEstudo))
+		{
+			$dataFimEstudo = DateTime::createFromFormat('Y-m-d', $this->DataFimEstudo);
+			$this->DataFimEstudo = $dataFimEstudo->format('d/m/Y');
+		}
 	}
 	
 	public function beforeSave()

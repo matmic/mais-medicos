@@ -122,11 +122,26 @@ class ArtigoController extends BaseController
 					if (empty($_POST['Artigo']['CodAbrangencia']))
 						$msg .= " - Escolha uma Abrangência;\n";
 					
-					$dataInicioEstudo = DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']);
-					$dataFimEstudo = DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']);
+					$dataInicioEstudo = NULL;
+					$dataFimEstudo = NULL;
 					
-					if ($dataInicioEstudo > $dataFimEstudo)
-						$msg .= " - A data inicial do estudo deve ser igual ou anterior a data final do estudo;\n";
+					if (!empty($_POST['Artigo']['DataInicioEstudo']))
+					{
+						$dataInicioEstudo = DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataInicioEstudo']);
+						$dataInicioEstudo = $dataInicioEstudo->format('Y-m-d');
+					}
+					
+					if (!empty($_POST['Artigo']['DataFimEstudo']))
+					{
+						$dataFimEstudo = DateTime::createFromFormat('d/m/Y', $_POST['Artigo']['DataFimEstudo']);
+						$dataFimEstudo = $dataFimEstudo->format('Y-m-d');
+					}
+					
+					if (!empty($dataInicioEstudo) && !empty($dataFimEstudo))
+					{
+						if ($dataInicioEstudo > $dataFimEstudo)
+							$msg .= " - A data inicial do estudo deve ser igual ou anterior a data final do estudo;\n";
+					}
 
 					if (!empty($msg))
 						throw new CException($msg);
@@ -138,8 +153,8 @@ class ArtigoController extends BaseController
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
 					$artigo->Resumo = $_POST['Artigo']['Resumo'];
 					$artigo->IndicadorRevistaConferencia = $_POST['Artigo']['IndicadorRevistaConferencia'];
-					$artigo->DataInicioEstudo = $dataInicioEstudo->format('Y-m-d');
-					$artigo->DataFimEstudo = $dataFimEstudo->format('Y-m-d');
+					$artigo->DataInicioEstudo = $dataInicioEstudo;
+					$artigo->DataFimEstudo = $dataFimEstudo;
 					$artigo->UrlArtigo = (!empty($_POST['Artigo']['UrlArtigo']) ? $_POST['Artigo']['UrlArtigo'] : NULL);
 					
 					if (isset($_POST['Artigo']['Multicentrico']))
