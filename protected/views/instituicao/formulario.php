@@ -19,10 +19,9 @@
 	echo '</div>';
 	
 	echo '<div class="form-group row">';
-		echo CHtml::label('Unidade da Federação*: ', 'label_uf', array('class'=>'alinharDireita col-sm-2 col-form-label'));
+		echo CHtml::label('Unidade da Federação: ', 'label_uf', array('class'=>'alinharDireita col-sm-2 col-form-label'));
 		echo '<div class="col-sm-10">';
-			echo CHtml::activeDropDownList($instituicao, 'CodUF', UnidadeFederacao::getEstados(), array('required'=>true, 'class'=>'form-control'));
-
+			echo CHtml::activeDropDownList($instituicao, 'CodUF', UnidadeFederacao::getEstados(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 		echo '</div>';
 	echo '</div>';
 	
