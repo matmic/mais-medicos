@@ -68,10 +68,9 @@
 			echo '<div class="invalid-feedback">Por favor, selecione onde foi publicado o artigo.</div>';
 		echo '</div>';
 		
-		echo CHtml::label('Revista / Conferência*: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		echo CHtml::label('Revista / Conferência: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('required'=>true, 'class'=>'form-control'));
-			echo '<div class="invalid-feedback">Por favor, insira o nome da conferência ou revista em que o artigo foi publicado.</div>';
+			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('class'=>'form-control'));
 		echo '</div>';
 	echo '</div>';
 	

@@ -89,9 +89,6 @@ class ArtigoController extends BaseController
 						}
 					}
 					
-					if (empty($_POST['Artigo']['RevistaConferencia']))
-						$msg .= " - Preencha a revista/conferência onde o artigo foi publicado;\n";
-					
 					if (empty($_POST['Artigo']['IndicadorRevistaConferencia']))
 						$msg .= " - Selecione onde o artigo foi publicado;\n";
 					
@@ -106,15 +103,6 @@ class ArtigoController extends BaseController
 					
 					if (empty($_POST['Artigo']['Palavra']))
 						$msg .= " - Preencha a(s) palavra(s)-chave do artigo;\n";
-					
-					if (empty($_POST['Artigo']['Analise']))
-						$msg .= " - Marque ao menos um tipo de análise;\n";
-					
-					if (empty($_POST['Artigo']['Objetivo']))
-						$msg .= " - Marque ao menos um tipo de objetivo;\n";
-					
-					if (empty($_POST['Artigo']['Procedimento']))
-						$msg .= " - Marque ao menos um tipo de procedimento;\n";
 					
 					if (empty($_POST['Artigo']['Instituicao']))
 						$msg .= " - Preencha a(s) instituição(ões) do artigo;\n";
@@ -148,7 +136,7 @@ class ArtigoController extends BaseController
 					
 					$artigo->CodObjetoPesquisa = $_POST['Artigo']['CodObjetoPesquisa'];
 					$artigo->NomeArtigo = $_POST['Artigo']['Nome'];
-					$artigo->NomeRevistaConferencia = $_POST['Artigo']['RevistaConferencia'];
+					$artigo->NomeRevistaConferencia = (!empty($_POST['Artigo']['RevistaConferencia']) ? $_POST['Artigo']['RevistaConferencia'] : NULL);
 					$artigo->AnoPublicacao = $_POST['Artigo']['AnoPublicacao'];
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
 					$artigo->Resumo = $_POST['Artigo']['Resumo'];
@@ -185,30 +173,39 @@ class ArtigoController extends BaseController
 					if ($artigo->save())
 					{
 						ArtigoTipoAnalise::deletarRelacoes($artigo->CodArtigo);
-						foreach ($_POST['Artigo']['Analise'] as $key => $value)
+						if (isset($_POST['Artigo']['Analise']) && !empty($_POST['Artigo']['Analise']))
 						{
-							$artigoTipoAnalise = new ArtigoTipoAnalise();
-							$artigoTipoAnalise->CodArtigo = $artigo->CodArtigo;
-							$artigoTipoAnalise->CodTipoAnalise = $value;
-							$artigoTipoAnalise->save();
+							foreach ($_POST['Artigo']['Analise'] as $key => $value)
+							{
+								$artigoTipoAnalise = new ArtigoTipoAnalise();
+								$artigoTipoAnalise->CodArtigo = $artigo->CodArtigo;
+								$artigoTipoAnalise->CodTipoAnalise = $value;
+								$artigoTipoAnalise->save();
+							}
 						}
 						
 						ArtigoTipoObjetivo::deletarRelacoes($artigo->CodArtigo);
-						foreach ($_POST['Artigo']['Objetivo'] as $key => $value)
+						if (isset($_POST['Artigo']['Objetivo']) && !empty($_POST['Artigo']['Objetivo']))
 						{
-							$artigoTipoObjetivo = new ArtigoTipoObjetivo();
-							$artigoTipoObjetivo->CodArtigo = $artigo->CodArtigo;
-							$artigoTipoObjetivo->CodTipoObjetivo = $value;
-							$artigoTipoObjetivo->save();
+							foreach ($_POST['Artigo']['Objetivo'] as $key => $value)
+							{
+								$artigoTipoObjetivo = new ArtigoTipoObjetivo();
+								$artigoTipoObjetivo->CodArtigo = $artigo->CodArtigo;
+								$artigoTipoObjetivo->CodTipoObjetivo = $value;
+								$artigoTipoObjetivo->save();
+							}
 						}
 						
 						ArtigoTipoProcedimento::deletarRelacoes($artigo->CodArtigo);
-						foreach ($_POST['Artigo']['Procedimento'] as $key => $value)
+						if (isset($_POST['Artigo']['Procedimento']) && !empty($_POST['Artigo']['Procedimento']))
 						{
-							$artigoTipoProcedimento = new ArtigoTipoProcedimento();
-							$artigoTipoProcedimento->CodArtigo = $artigo->CodArtigo;
-							$artigoTipoProcedimento->CodTipoProcedimento = $value;
-							$artigoTipoProcedimento->save();
+							foreach ($_POST['Artigo']['Procedimento'] as $key => $value)
+							{
+								$artigoTipoProcedimento = new ArtigoTipoProcedimento();
+								$artigoTipoProcedimento->CodArtigo = $artigo->CodArtigo;
+								$artigoTipoProcedimento->CodTipoProcedimento = $value;
+								$artigoTipoProcedimento->save();
+							}
 						}
 						
 						ArtigoInstituicao::deletarRelacoes($artigo->CodArtigo);

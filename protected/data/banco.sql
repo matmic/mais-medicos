@@ -229,7 +229,7 @@ CREATE TABLE `Artigo`
  `NomeArtigo`                  VARCHAR(300) NOT NULL ,
  `NomeArtigoIngles`            VARCHAR(300) ,
  `Resumo`                      VARCHAR(5000) NOT NULL ,
- `NomeRevistaConferencia`      VARCHAR(300) NOT NULL ,
+ `NomeRevistaConferencia`      VARCHAR(300) ,
  `Volume`                      VARCHAR(45) ,
  `Numero`                      VARCHAR(10) ,
  `AnoPublicacao`               YEAR NOT NULL ,
@@ -269,7 +269,7 @@ CREATE TABLE `Instituicao`
  `CodInstituicao`   INT NOT NULL ,
  `NomeInstituicao`  VARCHAR(200) NOT NULL ,
  `SiglaInstituicao` VARCHAR(20) ,
- `CodUF`            INT NOT NULL ,
+ `CodUF`            INT ,
 
 PRIMARY KEY (`CodInstituicao`),
 KEY `fkIdx_195` (`CodUF`),

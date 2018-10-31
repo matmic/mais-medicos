@@ -53,7 +53,7 @@ class Artigo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Resumo, IndicadorMulticentrico, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, AnoPublicacao', 'required'),
+			array('Resumo, IndicadorMulticentrico, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, IndicadorRevistaConferencia, AnoPublicacao', 'required'),
 			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>5000),
 			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),

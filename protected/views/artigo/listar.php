@@ -27,7 +27,7 @@
 				),
 				array(
 					'header'=>'Revista / Periódico',
-					'value'=>'$data->NomeRevistaConferencia',
+					'value'=>'(!empty($data->NomeRevistaConferencia) ? $data->NomeRevistaConferencia : "-")',
 				),
 				array(
 					'header'=>'Ano de Publicação',
