@@ -115,10 +115,10 @@
 						</ul>
 					</div>
 				</div>
-				<main style="background-color: #d0d0d0;" class="main-content">
+				<main class="main-content bgc-grey-100">
 					<div id="mainContent">
 						<div class="row">
-							<div style="background-color: #d0d0d0; "class="col-md-12">
+							<div class="col-md-12">
 								<div class="bgc-white bd bdrs-3 p-20 mB-20">
 									<?php
 										$flashMessages = Yii::app()->user->getFlashes();

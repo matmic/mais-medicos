@@ -6,13 +6,13 @@
 	setTimeout(function() {
 		Highcharts.chart('container', {
 			chart: {
-				type: 'column'
+				type: 'pie'
 			},
 			title: {
 				text: ''
 			},
 			subtitle: {
-				text: 'Clique nas colunas para acessar os artigos'
+				text: 'Clique sobre os pedaços para acessar os artigos'
 			},
 			xAxis: {
 				type: 'category',
@@ -29,22 +29,27 @@
 				pointFormat: 'Número de Artigos: <b>{point.y}</b>'
 			},
 			plotOptions: {
-				series: {
+				pie: {
+					allowPointSelect: true,
 					cursor: 'pointer',
+					dataLabels: {
+						enabled: true,
+						format: '{point.percentage:.1f} %',
+					},
+					showInLegend: true,
 					point: {
 						events: {
-							click: function () {
-								window.open(this.options.url, '_blank');
+							click: function() {
+								window.open(this.options.url,'_blank');
 							},
 							legendItemClick: function () {
 								return false; 
 							},
 						}
-					}
+					},
 				}
 			},
 			series: [{
-				showInLegend: false,
 				colorByPoint: true,
 				data: <?php echo json_encode($data); ?>
 			}]
