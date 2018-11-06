@@ -1,6 +1,6 @@
 /*!
- * Tokenize2 v0.6-beta (https://github.com/zellerda/Tokenize2)
- * Copyright 2016 David Zeller.
+ * Tokenize2 v1.2 (https://github.com/dragonofmercy/Tokenize2)
+ * Copyright 2016-2017 DragonOfMercy.
  * Licensed under the new BSD license
  */
 (function(factory){
@@ -29,7 +29,6 @@
         factory(jQuery);
     }
 }(function($){
-
     /**
      * Tokenize2 constructor.
      *
@@ -67,7 +66,7 @@
         MAJ: 16
     };
 
-    Tokenize2.VERSION = '0.5-beta';
+    Tokenize2.VERSION = '1.2';
     Tokenize2.DEBOUNCE = null;
     Tokenize2.DEFAULTS = {
         tokensMaxItems: 0,
@@ -83,6 +82,7 @@
         debounce: 0,
         placeholder: false,
         sortable: false,
+        allowEmptyValues: false,
         zIndexMargin: 500,
         tabIndex: 0
     };
@@ -145,7 +145,7 @@
             .on('keypress', {}, $.proxy(function(e){ this.trigger('tokenize:keypress', [e]) }, this))
             .on('keyup', {}, $.proxy(function(e){ this.trigger('tokenize:keyup', [e]) }, this))
             .on('focus', {}, $.proxy(function(){
-                if(this.input.val().length > 0){
+                if(this.input.val().length >= this.options.searchMinLength && this.input.val().length > 0){
                     this.trigger('tokenize:search', [this.input.val()]);
                 }
             }, this))
@@ -180,7 +180,9 @@
             this.trigger('tokenize:select', [($(e.target)[0] === this.tokensContainer[0])]);
         }, this))
         .focusout($.proxy(function(){
-            this.trigger('tokenize:deselect');
+            if(this.container.hasClass('focus')){
+                this.trigger('tokenize:deselect')
+            }
         }, this));
 
         if(this.options.tokensMaxItems === 1){
@@ -226,6 +228,10 @@
         this.trigger('tokenize:remap');
         this.trigger('tokenize:tokens:reorder');
         this.trigger('tokenize:loaded');
+
+        if(this.element.is(':disabled')){
+            this.disable();
+        }
 
     };
 
@@ -282,7 +288,7 @@
         this.resetInput();
 
         // Check if token is empty
-        if(value === undefined || value === ''){
+        if(value === undefined ||(!this.options.allowEmptyValues && value === '')){
             this.trigger('tokenize:tokens:error:empty');
             return this;
         }
@@ -320,6 +326,7 @@
             .insertBefore(this.searchContainer);
 
         this.trigger('tokenize:dropdown:hide');
+        this.trigger('tokenize:tokens:added', [value, text]);
 
         return this;
 
@@ -365,17 +372,51 @@
     };
 
     /**
+     * Disable tokenize
+     *
+     * @returns {Tokenize2}
+     */
+    Tokenize2.prototype.disable = function(){
+
+        this.tokensContainer.addClass('disabled');
+        this.searchContainer.hide();
+        return this;
+
+    };
+
+    /**
+     * Enable tokenize
+     *
+     * @returns {Tokenize2}
+     */
+    Tokenize2.prototype.enable = function(){
+
+        this.tokensContainer.removeClass('disabled');
+        this.searchContainer.show();
+        return this;
+
+    };
+
+    /**
      * Focus
      *
      * @param {boolean} container
      */
     Tokenize2.prototype.focus = function(container){
 
+        if(this.element.is(':disabled')){
+            this.tokensContainer.blur();
+            return;
+        }
+
         if(container){
             this.input.focus();
         }
 
-        this.container.addClass('focus');
+        if(!this.container.hasClass('focus')){
+            this.container.addClass('focus');
+            this.trigger('tokenize:focus');
+        }
 
     };
 
@@ -482,7 +523,7 @@
                     break;
                 case KEYS.BACKSPACE:
                 default:
-                    if(this.input.val().length > 0){
+                    if(this.input.val().length >= this.options.searchMinLength && this.input.val().length > 0){
                         this.trigger('tokenize:search', [this.input.val()]);
                     } else {
                         this.trigger('tokenize:dropdown:hide');
@@ -502,7 +543,7 @@
      */
     Tokenize2.prototype.keypress = function(e){
 
-        if(e.type === 'keypress'){
+        if(e.type === 'keypress' && !this.element.is(':disabled')){
             var $delimiter = false;
 
             if(Array.isArray(this.options.delimiter)){
@@ -709,7 +750,9 @@
      */
     Tokenize2.prototype.dropdownClear = function(){
 
-        this.dropdown.find('.dropdown-menu li').remove();
+        if(this.dropdown){
+            this.dropdown.find('.dropdown-menu li').remove();
+        }
 
     };
 
@@ -730,9 +773,9 @@
                 }
             }, this));
 
-            if($('li.active', this.dropdown).length < 1){
-                $('li:first', this.dropdown).addClass('active');
-            }
+            // if($('li.active', this.dropdown).length < 1){
+                // $('li:first', this.dropdown).addClass('active');
+            // }
 
             if($('li.dropdown-item', this.dropdown).length < 1){
                 this.trigger('tokenize:dropdown:hide');
