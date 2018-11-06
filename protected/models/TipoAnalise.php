@@ -115,7 +115,7 @@ class TipoAnalise extends CActiveRecord
 	
 	public static function getTiposAnalises()
 	{
-		$tiposAnalises = self::model()->findAll(array('order'=>'NomeTipoAnalise ASC', 'condition'=>'IndicadorExclusao IS NULL'));
+		$tiposAnalises = self::model()->findAll(array('order'=>'CodTipoAnalise ASC', 'condition'=>'IndicadorExclusao IS NULL'));
 		return CHtml::listData($tiposAnalises, 'CodTipoAnalise', 'NomeTipoAnalise');
 	}
 }
