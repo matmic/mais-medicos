@@ -37,6 +37,7 @@
 
 	echo '<div class="table-responsive">';
 		$this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'gridInstituicoes',
 			'dataProvider'=>$dataProvider,
 			'itemsCssClass'=>'table table-striped table-bordered table-condensed',
 			'columns'=>array(
@@ -52,13 +53,33 @@
 					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
 					'header'=>'Operações',
 					'class'=>'CButtonColumn',
-					'template'=>'{update}',
+					'template'=>'{update}{deletar}',
 					'buttons'=>array(
 						'update' => array
 						(
 							'label'=>'Editar',
 							'imageUrl'=>Yii::app()->request->baseUrl.'/images/editar.png',
 							'url'=>'Yii::app()->createUrl("instituicao/formulario", array("CodInstituicao"=>"$data->CodInstituicao"))',
+						),
+						'deletar' => array
+						(
+							'label'=>'Deletar',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/remover.png',
+							'url'=>'Yii::app()->createUrl("instituicao/remover", array("CodInstituicao"=>"$data->CodInstituicao"))',
+							'click'=>"function(){
+								if(confirm('Você tem certeza que deseja excluir essa Instituição?'))
+								{
+									$.ajax({
+										type:'POST',
+										url:$(this).attr('href'),
+										success : function(retorno){ 
+											alert(retorno);
+											$.fn.yiiGridView.update('gridInstituicoes');
+										},
+									});
+								}
+							return false;
+							}",
 						),
 					)
 				),

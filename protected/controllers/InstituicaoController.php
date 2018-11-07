@@ -89,4 +89,33 @@ class InstituicaoController extends BaseController
 			'NomeInstituicao'=>$NomeInstituicao,
 		));
 	}
+	
+	public function actionRemover()
+	{
+		if (isset($_GET['CodInstituicao']) && !empty($_GET['CodInstituicao']))
+		{
+			$instituicao = Instituicao::model()->findByPk($_GET['CodInstituicao']);
+			
+			if (empty($instituicao))
+			{
+				Yii::app()->user->setFlash('danger', 'Instituição não encontrada!');
+				$this->redirect('listar');
+			}
+			
+			try
+			{
+				$instituicao->delete();
+				echo 'Instituição excluída com sucesso!';
+			}
+			catch (Exception $e)
+			{
+				echo 'Existem artigos vinculados a essa instituição, não é possível excluí-la!';
+			}
+		}
+		else
+		{
+			Yii::app()->user->setFlash('danger', 'Instituição não encontrada!');
+			$this->redirect('listar');
+		}
+	}
 }
