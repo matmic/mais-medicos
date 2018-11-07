@@ -6,7 +6,7 @@ class ArtigoController extends BaseController
 	{
 		if (isset($_GET['CodArtigo']))
 		{
-			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findByPk($_GET['CodArtigo']);
+			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia', 'Revista'))->findByPk($_GET['CodArtigo']);
 			if (empty($artigo))
 			{
 				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
@@ -136,7 +136,8 @@ class ArtigoController extends BaseController
 					
 					$artigo->CodObjetoPesquisa = $_POST['Artigo']['CodObjetoPesquisa'];
 					$artigo->NomeArtigo = $_POST['Artigo']['Nome'];
-					$artigo->NomeRevistaConferencia = (!empty($_POST['Artigo']['RevistaConferencia']) ? $_POST['Artigo']['RevistaConferencia'] : NULL);
+					//$artigo->NomeRevistaConferencia = (!empty($_POST['Artigo']['RevistaConferencia']) ? $_POST['Artigo']['RevistaConferencia'] : NULL);
+					$artigo->CodRevista = (!empty($_POST['Artigo']['RevistaConferencia']) ? $_POST['Artigo']['RevistaConferencia'] : NULL);
 					$artigo->AnoPublicacao = $_POST['Artigo']['AnoPublicacao'];
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
 					$artigo->Resumo = $_POST['Artigo']['Resumo'];
@@ -340,6 +341,7 @@ class ArtigoController extends BaseController
 			'NomeAutor'=>'',
 			'CodPalavra'=>'',
 			'NomePalavra'=>'',
+			'CodRevista'=>'',
 		);
 			
 		if (isset($_GET['Filtro']))
@@ -394,6 +396,14 @@ class ArtigoController extends BaseController
 		if (isset($_GET['Filtro']['CodAbrangencia']) && !empty($_GET['Filtro']['CodAbrangencia']))
 		{
 			$criteria->addCondition('t.CodAbrangencia = ' . $_GET['Filtro']['CodAbrangencia']);
+			$filtroUsado = true;
+			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
+		}
+		
+		if (isset($_GET['Filtro']['CodRevista']) && !empty($_GET['Filtro']['CodRevista']))
+		{
+			$with[] = 'Revista';
+			$criteria->addCondition('t.CodRevista = ' . $_GET['Filtro']['CodRevista']);
 			$filtroUsado = true;
 			$imgFiltro = Yii::app()->baseUrl . '/images/contrair.gif';
 		}

@@ -49,6 +49,12 @@ class BaseController extends Controller
 					'pertenceDropdown'=>true,
 				),
 				array(
+					'label'=>'Revista',
+					'url'=>Yii::app()->createUrl('grafico/revista', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
 					'label'=>'Tipos de Pesquisa',
 					'icone'=>'',
 					'tipo'=>'dropdown',
@@ -136,6 +142,14 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('palavra/listar', array()),
 				),
+				// REVISTAS
+				array(
+					'label'=>'Revistas',
+					'icone'=>'c-red-500 ti-book',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('revista/listar', array()),
+				),
 				// USUÁRIOS
 				array(
 					'label'=>'Usuários',
@@ -192,6 +206,12 @@ class BaseController extends Controller
 				array(
 					'label'=>'Palavras-chave',
 					'url'=>Yii::app()->createUrl('grafico/palavra', array()),
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>true,
+				),
+				array(
+					'label'=>'Revista',
+					'url'=>Yii::app()->createUrl('grafico/revista', array()),
 					'tipo'=>'entrada',
 					'pertenceDropdown'=>true,
 				),
@@ -261,7 +281,7 @@ class BaseController extends Controller
 			array(
 				'allow',
 				'users' => array('@'),
-				'controllers' => array('palavra', 'grafico', 'auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
+				'controllers' => array('revista', 'palavra', 'grafico', 'auxiliar', 'abrangencia', 'artigo', 'instituicao', 'objetoPesquisa', 'site', 'tipoAnalise', 'tipoObjetivo', 'tipoProcedimento', 'unidadeFederacao'),
 			),
 			array(
 				'allow',
@@ -284,21 +304,6 @@ class BaseController extends Controller
 				'deny',
                 'users' => array('*'),
             ),
-			// array(
-				// 'allow',
-				// 'controllers' => array('documentacao'),
-				// 'users' => array('@'),
-			// ),
-			// array(
-				// 'allow',
-				// 'controllers' => array('membroFamilia'),
-				// 'users' => array('@'),
-			// ),
-			// array(
-				// 'allow',
-				// 'controllers' => array('declaracoes'),
-				// 'users' => array('@'),
-			// ),
 		);
 	}
 }

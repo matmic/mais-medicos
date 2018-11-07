@@ -44,7 +44,7 @@
 		
 		echo CHtml::label('Revista / Conferência: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo '<span class="form-control-plaintext">' . $artigo->NomeRevistaConferencia . '</span>';
+			echo '<span class="form-control-plaintext">' . $artigo->Revista->NomeRevista . '</span>';
 		echo '</div>';
 	echo '</div>';
 	

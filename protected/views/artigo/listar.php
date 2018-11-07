@@ -28,7 +28,7 @@
 				),
 				array(
 					'header'=>'Revista / Periódico',
-					'value'=>'(!empty($data->NomeRevistaConferencia) ? $data->NomeRevistaConferencia : "-")',
+					'value'=>'(!empty($data->Revista->NomeRevista) ? $data->Revista->NomeRevista : "-")',
 				),
 				array(
 					'header'=>'Ano de Publicação',
@@ -60,6 +60,7 @@
 						'deletar' => array
 						(
 							'label'=>'Deletar',
+							'visible'=>'Yii::app()->user->isGuest ? false : true',
 							'imageUrl'=>Yii::app()->request->baseUrl.'/images/remover.png',
 							'url'=>'Yii::app()->createUrl("artigo/remover", array("CodArtigo"=>"$data->CodArtigo"))',
 							'click'=>"function(){

@@ -281,4 +281,31 @@ class GraficoController extends BaseController
 		
 		$this->render('_palavraChave', array('data'=>$data, 'numero'=>$numero, 'criarGrafico'=>$criarGrafico));
 	}
+	
+	public function actionRevista()
+	{
+		// BUSCA A QUANTIDADE DE ARTIGOS POR REVISTA, E AGRUPA-OS PELO NOME
+		$sql = '
+			SELECT R.CodRevista, R.NomeRevista, COUNT(ART.CodRevista) AS Count
+			FROM Revista R
+			LEFT JOIN Artigo ART 
+				ON R.CodRevista = ART.CodRevista
+			GROUP BY NomeRevista
+		';
+		$command = Yii::app()->db->createCommand($sql);
+		$result = $command->queryAll();
+		
+		$data = array();
+		
+		foreach($result as $revista) 
+		{
+			$data[] = array(
+				"name"=>$revista['NomeRevista'], 
+				"y"=>(int)$revista['Count'],
+				"url"=>Yii::app()->createUrl('artigo/listar', array('Filtro[CodRevista]'=>$revista['CodRevista'])),
+			);
+		}
+
+		$this->render('_revista', array('data'=>$data));
+	}
 }

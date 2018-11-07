@@ -68,10 +68,15 @@
 			echo '<div class="invalid-feedback">Por favor, selecione onde foi publicado o artigo.</div>';
 		echo '</div>';
 		
+		// echo CHtml::label('Revista / Conferência: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+		// echo '<div class="col-sm-4">';
+			// echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('class'=>'form-control'));
+		// echo '</div>';
 		echo CHtml::label('Revista / Conferência: ', 'lblConfRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 		echo '<div class="col-sm-4">';
-			echo CHtml::textField('Artigo[RevistaConferencia]', $artigo->NomeRevistaConferencia, array('class'=>'form-control'));
+			echo CHtml::dropDownList('Artigo[RevistaConferencia]', $artigo->CodRevista, Revista::getRevistas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 		echo '</div>';
+		
 	echo '</div>';
 	
 	echo '<div class="form-group row">';

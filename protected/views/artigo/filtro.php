@@ -105,9 +105,9 @@
 					echo '<div class="col-sm-4">';
 						echo CHtml::dropDownList('Filtro[CodObjetoPesquisa]', $arrFiltros['CodObjetoPesquisa'], ObjetoPesquisa::getObjetosPesquisas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 					echo '</div>';
-					echo CHtml::label('Publicado em: ', 'lblTipoPublicacao', array('class'=>'col-sm-2 col-form-label alinharDireita'));
+					echo CHtml::label('Revista: ', 'lblRevista', array('class'=>'col-sm-2 col-form-label alinharDireita'));
 					echo '<div class="col-sm-4">';
-						echo CHtml::dropDownList('Filtro[IndicadorRevistaConferencia]', $arrFiltros['IndicadorRevistaConferencia'], array(1=>'Conferência', 2=>'Revista'), array('empty'=>'Selecione...', 'class'=>'form-control'));
+						echo CHtml::dropDownList('Filtro[CodRevista]', $arrFiltros['CodRevista'], Revista::getRevistas(), array('empty'=>'Selecione...', 'class'=>'form-control'));
 					echo '</div>';
 				echo '</div>';
 			

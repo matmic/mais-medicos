@@ -15,6 +15,7 @@
  * @property integer $CodUsuarioUltimaAtu
  * @property string $DataUltimaAtu
  * @property integer $CodAbrangencia
+ * @property integer $CodRevista
  * @property integer $CodObjetoPesquisa
  * @property string $NomeArtigo
  * @property string $NomeArtigoIngles
@@ -79,6 +80,7 @@ class Artigo extends CActiveRecord
 		return array(
 			'ObjetoPesquisa' => array(self::BELONGS_TO, 'ObjetoPesquisa', 'CodObjetoPesquisa', 'joinType'=>'INNER JOIN'),
 			'Abrangencia' => array(self::BELONGS_TO, 'Abrangencia', 'CodAbrangencia', 'joinType'=>'INNER JOIN'),
+			'Revista' => array(self::BELONGS_TO, 'Revista', 'CodRevista', 'joinType'=>'INNER JOIN'),
 			'Instituicao'=> array(self::BELONGS_TO, 'ArtigoInstituicao', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 			'Analise'=> array(self::BELONGS_TO, 'ArtigoTipoAnalise', 'CodArtigo', 'joinType'=>'INNER JOIN'),
 			'Objetivo'=> array(self::BELONGS_TO, 'ArtigoTipoObjetivo', 'CodArtigo', 'joinType'=>'INNER JOIN'),
