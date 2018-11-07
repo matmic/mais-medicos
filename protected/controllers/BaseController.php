@@ -144,6 +144,14 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('site/listar', array()),
 				),
+				// SOBRE
+				array(
+					'label'=>'Sobre',
+					'icone'=>'c-black-500 ti-world',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('site/sobre', array()),
+				),
 			);
 		}
 		else
@@ -227,6 +235,14 @@ class BaseController extends Controller
 					'pertenceDropdown'=>false,
 					'url'=>Yii::app()->createUrl('palavra/listar', array()),
 				),
+				// SOBRE
+				array(
+					'label'=>'Sobre',
+					'icone'=>'c-black-500 ti-world',
+					'tipo'=>'entrada',
+					'pertenceDropdown'=>false,
+					'url'=>Yii::app()->createUrl('site/sobre', array()),
+				),
 			);
 	
 		return parent::beforeAction($action);
@@ -251,7 +267,7 @@ class BaseController extends Controller
 				'allow',
 				'users' => array('*'),
 				'controllers' => array('site'),
-				'actions'=>array('login', 'index'),
+				'actions'=>array('login', 'index', 'sobre'),
 			),
 			array(
 				'allow',

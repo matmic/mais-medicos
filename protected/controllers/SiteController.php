@@ -217,4 +217,9 @@ class SiteController extends BaseController
 		}
 		return implode($pass);
 	}
+	
+	public function actionSobre()
+	{
+		$this->render('sobre', array());
+	}
 }

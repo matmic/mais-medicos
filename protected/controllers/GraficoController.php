@@ -103,29 +103,39 @@ class GraficoController extends BaseController
 	
 	public function actionInstituicao()
 	{
-		$sql = '
-			SELECT INST.NomeInstituicao, ARTINST.CodInstituicao, COUNT(*) AS Count
-			FROM ArtigoInstituicao ARTINST
-			INNER JOIN Instituicao INST
-				ON INST.CodInstituicao = ARTINST.CodInstituicao
-			GROUP BY ARTINST.CodInstituicao
-			ORDER BY Count DESC
-			LIMIT 10
-		';
-		$command = Yii::app()->db->createCommand($sql);
-		$result = $command->queryAll();
+		$data = '';
+		$numero = '';
+		$criarGrafico = '0';
 		
-		$data = array();
-		foreach ($result as $row)
+		if (isset($_GET['Numero']) && !empty($_GET['Numero']))
 		{
-			$data[] = array(
-				'name' => $row['NomeInstituicao'], 
-				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodInstituicao]'=>$row['CodInstituicao'], 'Filtro[NomeInstituicao]'=>$row['NomeInstituicao'])),
-			);
+			$numero = $_GET['Numero'];
+			$criarGrafico = 1;
+			
+			$sql = "
+				SELECT INST.NomeInstituicao, ARTINST.CodInstituicao, COUNT(*) AS Count
+				FROM ArtigoInstituicao ARTINST
+				INNER JOIN Instituicao INST
+					ON INST.CodInstituicao = ARTINST.CodInstituicao
+				GROUP BY ARTINST.CodInstituicao
+				ORDER BY Count DESC
+				LIMIT $numero
+			";
+			$command = Yii::app()->db->createCommand($sql);
+			$result = $command->queryAll();
+			
+			$data = array();
+			foreach ($result as $row)
+			{
+				$data[] = array(
+					'name' => $row['NomeInstituicao'], 
+					'y' => (int)$row['Count'],
+					'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodInstituicao]'=>$row['CodInstituicao'], 'Filtro[NomeInstituicao]'=>$row['NomeInstituicao'])),
+				);
+			}
 		}
 		
-		$this->render('_instituicao', array('data'=>$data));
+		$this->render('_instituicao', array('data'=>$data, 'numero'=>$numero, 'criarGrafico'=>$criarGrafico));
 	}
 	
 	public function actionTipoAnalise()
@@ -236,28 +246,39 @@ class GraficoController extends BaseController
 	
 	public function actionPalavra()
 	{
-		$sql = '
-			SELECT P.NomePalavra, AP.CodPalavra, COUNT(*) AS Count
-			FROM ArtigoPalavra AP
-			INNER JOIN Palavra P
-				ON P.CodPalavra = AP.CodPalavra
-			GROUP BY AP.CodPalavra
-			ORDER BY Count DESC
-			LIMIT 10
-		';
-		$command = Yii::app()->db->createCommand($sql);
-		$result = $command->queryAll();
+		$data = '';
+		$numero = '';
+		$criarGrafico = '0';
 		
-		$data = array();
-		foreach ($result as $row)
+		if (isset($_GET['Numero']) && !empty($_GET['Numero']))
 		{
-			$data[] = array(
-				'name' => $row['NomePalavra'], 
-				'y' => (int)$row['Count'],
-				'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodPalavra]'=>$row['CodPalavra'], 'Filtro[NomePalavra]'=>$row['NomePalavra'])),
-			);
+			$numero = $_GET['Numero'];
+			$criarGrafico = 1;
+			
+		
+			$sql = "
+				SELECT P.NomePalavra, AP.CodPalavra, COUNT(*) AS Count
+				FROM ArtigoPalavra AP
+				INNER JOIN Palavra P
+					ON P.CodPalavra = AP.CodPalavra
+				GROUP BY AP.CodPalavra
+				ORDER BY Count DESC
+				LIMIT $numero
+			";
+			$command = Yii::app()->db->createCommand($sql);
+			$result = $command->queryAll();
+			
+			$data = array();
+			foreach ($result as $row)
+			{
+				$data[] = array(
+					'name' => $row['NomePalavra'], 
+					'y' => (int)$row['Count'],
+					'url' => Yii::app()->createUrl('artigo/listar', array('Filtro[CodPalavra]'=>$row['CodPalavra'], 'Filtro[NomePalavra]'=>$row['NomePalavra'])),
+				);
+			}
 		}
 		
-		$this->render('_palavraChave', array('data'=>$data));
+		$this->render('_palavraChave', array('data'=>$data, 'numero'=>$numero, 'criarGrafico'=>$criarGrafico));
 	}
 }
