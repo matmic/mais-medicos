@@ -281,7 +281,9 @@
      * @returns {Tokenize2}
      */
     Tokenize2.prototype.tokenAdd = function(value, text, force){
-
+		
+		var model = this;
+		
         value = this.escape(value);
         text = text || value;
         force = force || false;
@@ -298,7 +300,21 @@
             this.trigger('tokenize:tokens:error:max');
             return this;
         }
-
+		
+		// ADICIONADO PARA TESTAR SE JÁ EXISTE TAG DUPLICADA - MICHEL
+		if ( $('#' + this.id).find('span:contains("' + text + '")').filter(function(){    
+			return $(this).text() === text ? true : false;
+		}).length){
+			model.trigger('tokenize:tokens:error:duplicate', [value, text]);
+			return model;
+		}
+		
+		
+		// if ( $('#' + this.id).find('li:contains("' + text + '")').length ) {
+			// model.trigger('tokenize:tokens:error:duplicate', [value, text]);
+			// return model;
+		// }
+		
         // Check duplicate token
         if($('li.token[data-value="' + value + '"]', this.tokensContainer).length > 0){
             this.trigger('tokenize:tokens:error:duplicate', [value, text]);
@@ -773,9 +789,10 @@
                 }
             }, this));
 
-            // if($('li.active', this.dropdown).length < 1){
-                // $('li:first', this.dropdown).addClass('active');
-            // }
+			// ALTERADO MICHEL - ORIGINAL É DESCOMENTADO
+            if($('li.active', this.dropdown).length < 1){
+                $('li:first', this.dropdown).addClass('active');
+            }
 
             if($('li.dropdown-item', this.dropdown).length < 1){
                 this.trigger('tokenize:dropdown:hide');

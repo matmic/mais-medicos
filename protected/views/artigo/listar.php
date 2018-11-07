@@ -14,6 +14,7 @@
 	
 	echo '<div class="table-responsive">';
 		$this->widget('zii.widgets.grid.CGridView', array(
+			'id'=>'gridArtigos',
 			'dataProvider'=>$dataProvider,
 			'itemsCssClass'=>'table table-striped table-bordered table-condensed',
 			'columns'=>array(
@@ -41,7 +42,7 @@
 					'htmlOptions'=>array('style'=>"width: 30px; text-align: center;"),
 					'header'=>'Visualizar',
 					'class'=>'CButtonColumn',
-					'template'=>'{view} {update}',
+					'template'=>'{view} {update} {deletar}',
 					'buttons'=>array(
 						'view'=>array
 						(
@@ -55,6 +56,26 @@
 							'imageUrl'=>Yii::app()->request->baseUrl.'/images/editar.png',
 							'url'=>'Yii::app()->createUrl("artigo/formulario", array("CodArtigo"=>"$data->CodArtigo"))',
 							'visible'=>'Yii::app()->user->isGuest ? false : true',
+						),
+						'deletar' => array
+						(
+							'label'=>'Deletar',
+							'imageUrl'=>Yii::app()->request->baseUrl.'/images/remover.png',
+							'url'=>'Yii::app()->createUrl("artigo/remover", array("CodArtigo"=>"$data->CodArtigo"))',
+							'click'=>"function(){
+								if(confirm('Você tem certeza que deseja excluir esse Artigo?'))
+								{
+									$.ajax({
+										type:'POST',
+										url:$(this).attr('href'),
+										success : function(retorno){ 
+											alert(retorno);
+											$.fn.yiiGridView.update('gridArtigos');
+										},
+									});
+								}
+							return false;
+							}",
 						),
 					)
 				),

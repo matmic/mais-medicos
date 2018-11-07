@@ -9,7 +9,7 @@ class ArtigoController extends BaseController
 			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findByPk($_GET['CodArtigo']);
 			if (empty($artigo))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
+				Yii::app()->user->setFlash('danger', 'NÃ£o foi encontrada um Artigo vÃ¡lido!');
 				$this->redirect(array('artigo/listar'));
 			}
 			else
@@ -35,7 +35,7 @@ class ArtigoController extends BaseController
 			$artigo = Artigo::model()->findByPk($_GET['CodArtigo']);
 			if (empty($artigo))
 			{
-				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
+				Yii::app()->user->setFlash('danger', 'NÃ£o foi encontrada um Artigo vÃ¡lido!');
 				$this->redirect(array('artigo/listar'));
 			}
 			else
@@ -66,7 +66,7 @@ class ArtigoController extends BaseController
 						$artigo = Artigo::model()->findByPk($_POST['Artigo']['CodArtigo']);
 						if (empty($artigo))
 						{
-							Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
+							Yii::app()->user->setFlash('danger', 'NÃ£o foi encontrada um Artigo vÃ¡lido!');
 							$this->redirect(array('artigo/listar'));
 						}
 					}
@@ -85,7 +85,7 @@ class ArtigoController extends BaseController
 							$artigoComMesmoNome = Artigo::model()->findByAttributes(array('NomeArtigo'=>$_POST['Artigo']['Nome']));
 							
 							if (!empty($artigoComMesmoNome))
-								$msg .= " - Já existe um artigo com este nome na base de dados;\n";
+								$msg .= " - JÃ¡ existe um artigo com este nome na base de dados;\n";
 						}
 					}
 					
@@ -93,7 +93,7 @@ class ArtigoController extends BaseController
 						$msg .= " - Selecione onde o artigo foi publicado;\n";
 					
 					if (empty($_POST['Artigo']['AnoPublicacao']))
-						$msg .= " - Preencha o ano da publicação do artigo;\n";
+						$msg .= " - Preencha o ano da publicaÃ§Ã£o do artigo;\n";
 					
 					if (empty($_POST['Artigo']['Autor']))
 						$msg .= " - Preencha o(s) autor(es) do artigo;\n";
@@ -105,10 +105,10 @@ class ArtigoController extends BaseController
 						$msg .= " - Preencha a(s) palavra(s)-chave do artigo;\n";
 					
 					if (empty($_POST['Artigo']['Instituicao']))
-						$msg .= " - Preencha a(s) instituição(ões) do artigo;\n";
+						$msg .= " - Preencha a(s) instituiÃ§Ã£o(Ãµes) do artigo;\n";
 					
 					if (empty($_POST['Artigo']['CodAbrangencia']))
-						$msg .= " - Escolha uma Abrangência;\n";
+						$msg .= " - Escolha uma AbrangÃªncia;\n";
 					
 					$dataInicioEstudo = NULL;
 					$dataFimEstudo = NULL;
@@ -292,7 +292,7 @@ class ArtigoController extends BaseController
 						$transaction->commit();
 					}
 					else
-						throw new CException('Não foi possível salvar o Artigo');
+						throw new CException('NÃ£o foi possÃ­vel salvar o Artigo');
 
 					Yii::app()->user->setFlash('success', 'Artigo salvo com sucesso!');
 					
@@ -454,5 +454,44 @@ class ArtigoController extends BaseController
 			'filtroUsado'=>$filtroUsado,
 			'imgFiltro'=>$imgFiltro,
 		));
+	}
+	
+	public function actionRemover()
+	{
+		if (isset($_GET['CodArtigo']) && !empty($_GET['CodArtigo']))
+		{
+			$CodArtigo = $_GET['CodArtigo'];
+			$artigo = Artigo::model()->findByPk($CodArtigo);
+			
+			if (empty($artigo))
+			{
+				Yii::app()->user->setFlash('danger', 'Artigo nÃ£o encontrado!');
+				$this->redirect('listar');
+			}
+			
+			try
+			{
+				
+				ArtigoAutor::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				ArtigoCoordenador::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				ArtigoInstituicao::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				ArtigoPalavra::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				ArtigoTipoAnalise::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				ArtigoTipoObjetivo::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				ArtigoTipoProcedimento::model()->deleteAllByAttributes(array('CodArtigo'=>$CodArtigo));
+				$artigo->delete();
+				
+				echo 'Artigo excluÃ­do com sucesso!';
+			}
+			catch (Exception $e)
+			{
+				echo 'NÃ£o foi possÃ­vel excluir o artigo!';
+			}
+		}
+		else
+		{
+			Yii::app()->user->setFlash('danger', 'Artigo nÃ£o encontrado!');
+			$this->redirect('listar');
+		}
 	}
 }
