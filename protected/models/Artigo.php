@@ -19,7 +19,6 @@
  * @property integer $CodObjetoPesquisa
  * @property string $NomeArtigo
  * @property string $NomeArtigoIngles
- * @property string $NomeRevistaConferencia
  * @property string $Volume
  * @property string $Numero
  * @property string $Paginas
@@ -58,7 +57,7 @@ class Artigo extends CActiveRecord
 			array('CodArtigo, CodUsuarioInsercao, CodUsuarioUltimaAtu, CodAbrangencia, CodObjetoPesquisa', 'numerical', 'integerOnly'=>true),
 			array('Resumo', 'length', 'max'=>5000),
 			array('IndicadorMulticentrico, IndicadorRevistaConferencia', 'length', 'max'=>1),
-			array('NomeArtigo, NomeArtigoIngles, NomeRevistaConferencia', 'length', 'max'=>300),
+			array('NomeArtigo, NomeArtigoIngles', 'length', 'max'=>300),
 			array('UrlArtigo', 'length', 'max'=>500),
 			array('Volume', 'length', 'max'=>45),
 			array('Numero', 'length', 'max'=>10),
@@ -66,7 +65,7 @@ class Artigo extends CActiveRecord
 			array('AnoPublicacao', 'length', 'max'=>4),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('CodArtigo, Resumo, IndicadorMulticentrico, DataInicioEstudo, DataFimEstudo, CodUsuarioInsercao, DataInsercao, CodUsuarioUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, NomeRevistaConferencia, IndicadorRevistaConferencia, Volume, Paginas, AnoPublicacao', 'safe', 'on'=>'search'),
+			array('CodArtigo, Resumo, IndicadorMulticentrico, DataInicioEstudo, DataFimEstudo, CodUsuarioInsercao, DataInsercao, CodUsuarioUltimaAtu, DataUltimaAtu, CodAbrangencia, CodObjetoPesquisa, NomeArtigo, IndicadorRevistaConferencia, Volume, Paginas, AnoPublicacao', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -108,7 +107,6 @@ class Artigo extends CActiveRecord
 			'CodAbrangencia' => 'Cod Abrangencia',
 			'CodObjetoPesquisa' => 'Cod Objeto Pesquisa',
 			'NomeArtigo' => 'Nome Artigo',
-			'NomeRevistaConferencia' => 'Revista Conferencia',
 			'Volume' => 'Volume',
 			'AnoPublicacao' => 'Ano',
 		);
@@ -144,7 +142,6 @@ class Artigo extends CActiveRecord
 		$criteria->compare('CodAbrangencia',$this->CodAbrangencia);
 		$criteria->compare('CodObjetoPesquisa',$this->CodObjetoPesquisa);
 		$criteria->compare('NomeArtigo',$this->NomeArtigo,true);
-		$criteria->compare('NomeRevistaConferencia',$this->NomeRevistaConferencia,true);
 		$criteria->compare('Volume',$this->Volume,true);
 		$criteria->compare('Paginas',$this->Paginas,true);
 		$criteria->compare('AnoPublicacao',$this->AnoPublicacao,true);

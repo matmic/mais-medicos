@@ -136,7 +136,6 @@ class ArtigoController extends BaseController
 					
 					$artigo->CodObjetoPesquisa = $_POST['Artigo']['CodObjetoPesquisa'];
 					$artigo->NomeArtigo = $_POST['Artigo']['Nome'];
-					//$artigo->NomeRevistaConferencia = (!empty($_POST['Artigo']['RevistaConferencia']) ? $_POST['Artigo']['RevistaConferencia'] : NULL);
 					$artigo->CodRevista = (!empty($_POST['Artigo']['RevistaConferencia']) ? $_POST['Artigo']['RevistaConferencia'] : NULL);
 					$artigo->AnoPublicacao = $_POST['Artigo']['AnoPublicacao'];
 					$artigo->CodAbrangencia = $_POST['Artigo']['CodAbrangencia'];
