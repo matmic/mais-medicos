@@ -45,7 +45,7 @@ class RevistaController extends BaseController
 					}
 				}
 				else
-					$revista = new revista();
+					$revista = new Revista();
 				
 				$revista->attributes = $_POST['Revista'];
 

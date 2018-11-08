@@ -6,7 +6,7 @@ class ArtigoController extends BaseController
 	{
 		if (isset($_GET['CodArtigo']))
 		{
-			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia', 'Revista'))->findByPk($_GET['CodArtigo']);
+			$artigo = Artigo::model()->with(array('ObjetoPesquisa', 'Abrangencia'))->findByPk($_GET['CodArtigo']);
 			if (empty($artigo))
 			{
 				Yii::app()->user->setFlash('danger', 'Não foi encontrada um Artigo válido!');
