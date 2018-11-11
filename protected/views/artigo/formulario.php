@@ -111,7 +111,7 @@
 	
 	// TIPOS DE PESQUISA
 	echo '<div class="form-group row">';
-		echo CHtml::label('Análise: ', 'lblAnalise', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
+		echo CHtml::label('Abordagem: ', 'lblAnalise', array('class'=>'col-sm-2 col-form-label alinharDireita', 'style'=>'margin-top: -10px;'));
 		echo '<div class="col-sm-2">';
 			echo CHtml::checkBoxList('Artigo[Analise]', $analises, TipoAnalise::getTiposAnalises(), array());
 		echo '</div>';
