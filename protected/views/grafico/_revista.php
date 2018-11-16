@@ -1,6 +1,6 @@
 <h4 class="c-grey-900 mB-20">Artigos por Revista</h4>
 <div class="mT-30">
-	<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
+	<div id="container" style="min-width: 310px; height: 600px; max-width: 100%; margin: 0 auto"></div>
 </div>
 <script>
 	setTimeout(function() {
